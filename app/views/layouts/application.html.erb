@@ -11,6 +11,16 @@
   </head>
 
   <body>
+    <% if employee_signed_in?%>
+      <p><%= current_employee.email %></p>
+      <%= link_to 'Logout', destroy_employee_session_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Login', role_path %>
+
+    <% end %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
     <%= yield %>
   </body>
 </html>
