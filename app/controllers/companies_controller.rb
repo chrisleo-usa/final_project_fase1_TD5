@@ -1,20 +1,12 @@
 class CompaniesController < ApplicationController
+  before_action :authenticate_employee!
+
   def show
     @company = Company.find(params[:id])
   end
 
   def new
     @company = Company.new
-  end
-
-  def create
-    @company = Company.new(company_params)
-
-    if @company.save
-      redirect_to @company
-    else
-      render :new
-    end
   end
 
   def edit
@@ -35,6 +27,4 @@ class CompaniesController < ApplicationController
     def company_params
       params.require(:company).permit(:name, :logo, :address, :cnpj, :site, :social_media)
     end
-
-
 end

@@ -19,7 +19,7 @@ class Employees::RegistrationsController < Devise::RegistrationsController
         end
 
       else
-        @company = Company.create!(domain: company_domain)
+        @company = Company.create!(name: 'Company name', address: 'Company address', site: 'Company website', domain: company_domain)
 
         params[:employee][:company_id] = @company.id
         params[:employee][:admin] = 1

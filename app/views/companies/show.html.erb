@@ -1,4 +1,6 @@
-<h1>Página da empresa</h1>
+<% if @company.name != 'Company name'%>
+  <h1>Página da <%= @company.name %></h1>
+<% end %>
 
 <% if current_employee.admin == 1 %>
   <%= link_to 'Register a job opportunity', new_job_path %>
@@ -9,4 +11,7 @@
 <%= @company.cnpj %>
 <%= @company.site %>
 <%= @company.social_media %>
-<%# <%= image_tag @company.logo %> %>
+
+<% if @company.logo.attached? %>
+  <%= image_tag @company.logo %>
+<% end %>

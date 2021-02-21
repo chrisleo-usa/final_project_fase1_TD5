@@ -1,6 +1,18 @@
-<h1>Página da <%= @company.name %></h1>
+<% if @company.name != 'Company name'%>
+  <h1>Página da <%= @company.name %></h1>
+<% end %>
 
-<p>Favor cadastrar a sua empresa também</p>
+<% if @company.errors.any? %>
+  <div class="alert">
+    <%= I18n.t("errors.template.body")%>
+    <ul>
+      <% @company.errors.full_messages.each do |m| %>
+        <li><%= m %></li>
+      <% end %>
+    </ul>
+
+  </div>
+<% end %>
 
 <%= form_with model: @company do |f| %>
 
@@ -25,7 +37,7 @@
 </div>
 
 <div>
-  <%= f.label :site, 'Website' %>
+  <%= f.label :site, 'Site' %>
   <%= f.text_field :site %>
 </div>
 
