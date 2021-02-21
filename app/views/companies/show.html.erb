@@ -1,5 +1,9 @@
 <h1>Página da empresa</h1>
 
+<% if current_employee.admin == 1 %>
+  <%= link_to 'Register a job opportunity', new_job_path %>
+<% end %>
+
 <%= @company.name %>
 <%= @company.address %>
 <%= @company.cnpj %>

@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-feature 'Employee register a job opportunity' do
-  #TODO: Falta definir que só Employee admin pode registrar, atualizar e deletar company
+feature 'Employee admin register a job opportunity' do
   scenario 'and must be signed in' do
-    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456')
+    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', domain: 'campuscode')
+    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', admin: 1, company: company)
 
     login_as employee, scope: :employee
 
@@ -14,13 +14,27 @@ feature 'Employee register a job opportunity' do
     expect(page).to have_link('Logout')
   end
 
-  scenario 'attributes cannot be blank' do
-    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456')
+  scenario ', regular employee cannot register a job opportunity' do
+    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', domain: 'campuscode')
+    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', admin: 0, company: company)
 
     login_as employee, scope: :employee
     visit root_path
-    click_on 'Register a new job opportunity'
-    within('form') do
+    click_on 'My company'
+
+    expect(current_path).to eq(company_path(company))
+    expect(page).not_to have_link('Register a job opportunity')
+  end
+
+  scenario 'attributes cannot be blank' do
+    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', domain: 'campuscode')
+    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', admin: 1, company: company)
+
+    login_as employee, scope: :employee
+    visit root_path
+    click_on 'My company'
+    click_on 'Register a job opportunity'
+    within 'form' do
       fill_in 'Title', with: ''
       fill_in 'Description', with: ''
       fill_in 'Salary range', with: ''
@@ -43,11 +57,13 @@ feature 'Employee register a job opportunity' do
   end
 
   scenario 'successfully' do
-    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456')
+    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', domain: 'campuscode')
+    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', admin: 1, company: company)
 
     login_as employee, scope: :employee
     visit root_path
-    click_on 'Register a new job opportunity'
+    click_on 'My company'
+    click_on 'Register a job opportunity'
     within('form') do
       fill_in 'Title', with: 'Dev Front-End'
       fill_in 'Description', with: 'Vaga para desenvolvedor Front End'
