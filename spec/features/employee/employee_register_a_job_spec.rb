@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 feature 'Employee register a job opportunity' do
+  #TODO: Falta definir que só Employee admin pode registrar, atualizar e deletar company
   scenario 'and must be signed in' do
     employee = Employee.create!(email: 'chris@campuscode.com', password: '123456')
 

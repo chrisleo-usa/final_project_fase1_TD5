@@ -1,0 +1,39 @@
+<h1>Página da <%= @company.name %></h1>
+
+<p>Favor cadastrar a sua empresa também</p>
+
+<%= form_with model: @company do |f| %>
+
+<div>
+  <%= f.label :name, 'Company name' %>
+  <%= f.text_field :name %>
+</div>
+
+<div>
+  <%= f.label :logo, 'Logo'  %>
+  <%= f.file_field :logo %>
+</div>
+
+<div>
+  <%= f.label :address, 'Address' %>
+  <%= f.text_field :address %>
+</div>
+
+<div>
+  <%= f.label :cnpj, 'CNPJ' %>
+  <%= f.number_field :cnpj %>
+</div>
+
+<div>
+  <%= f.label :site, 'Website' %>
+  <%= f.text_field :site %>
+</div>
+
+<div>
+  <%= f.label :social_media, 'Social media' %>
+  <%= f.text_field :social_media  %>
+</div>
+
+<%= f.submit 'Save' %>
+
+<% end %>

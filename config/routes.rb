@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  devise_for :employees, controllers: { registrations: 'registrations'}
+  devise_for :employees, controllers: { registrations: 'employees/registrations'}
 
-  resources :companies, only: %i[new create show]
+  resources :companies, only: %i[new create show edit update]
   resources :jobs, only: %i[new create show]
 
   get 'role', to: 'home#role'
