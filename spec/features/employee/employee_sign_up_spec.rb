@@ -2,7 +2,8 @@ require 'rails_helper'
 
 feature 'Employee sign up' do
   scenario 'but email already exists' do
-    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456')
+    company = Company.create!(name: 'Company name', address: 'Company address', site: 'Company site', domain: 'campuscode')
+    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', company: company)
 
     visit root_path
     click_on 'Login'

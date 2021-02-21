@@ -5,7 +5,7 @@
 <%= @job.title %>
 <%= @job.description %>
 <%= @job.salary_range %>
-<%= @job.level.capitalize %>
+<%= @job.level.humanize %>
 <%= @job.requirements %>
 <%= @job.deadline_application.strftime("%d/%m/%Y") %>
 <%= @job.total_vacancies %>

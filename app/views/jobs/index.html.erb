@@ -1,0 +1,10 @@
+<h1>Jobs opportunities</h1>
+
+<% if @jobs.empty? %>
+  <h4>No registered jobs </h4>
+<% else %>
+  <% @jobs.each do |job| %>
+    <%= link_to job.title, edit_job_path(job.id) %>
+
+  <% end %>
+<% end %>

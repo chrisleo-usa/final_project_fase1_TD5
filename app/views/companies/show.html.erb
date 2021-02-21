@@ -2,6 +2,9 @@
   <h1>Página da <%= @company.name %></h1>
 <% end %>
 
+<%= link_to 'Edit', edit_company_path %>
+<%= link_to 'Jobs opportunities', jobs_path %>
+
 <% if current_employee.admin == 1 %>
   <%= link_to 'Register a job opportunity', new_job_path %>
 <% end %>

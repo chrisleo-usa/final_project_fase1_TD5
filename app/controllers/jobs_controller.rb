@@ -2,6 +2,10 @@ class JobsController < ApplicationController
   before_action :authenticate_employee!
   before_action :select_level, only: %i[new edit]
 
+  def index
+    @jobs = Job.all
+  end
+
   def show
     @job = Job.find(params[:id])
   end
@@ -18,6 +22,21 @@ class JobsController < ApplicationController
     else
       select_level()
       render :new
+    end
+  end
+
+  def edit
+    @job = Job.find(params[:id])
+  end
+
+  def update
+    @job = Job.find(params[:id])
+
+    if @job.update(job_params)
+      redirect_to @job
+    else
+      select_level()
+      render :edit
     end
   end
 
