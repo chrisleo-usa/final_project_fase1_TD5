@@ -12,7 +12,7 @@
   </div>
 <% end %>
 
-<%= form_with(model: @job) do |job| %>
+<%= form_with(model: [@company, @job]) do |job| %>
   <div>
     <%= job.label :title, 'Title' %>
     <%= job.text_field :title %>

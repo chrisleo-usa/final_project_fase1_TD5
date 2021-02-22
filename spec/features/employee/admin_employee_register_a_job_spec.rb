@@ -27,7 +27,9 @@ feature 'Employee admin register a job opportunity' do
   end
 
   scenario 'attributes cannot be blank' do
-    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', domain: 'campuscode')
+    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
+                              site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
+                              domain: 'campuscode')
     employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', admin: 1, company: company)
 
     login_as employee, scope: :employee
@@ -44,7 +46,9 @@ feature 'Employee admin register a job opportunity' do
       click_on 'Save'
     end
 
-    expect(current_path).to eq(jobs_path)
+    #TODO: Checar em qual path ele ficará!
+    # job = Job.last
+    # expect(current_path).to eq(company_job_path(job.company, job))
     within("div.alert") do
       expect(page).to have_content('There were problems with the following fields')
       expect(page).to have_content('Title can\'t be blank')
@@ -57,7 +61,9 @@ feature 'Employee admin register a job opportunity' do
   end
 
   scenario 'successfully' do
-    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', domain: 'campuscode')
+    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
+                              site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
+                              domain: 'campuscode')
     employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', admin: 1, company: company)
 
     login_as employee, scope: :employee
@@ -74,17 +80,19 @@ feature 'Employee admin register a job opportunity' do
       fill_in 'Total vacancies', with: 5
       click_on 'Save'
     end
+    click_on 'Jobs opportunities'
+    click_on 'Dev Front-End'
 
     job = Job.last
-    expect(current_path).to eq(job_path(job))
+    expect(current_path).to eq(company_job_path(job.company, job))
     expect(page).to have_content('Dev Front-End')
     expect(page).to have_content('Vaga para desenvolvedor Front End')
     expect(page).to have_content('3000.0')
     expect(page).to have_content('Necessário Javascript, React, Rails, Php, Python, Java e etc...')
     expect(page).to have_content('20/01/2050')
-    expect(page).to have_content('Intern')
-    expect(page).not_to have_content('Junior')
-    expect(page).not_to have_content('Pleno')
-    expect(page).not_to have_content('Senior')
+    expect(page).to have_content('intern')
+    expect(page).not_to have_content('junior')
+    expect(page).not_to have_content('pleno')
+    expect(page).not_to have_content('senior')
   end
 end

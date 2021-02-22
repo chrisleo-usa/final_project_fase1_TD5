@@ -3,10 +3,10 @@
 <% end %>
 
 <%= link_to 'Edit', edit_company_path %>
-<%= link_to 'Jobs opportunities', jobs_path %>
+<%= link_to 'Jobs opportunities', company_jobs_path(@company) %>
 
 <% if current_employee.admin == 1 %>
-  <%= link_to 'Register a job opportunity', new_job_path %>
+  <%= link_to 'Register a job opportunity', new_company_job_path(@company) %>
 <% end %>
 
 <%= @company.name %>

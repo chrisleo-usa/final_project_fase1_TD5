@@ -11,14 +11,17 @@ class JobsController < ApplicationController
   end
 
   def new
+    @company = Company.find(params[:company_id])
     @job = Job.new
   end
 
   def create
+    @company = Company.find(params[:company_id])
     @job = Job.new(job_params)
+    @job.company_id = @company.id
 
     if @job.save
-      redirect_to @job
+      redirect_to @job.company
     else
       select_level()
       render :new
@@ -26,18 +29,26 @@ class JobsController < ApplicationController
   end
 
   def edit
+    @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
   end
 
   def update
+    @company = Company.find(params[:company_id])
     @job = Job.find(params[:id])
 
     if @job.update(job_params)
-      redirect_to @job
+      redirect_to @job.company
     else
       select_level()
       render :edit
     end
+  end
+
+  def disable
+    @job = Job.find(params[:id])
+    @job.inactive!
+    redirect_to companies_path
   end
 
   private
@@ -48,5 +59,4 @@ class JobsController < ApplicationController
     def job_params
       params.require(:job).permit(:title, :level, :description, :salary_range, :requirements, :deadline_application, :total_vacancies, level_ids: [])
     end
-
 end
