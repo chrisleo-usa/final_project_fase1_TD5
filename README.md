@@ -1,12 +1,12 @@
 # Projeto Final - Etapa 01 - TreinaDev
 
 ## Work in progress! :warning:
-
+<p align="center">
 <img src="https://img.shields.io/badge/Ruby-2.7.0-red">
 <img src="https://img.shields.io/badge/Rails-6.1.3-red">
 <img src="https://img.shields.io/badge/sqlite3-1.4-blue">
 <img src="https://img.shields.io/badge/rspec-4.0.2-lightgrey">
-
+</p>
 
 ### Tópicos 
 
