@@ -80,7 +80,6 @@ feature 'Employee admin register a job opportunity' do
       fill_in 'Total vacancies', with: 5
       click_on 'Save'
     end
-    click_on 'Jobs opportunities'
     click_on 'Dev Front-End'
 
     job = Job.last

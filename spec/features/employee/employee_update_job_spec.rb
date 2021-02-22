@@ -25,7 +25,6 @@ feature 'Employee can update attributes' do
     login_as employee, scope: :employee
     visit root_path
     click_on 'My company'
-    click_on 'Jobs opportunities'
     click_on 'Ruby on Rails Developer'
     click_on 'Edit'
     within('form') do
@@ -61,7 +60,6 @@ feature 'Employee can update attributes' do
     login_as employee, scope: :employee
     visit root_path
     click_on 'My company'
-    click_on 'Jobs opportunities'
     click_on 'Ruby on Rails Developer'
     click_on 'Edit'
     within('form') do
@@ -74,7 +72,6 @@ feature 'Employee can update attributes' do
       fill_in 'Total vacancies', with: 10
       click_on 'Save'
     end
-    click_on 'Jobs opportunities'
     click_on 'Desenvolvedor Front-End'
 
     job = Job.last

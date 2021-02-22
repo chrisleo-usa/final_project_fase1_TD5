@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_action :authenticate_employee!
+  before_action :authenticate_employee!, only: %i[new edit]
   before_action :select_level, only: %i[new edit]
 
   def index

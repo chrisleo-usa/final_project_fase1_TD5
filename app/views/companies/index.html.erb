@@ -1,1 +1,7 @@
 <h1>Index Companies</h1>
+
+<% @companies.each do |company| %>
+  <div>
+    <%= link_to company.name, company_path(company) %>
+  </div>
+<% end %>
