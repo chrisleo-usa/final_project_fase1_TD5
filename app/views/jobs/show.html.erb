@@ -1,9 +1,12 @@
-<h1>Show de Job Opportunity</h1>
+<h1>Show de Job Opportunity</h1> 
+<% if @job.active?%>
+  <%= link_to 'Disable job', disable_company_job_path(@job.company, @job), method: :post %>
+<% end %>
+
+<h3><%= @job.title %></h3>
 
 <%= link_to 'Edit', edit_company_job_path(@job.company, @job) %>
 
-
-<%= @job.title %>
 <%= @job.description %>
 <%= @job.salary_range %>
 <%= @job.level %>

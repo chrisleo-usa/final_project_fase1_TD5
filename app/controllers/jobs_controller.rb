@@ -48,7 +48,7 @@ class JobsController < ApplicationController
   def disable
     @job = Job.find(params[:id])
     @job.inactive!
-    redirect_to companies_path
+    redirect_to @job.company
   end
 
   private

@@ -4,6 +4,11 @@
   <h4>No registered jobs </h4>
 <% else %>
   <% @jobs.each do |job| %>
-    <%= link_to job.title, company_job_path(job.company, job) %>
+  <div>
+    <%= link_to job.title, company_job_path(job.company, job) %> 
+    <% if job.inactive? %>
+      <span>is <%= job.status %></span>
+    <% end %>
+  </div>
   <% end %>
 <% end %>

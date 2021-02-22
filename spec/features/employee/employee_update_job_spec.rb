@@ -94,8 +94,5 @@ feature 'Employee can update attributes' do
     expect(page).to have_content('Conhecimento sólido em Javascript, CSS, HTML, Bootstrap, Gulp e React')
     expect(page).to have_content('25/10/2023')
     expect(page).to have_content('senior')
-
-
-
   end
 end
