@@ -9,7 +9,7 @@ class Employees::RegistrationsController < Devise::RegistrationsController
 
     def create_company
       email = params[:employee][:email]
-      company_domain= email.gsub(/.+@([^.]+).+/, '\1')
+      company_domain = email.gsub(/.+@([^.]+).+/, '\1').downcase
 
       if Company.exists?(domain: company_domain)
         params[:employee][:company_id] = Company.find_by(domain: company_domain).id
