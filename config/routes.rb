@@ -1,13 +1,17 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  devise_for :candidates, path: 'candidates'
-  devise_for :employees, path: 'employees', controllers: { registrations: 'employees/registrations'}
+  devise_for :candidates, path: 'candidates', controllers: { registrations: 'candidates/registrations', 
+                                            sessions: 'candidates/sessions' }
+  resources :candidates, only: [:show]
 
-  resources :enrollments
+  devise_for :employees, path: 'employees', controllers: { registrations: 'employees/registrations', 
+                                            sessions: 'employees/sessions' }
+
 
   resources :companies, only: %i[index new show edit update] do
     resources :jobs, only: %i[index new create show edit update] do
+      resources :enrollments
       member do
         post 'disable'
         post 'apply'

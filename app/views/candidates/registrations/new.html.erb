@@ -1,7 +1,27 @@
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= render "candidates/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :name, 'Full name' %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+    <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.telephone_field :phone %>
+  </div>
+
+    <div class="field">
+    <%= f.label :cpf, 'CPF' %><br />
+    <%= f.number_field :cpf %>
+  </div>
+
+    <div class="field">
+    <%= f.label :biography, 'Biography' %><br />
+    <%= f.text_area :biography, size: "60x10" %>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -26,4 +46,4 @@
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<%= render "candidates/shared/links" %>

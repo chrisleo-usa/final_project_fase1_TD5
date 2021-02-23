@@ -13,21 +13,22 @@ class ApplicationController < ActionController::Base
           request.path != "/candidates/password/edit" &&
           request.path != "/candidates/confirmation" &&
           request.path != "/candidates/sign_out" &&
-          !request.xhr?) # don't store ajax calls
+          !request.xhr?)
         store_location_for(:candidate, request.fullpath)
       end
     end
 
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:sign_up) do |user_params|
-        user_params.permit(:email, :password, :password_confirmation, :company_id, :admin)
+        user_params.permit(:email, :password, :password_confirmation, :company_id, :admin, :name, :cpf, :phone, :biography)
+      end
+
+      devise_parameter_sanitizer.permit(:account_update) do |user_params|
+        user_params.permit(:email, :password, :password_confirmation, :current_password, :company_id, :admin, :name, :cpf, :phone, :biography)
       end
     end
 
-    def require_admin
-      return redirect_to root_path unless is_admin?
-    end
-    def is_admin?
-      !!(collaborator_signed_in? && current_collaborator.admin.equal?(1))
+    def after_sign_in_path_for(resource)
+      candidate_path(current_candidate)
     end
 end

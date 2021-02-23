@@ -1,5 +1,7 @@
 <% if employee_signed_in? %>
   <%= link_to 'My company', company_path(current_employee.company) %>
+<% elsif candidate_signed_in? %>
+  <%= link_to 'My profile', candidate_path(current_candidate) %>
 <% else %>
   <%= link_to 'Companies', companies_path %>
 <% end %>

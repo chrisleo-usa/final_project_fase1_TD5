@@ -1,0 +1,27 @@
+<h1>Show candidate</h1>
+
+<div>
+  <%= current_candidate.email %>
+  <%= link_to 'Edit', edit_candidate_registration_path(current_candidate) %>
+</div>
+
+
+<%= link_to 'Home', root_path %>
+<%= link_to 'Companies', companies_path %>
+<%= link_to 'Applications'%>
+
+<div>
+  <%= @candidate.name %>
+</div>
+
+<div>
+  <%= @candidate.phone %>
+</div>
+
+<div>
+  <%= @candidate.cpf %>
+</div>
+
+<div>
+  <%= @candidate.biography %>
+</div>

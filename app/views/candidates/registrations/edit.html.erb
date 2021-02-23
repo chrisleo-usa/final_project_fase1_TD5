@@ -1,11 +1,31 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {  method: :put }) do |f| %>
+  <%= render "candidates/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :name, 'Full name' %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.telephone_field :phone %>
+  </div>
+
+  <div class="field">
+    <%= f.label :cpf, 'CPF' %><br />
+    <%= f.number_field :cpf %>
+  </div>
+
+  <div class="field">
+    <%= f.label :biography, 'Biography' %><br />
+    <%= f.text_area :biography, size: "60x10" %>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
