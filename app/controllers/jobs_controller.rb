@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
   before_action :authenticate_employee!, only: %i[new edit]
+  before_action :authenticate_candidate!, only: [:apply]
   before_action :select_level, only: %i[new edit]
 
   def index
@@ -49,6 +50,16 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
     @job.inactive!
     redirect_to @job.company
+  end
+
+  def apply
+    @job = Job.find(params[:id])
+
+    if @job.applied(current_candidate)
+      redirect_to enrollments_path, notice: 'Successfully applied'
+    else
+      redirect_to company_job_path(@job.company, @job), alert: 'Already applied for this job'
+    end
   end
 
   private

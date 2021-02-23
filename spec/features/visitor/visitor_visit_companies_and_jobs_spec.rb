@@ -24,10 +24,10 @@ feature 'Visitor visit' do
                               domain: 'campuscode')
     job_js = Job.create!(title: 'Javascript Developer', description: 'Vaga para Javascript Developer', 
                         salary_range: 13000.0, requirements: 'Conhecimento sólido em Javascript, HTML e CSS',
-                        deadline_application: '20/08/2022', total_vacancies: 5, company: company)
+                        deadline_application: '20/08/2022', total_vacancies: 5, level: 2, company: company)
     job_rails = Job.create!(title: 'Ruby on Rails Developer', description: 'Vaga para Ruby on Rails Developer', 
                             salary_range: 9000.0, requirements: 'Conhecimento sólido em Java, Ruby, Ruby on Rails, NodeJS, SQLite3',
-                            deadline_application: '10/04/2023', total_vacancies: 2, company: company)
+                            deadline_application: '10/04/2023', total_vacancies: 2, level: 1, company: company)
 
     visit root_path
     click_on 'Companies'
@@ -49,7 +49,7 @@ feature 'Visitor visit' do
                               domain: 'campuscode')
     job_js = Job.create!(title: 'Javascript Developer', description: 'Vaga para Javascript Developer', 
                         salary_range: 13000.0, requirements: 'Conhecimento sólido em Javascript, HTML e CSS',
-                        deadline_application: '20/08/2022', total_vacancies: 5, company: company)
+                        deadline_application: '20/08/2022', total_vacancies: 5, level: 1, company: company)
 
     visit root_path
     click_on 'Companies'
@@ -61,5 +61,9 @@ feature 'Visitor visit' do
     expect(page).to have_content(job_js.description)
     expect(page).to have_content(job_js.salary_range)
     expect(page).to have_content(job_js.requirements)
+    expect(page).to have_content('junior')
+    expect(page).not_to have_content('intern')
+    expect(page).not_to have_content('pleno')
+    expect(page).not_to have_content('senior')
   end
 end

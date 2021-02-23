@@ -20,7 +20,7 @@ feature 'Employee can update attributes' do
     employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', admin: 0, company: company)
     Job.create!(title: 'Ruby on Rails Developer', description: 'Vaga para Ruby on Rails Developer', 
                 salary_range: 9000.0, requirements: 'Conhecimento sólido em Java, Ruby, Ruby on Rails, NodeJS, SQLite3',
-                deadline_application: '10/04/2023', total_vacancies: 2, company: company)
+                deadline_application: '10/04/2023', total_vacancies: 2, level: 1, company: company)
 
     login_as employee, scope: :employee
     visit root_path
@@ -55,7 +55,7 @@ feature 'Employee can update attributes' do
     employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', admin: 0, company: company)
     Job.create!(title: 'Ruby on Rails Developer', description: 'Vaga para Ruby on Rails Developer', 
                 salary_range: 9000.0, requirements: 'Conhecimento sólido em Java, Ruby, Ruby on Rails, NodeJS, SQLite3',
-                deadline_application: '10/04/2023', total_vacancies: 2, company: company)
+                deadline_application: '10/04/2023', total_vacancies: 2, level: 1, company: company)
 
     login_as employee, scope: :employee
     visit root_path
