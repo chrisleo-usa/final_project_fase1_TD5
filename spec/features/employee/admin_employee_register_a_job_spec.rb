@@ -46,9 +46,7 @@ feature 'Employee admin register a job opportunity' do
       click_on 'Save'
     end
 
-    #TODO: Checar em qual path ele ficará!
-    # job = Job.last
-    # expect(current_path).to eq(company_job_path(job.company, job))
+    expect(current_path).to eq(company_jobs_path(company))
     within("div.alert") do
       expect(page).to have_content('There were problems with the following fields')
       expect(page).to have_content('Title can\'t be blank')

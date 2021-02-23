@@ -31,7 +31,7 @@ feature 'Employee sign in' do
       click_on 'Log in'
     end
 
-    expect(current_path).to eq(root_path)
+    expect(current_path).to eq(company_path(employee.company))
     expect(page).to have_content(employee.email)
     expect(page).to have_link('Logout')
   end

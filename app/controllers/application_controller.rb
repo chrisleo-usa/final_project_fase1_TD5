@@ -29,6 +29,10 @@ class ApplicationController < ActionController::Base
     end
 
     def after_sign_in_path_for(resource)
-      candidate_path(current_candidate)
+      if candidate_signed_in?
+        candidate_path(current_candidate)
+      else 
+        company_path(current_employee.company)
+      end 
     end
 end
