@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'The visitor applies for a job opportunity' do
   scenario 'but is redirected to sign in' do
-    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
+    company = Company.create!(name: 'Treinadev', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
                               site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
                               domain: 'campuscode')
     job = Job.create!(title: 'Javascript Developer', description: 'Vaga para Javascript Developer', 

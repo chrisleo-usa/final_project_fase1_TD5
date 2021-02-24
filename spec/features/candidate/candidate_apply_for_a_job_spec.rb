@@ -21,9 +21,9 @@ feature 'Candidate apply for a job' do
   scenario 'successfully' do
     candidate = Candidate.create!(name: 'Christopher Alves', phone: '48988776655', cpf: 12345678910, 
                                   biography: 'Profissional da área de eventos migrando para a área da tecnologia', 
-                                  email: 'chris@campuscode.com', password: '123456')
+                                  email: 'chris@hotmail.com', password: '123456')
 
-    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
+    company = Company.create!(name: 'TreinaDev', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
                               site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
                               domain: 'campuscode')
     job = Job.create!(title: 'Ruby on Rails Developer', description: 'Vaga para Ruby on Rails Developer', 
