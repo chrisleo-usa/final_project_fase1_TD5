@@ -20,5 +20,15 @@ RSpec.describe Employee, type: :model do
       expect(employee.valid?).to eq(false)
       expect(employee.errors[:email]).to include('has already been taken')
     end
+
+    it 'create a valid employee' do
+      company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
+                                site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
+                                domain: 'campuscode')
+
+      employee = Employee.create!(email: 'chris@campus.com.br', password: '123456', company: company)
+
+      expect(employee).to be_valid
+    end
   end
 end
