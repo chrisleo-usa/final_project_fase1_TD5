@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :companies, only: %i[index new show edit update] do
     resources :jobs, only: %i[index new create show edit update] do
+      resources :enrollments, only: %i[show], shallow: true
       member do
         post 'disable'
         post 'apply'

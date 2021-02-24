@@ -1,5 +1,5 @@
 class CandidatesController < ApplicationController
-  before_action :authenticate_candidate!, only: %i[index show destroy]
+  before_action :authenticate_candidate!, only: %i[index destroy]
 
 
   def show

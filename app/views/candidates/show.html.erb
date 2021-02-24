@@ -1,17 +1,26 @@
 <h1>Show candidate</h1>
 
-<div>
-  <%= current_candidate.email %>
-  <%= link_to 'Edit', edit_candidate_registration_path(current_candidate) %>
-</div>
+<% if candidate_signed_in? %>
+  <div>
+    <%= current_candidate.email %>
+    <%= link_to 'Edit', edit_candidate_registration_path(current_candidate) %>
+  </div>
+
+  <div>
+  <%= link_to 'Home', root_path %>
+  <%= link_to 'Companies', companies_path %>
+  <%= link_to 'My applications', candidate_enrollments_path(current_candidate) %>
+  </div>
+<% end %>
 
 
-<%= link_to 'Home', root_path %>
-<%= link_to 'Companies', companies_path %>
-<%= link_to 'My applications', candidate_enrollments_path(current_candidate) %>
 
 <div>
   <%= @candidate.name %>
+</div>
+
+<div>
+  <%= @candidate.email %>
 </div>
 
 <div>

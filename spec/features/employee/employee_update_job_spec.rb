@@ -2,7 +2,9 @@ require 'rails_helper'
 
 feature 'Employee can update attributes' do
   scenario 'and must be signed in' do
-    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', domain: 'campuscode')
+    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
+                              site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
+                              domain: 'campuscode')
     employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', admin: 1, company: company)
 
     login_as employee, scope: :employee

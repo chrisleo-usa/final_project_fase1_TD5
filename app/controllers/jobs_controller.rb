@@ -9,6 +9,7 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+    @enrollments = Enrollment.includes(:candidate).where(job: @job)
   end
 
   def new
