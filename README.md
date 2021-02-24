@@ -32,11 +32,11 @@
 - [x] Colaborador cadastra sua empresa
 - [x] Colaborador gerencia os dados de sua empresa
 - [x] Colaborador cadastra uma nova vaga de emprego
-- [] Colaborador gerencia as vagas de emprego de sua empresa
+- [X] Colaborador gerencia as vagas de emprego de sua empresa
 - [x] Visitante visualiza empresas
-- [] Visitante cria sua conta como candidato
-- [] Visitante se candidata para uma vaga
-- [] Colaboradores recebem as candidaturas
+- [X] Visitante cria sua conta como candidato
+- [X] Visitante se candidata para uma vaga
+- [X] Colaboradores recebem as candidaturas
 - [] Colaboradores declinam ou fazem propostas para candidatos 
 - [] Candidato acompanha suas candidaturas
 - [] Candidato aceita/recusa uma proposta
