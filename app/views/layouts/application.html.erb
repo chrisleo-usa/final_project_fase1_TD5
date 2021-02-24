@@ -11,29 +11,53 @@
   </head>
 
   <body>
-    <% if employee_signed_in? %>
-      <div>
-        <p><%= current_employee.email %></p>
-        <%= link_to 'Logout', destroy_employee_session_path, method: :delete %>
-      </div>
+    <header>
+      <h1>Logo</h1>
+      <nav>
+        <div class="nav-wrapper">
+          <ul>
+            <% if employee_signed_in? %>
+              <li>
+                <%= link_to 'Companies', companies_path %>
+              </li>
 
-      <%= link_to 'My company', company_path(current_employee.company) %>
+              <li>
+                <%= link_to 'My company', company_path(current_employee.company) %>
+              </li>
 
-    <% elsif candidate_signed_in? %>
-      <div>
-        <p><%= current_candidate.email %></p>
-        <%= link_to 'Logout', destroy_candidate_session_path, method: :delete %>
-      </div>
-      <%= link_to 'My profile', candidate_path(current_candidate) %>
-      <%= link_to 'Companies', companies_path %>
+              <li>
+                <%= link_to 'Logout', destroy_employee_session_path, method: :delete %>
+              </li>
 
-    <% else %>
+              <p><%= current_employee.email %></p>
+            <% elsif candidate_signed_in? %>
+              <li>
+                <%= link_to 'Companies', companies_path %>
+              </li>
 
-      <%= link_to 'Login', role_path %>
-      <%= link_to 'Companies', companies_path %>
+              <li>
+                <%= link_to 'My profile', candidate_path(current_candidate) %>
+              </li>
 
-    <% end %>
-    
+              <li>
+                <%= link_to 'Logout', destroy_candidate_session_path, method: :delete %>
+              </li>
+
+              <p><%= current_candidate.email %></p>
+            <% else %>
+              <li>
+                <%= link_to 'Companies', companies_path %>
+              </li>
+
+              <li>
+                <%= link_to 'Login', role_path %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 

@@ -2,10 +2,9 @@
   <h1>Página da <%= @company.name %></h1>
 <% end %>
 
-<% if employee_signed_in? %>
+<% if employee_signed_in? && current_employee.company_id == @company.id %>
   <%= link_to 'Edit', edit_company_path %>
 <% end %>
-
 
 <%= @company.name %>
 <%= @company.address %>
@@ -19,7 +18,7 @@
 
 
 <h3>Jobs opportunities</h3>
-<% if employee_signed_in? && current_employee.admin == 1 %>
+<% if employee_signed_in? && current_employee.admin == 1 && current_employee.company_id == @company.id%>
   <%= link_to 'Register a job opportunity', new_company_job_path(@company) %>
 <% end %>
 
