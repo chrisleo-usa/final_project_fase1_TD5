@@ -12,14 +12,28 @@
 
   <body>
     <% if employee_signed_in? %>
-      <p><%= current_employee.email %></p>
-      <%= link_to 'Logout', destroy_employee_session_path, method: :delete %>
+      <div>
+        <p><%= current_employee.email %></p>
+        <%= link_to 'Logout', destroy_employee_session_path, method: :delete %>
+      </div>
+
+      <%= link_to 'My company', company_path(current_employee.company) %>
+
     <% elsif candidate_signed_in? %>
-      <p><%= current_candidate.email %></p>
-      <%= link_to 'Logout', destroy_candidate_session_path, method: :delete %>
+      <div>
+        <p><%= current_candidate.email %></p>
+        <%= link_to 'Logout', destroy_candidate_session_path, method: :delete %>
+      </div>
+      <%= link_to 'My profile', candidate_path(current_candidate) %>
+      <%= link_to 'Companies', companies_path %>
+
     <% else %>
+
       <%= link_to 'Login', role_path %>
+      <%= link_to 'Companies', companies_path %>
+
     <% end %>
+    
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 

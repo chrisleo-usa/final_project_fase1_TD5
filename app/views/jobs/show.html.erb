@@ -1,7 +1,6 @@
 <h1>Show de Job Opportunity</h1> 
 
 <h3><%= @job.title %></h3>
-<%= link_to 'Apply', apply_company_job_path(@job.company, @job), method: :post %>
 
 <%# TODO: Validar que somente o employee desta company pode editar ou desabilitar a job %>
 <% if employee_signed_in? %>
@@ -10,6 +9,8 @@
   <% end %>
 
   <%= link_to 'Edit', edit_company_job_path(@job.company, @job) %>
+<% else %>
+  <%= link_to 'Apply for this job', apply_company_job_path(@job.company, @job), method: :post %>
 <% end %>
 
 

@@ -5,7 +5,7 @@ class Job < ApplicationRecord
   has_many :candidates, through: :enrollments
 
   enum level: { intern: 0, junior: 1, pleno: 2, senior: 3 }
-  enum status: { active: 0, inactive: 4}
+  enum status: { active: 0, inactive: 4 }
 
   validates :title, :description, :salary_range, :level, :requirements, :deadline_application, :total_vacancies, presence: true
 

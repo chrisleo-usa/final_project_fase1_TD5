@@ -1,0 +1,7 @@
+<h1>Index Enrollments Candidate</h1>
+
+<% @enrollments.each do |enrollment| %>
+  <div>
+    <%= link_to enrollment.job.title, company_job_path(enrollment.job.company, enrollment.job) %>
+  </div>
+<% end %>

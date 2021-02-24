@@ -21,7 +21,7 @@ feature 'Visitor sign up as candidate' do
     expect(current_path).to eq(candidate_path(candidate))
     expect(page).to have_link('Home')
     expect(page).to have_link('Companies')
-    expect(page).to have_link('Applications')
+    expect(page).to have_link('My applications')
     expect(page).to have_content(candidate.email)
     expect(page).to have_content(candidate.name)
     expect(page).to have_content(candidate.phone)
