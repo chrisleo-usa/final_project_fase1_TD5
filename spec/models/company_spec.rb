@@ -2,8 +2,15 @@ require 'rails_helper'
 
 RSpec.describe Company, type: :model do
   context 'validation' do
-    it 'attributes cannot be blank' do
-      company = Company.new
+    it 'attributes name, address and site cannot be blank when editing' do
+
+      company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 123456789, 
+                      site: 'www.campuscode.com.br', social_media: 'www.linkedin/in/campuscode', 
+                      domain: 'campuscode')
+
+      company.update(name: '', address: '', cnpj: 123456789, 
+        site: '', social_media: 'www.linkedin/in/campuscode', 
+        domain: 'campuscode')
 
       expect(company.valid?).to eq(false)
       expect(company.errors.count).to eq(3)
