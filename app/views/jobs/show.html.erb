@@ -42,14 +42,17 @@
   <%= @job.total_vacancies %>
 </div>
 
-
-<% if @job.enrollments.empty? %>
-  <h4>None enrollments yet</h4>
-<% else %>
-  <h4>Enrollments received:</h4>
-
+<div>
+  <% if @job.enrollments.empty? %>
+    <h4>None enrollments yet</h4>
+  <% else %>
+    <h4>Enrollments received:</h4>
+    <ul>
   <% @enrollments.each do |enrollment|%>
-    <%= link_to enrollment.candidate.name, candidate_path(enrollment.candidate) %>
+    <li>
+      <%= link_to enrollment.candidate.name, candidate_path(enrollment.candidate) %>
+    </li>
   <% end %>
-
-<% end %>
+    </ul>
+  <% end %>
+</div>

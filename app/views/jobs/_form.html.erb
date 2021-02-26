@@ -12,39 +12,39 @@
 
 <%= form_with(model: [@company, @job]) do |job| %>
   <div>
-    <%= job.label :title, 'Title' %>
+    <%= job.label :title, 'Title' %> <br>
     <%= job.text_field :title %>
   </div>
 
   <div>
-    <%= job.label :description, 'Description' %>
+    <%= job.label :description, 'Description' %> <br>
     <%= job.text_field :description %>
   </div>
 
   <div>
-    <%= job.label :salary_range, 'Salary range' %>
+    <%= job.label :salary_range, 'Salary range' %> <br>
     <%= job.number_field :salary_range %>
   </div>
 
 
   <div>
-    <%= job.label :level, 'Job level' %>
-    <%= job.collection_select :level, @levels.map{ |level| [level.first, level.first.humanize] }, :first, :second %>
+    <%= job.label :level, 'Job level' %> <br>
+    <%= job.collection_select :level, @levels.map{ |level| [level.first, level.first.humanize] }, :first, :second %> 
   </div>
 
 
   <div>
-    <%= job.label :requirements, 'Requirements' %>
+    <%= job.label :requirements, 'Requirements' %> <br>
     <%= job.text_area :requirements, size: "70x5" %>
   </div>
 
   <div>
-    <%= job.label :deadline_application, 'Deadline application' %>
+    <%= job.label :deadline_application, 'Deadline application' %> <br>
     <%= job.date_field :deadline_application %>
   </div>
 
   <div>
-    <%= job.label :total_vacancies, 'Total vacancies' %>
+    <%= job.label :total_vacancies, 'Total vacancies' %> <br>
     <%= job.number_field :total_vacancies %>
   </div>
 

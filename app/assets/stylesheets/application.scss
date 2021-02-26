@@ -1,0 +1,188 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+}
+
+.container {
+  padding: 0 30px;
+}
+
+// --Layouts/application
+header .container {
+  padding: 30px;
+  margin-bottom: 50px;
+  background-color: lightblue;
+}
+
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+
+  &__logo {
+    color: black;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+
+  &__item {
+    margin-right: 3em;
+  }
+
+  &__profile {
+    display: flex;
+
+    span {
+      color: rgba(0, 0, 0, 0.596);
+    }
+  }
+
+  &__link {
+    color: darkblue;
+  }
+}
+
+.messages {
+  padding: 0 30px;
+  text-align: right;
+}
+
+
+// --Home--
+.welcome {
+  text-align: center;
+  font-size: 36px;
+}
+
+// --Companies Index--
+.companies {
+
+  &__list {
+    padding: 24px 0;
+    border-bottom: 1px solid black;
+  }
+
+  &__label {
+    color: rgba(0, 0, 0, 0.596);
+    margin-bottom: 8px;
+  }
+
+  &__name {
+    color: black;
+  }
+}
+
+// --Company Show--
+.company {
+
+  &__header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 24px;
+  }
+
+  &__settings {
+    text-align: right;
+  }
+
+  &__btn.edit {
+    padding: 8px 16px;
+
+    border: 1px solid lightblue;
+    background-color: lightblue;
+    color: white;
+    border-radius: 4px;
+
+    &:hover {
+      border: 1px solid lightblue;
+      background-color: transparent;
+      color: darken(lightblue, 50%);
+
+      transition: ease-in-out .3s;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__item {
+    padding: 16px 0;
+  }
+
+  &__label {
+    color: rgba(0, 0, 0, 0.596);
+    margin-bottom: 8px;
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    max-width: 225px;
+    margin: 0 auto;
+  }
+}
+
+.jobs {
+
+  &__header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 24px;
+  }
+
+  &__settings {
+    text-align: right;
+  }
+
+  &__btn.new {
+    padding: 8px 16px;
+
+    border: 1px solid lightblue;
+    background-color: lightblue;
+    color: white;
+    border-radius: 4px;
+
+    &:hover {
+      border: 1px solid lightblue;
+      background-color: transparent;
+      color: darken(lightblue, 50%);
+
+      transition: ease-in-out .3s;
+    }
+  }
+
+  &__item {
+    padding: 16px 0;
+  }
+
+  &__name {
+    padding: 8px 16px;
+
+    border: 1px solid black;
+    color: black;
+    border-radius: 4px;
+
+    &:hover {
+      border: 1px solid transparent;
+      background-color: black;
+      color: white;
+
+      transition: all .4s;
+    }
+  }
+}

@@ -12,54 +12,64 @@
 
   <body>
     <header>
-      <h1>Logo</h1>
-      <nav>
-        <div class="nav-wrapper">
-          <ul>
-            <% if employee_signed_in? %>
-              <li>
-                <%= link_to 'Companies', companies_path %>
-              </li>
+      <div class="container">
+        <nav class="navbar">
+          <h1><%= link_to 'Logo', root_path, class: 'navbar__logo' %></h1>
+          <div class="navbar__menu">
+            <ul class="navbar__list"> 
+              <% if employee_signed_in? %>
+                <li class="navbar__item">
+                  <%= link_to 'Companies', companies_path, class: 'navbar__link' %>
+                </li>
 
-              <li>
-                <%= link_to 'My company', company_path(current_employee.company) %>
-              </li>
+                <li class="navbar__item">
+                  <%= link_to 'My company', company_path(current_employee.company), class: 'navbar__link' %>
+                </li>
 
-              <li>
-                <%= link_to 'Logout', destroy_employee_session_path, method: :delete %>
-              </li>
+                <div class="navbar__profile">
+                  <li class="navbar__item">
+                    <%= link_to 'Logout', destroy_employee_session_path, method: :delete, class: 'navbar__link' %>
+                  </li>
+                  <span><%= current_employee.email %></span>
+                </div>
 
-              <p><%= current_employee.email %></p>
-            <% elsif candidate_signed_in? %>
-              <li>
-                <%= link_to 'Companies', companies_path %>
-              </li>
+              <% elsif candidate_signed_in? %>
+                <li class="navbar__item">
+                  <%= link_to 'Companies', companies_path, class: 'navbar__link' %>
+                </li>
 
-              <li>
-                <%= link_to 'My profile', candidate_path(current_candidate) %>
-              </li>
+                <li class="navbar__item">
+                  <%= link_to 'My profile', candidate_path(current_candidate), class: 'navbar__link' %>
+                </li>
 
-              <li>
-                <%= link_to 'Logout', destroy_candidate_session_path, method: :delete %>
-              </li>
+                <div class="navbar__profile">
+                  <li class="navbar__item">
+                    <%= link_to 'Logout', destroy_candidate_session_path, method: :delete, class: 'navbar__link' %>
+                  </li>
+                  <span><%= current_candidate.email %></span>
+                </div>
 
-              <p><%= current_candidate.email %></p>
-            <% else %>
-              <li>
-                <%= link_to 'Companies', companies_path %>
-              </li>
+              <% else %>
+                <li class="navbar__item">
+                  <%= link_to 'Companies', companies_path, class: 'navbar__link' %>
+                </li>
 
-              <li>
-                <%= link_to 'Login', role_path %>
-              </li>
-            <% end %>
-          </ul>
-        </div>
-      </nav>
+                <div>
+                  <li class="navbar__item">
+                    <%= link_to 'Login', role_path, class: 'navbar__link' %>
+                  </li>
+                </div>
+              <% end %>
+            </ul>
+          </div>
+        </nav>
+      </div>
     </header>
 
+  <div class="messages">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
+  </div>
 
     <%= yield %>
   </body>
