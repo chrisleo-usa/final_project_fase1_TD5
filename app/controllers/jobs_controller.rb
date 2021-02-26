@@ -5,6 +5,7 @@ class JobsController < ApplicationController
 
   def index
     @jobs = Job.all
+    @company = Company.find(params[:company_id])
   end
 
   def show
@@ -52,7 +53,7 @@ class JobsController < ApplicationController
     if @job.inactive?
       redirect_to @job.company, notice: 'Job already disabled'
     elsif current_employee.company != @job.company
-      redirect_to root_path, notice: 'This job doesn\'t belongsto your company!'
+      redirect_to root_path, notice: 'This job doesn\'t belongs to your company!'
     else
       @job.inactive!
       redirect_to @job.company

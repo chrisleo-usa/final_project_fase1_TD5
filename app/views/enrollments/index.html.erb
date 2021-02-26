@@ -2,6 +2,12 @@
 
 <% @enrollments.each do |enrollment| %>
   <div>
-    <%= link_to enrollment.job.title, company_job_path(enrollment.job.company, enrollment.job) %>
+    <div>
+      <p>Job:</p>
+      <%= link_to enrollment.job.title, company_job_path(enrollment.job.company, enrollment.job) %>
+      <p>Company:</p>
+      <%= enrollment.job.company.name %>
+    </div>
+    <hr>
   </div>
 <% end %>

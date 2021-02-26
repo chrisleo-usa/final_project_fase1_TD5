@@ -1,5 +1,7 @@
-<% if @company.name != 'Company name'%>
-  <h1>Página da <%= @company.name %></h1>
+<% if @company.name.blank?%>
+  <h3>Please, fill the form</h3>
+<% else %>
+  <h3><%= @company.name %> Page</h3>
 <% end %>
 
 <%= render 'form' %>

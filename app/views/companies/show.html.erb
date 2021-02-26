@@ -1,39 +1,64 @@
-<% if @company.name != 'Company name'%>
-  <h1>Página da <%= @company.name %></h1>
-<% end %>
-
-<% if employee_signed_in? %>
-  <% if current_employee.company_id === @company.id %>
-    <%= link_to 'Edit', edit_company_path %>
+<div>
+  <% if !@company.name.blank?%>
+    <h2><%= @company.name %> profile</h2>
   <% end %>
-<% end %>
 
+  <% if employee_signed_in? %>
+    <% if current_employee.company_id === @company.id %>
+      <%= link_to 'Edit', edit_company_path %>
+    <% end %>
+  <% end %>
+</div>
 
-<%= @company.name %>
-<%= @company.address %>
-<%= @company.cnpj %>
-<%= @company.site %>
-<%= @company.social_media %>
+<div>
+  <span>Company name: </span>
+  <%= @company.name %>
+</div>
 
-<% if @company.logo.attached? %>
-  <%= image_tag @company.logo %>
-<% end %>
+<div>
+  <p>Address: </p>
+  <%= @company.address %>
+</div>
 
+<div>
+  <p>CNPJ: </p>
+  <%= @company.cnpj %>
+</div>
+
+<div>
+  <p>Site: </p>
+  <%= @company.site %>
+</div>
+
+<div>
+  <p>Social media: </p>
+  <%= @company.social_media %>
+</div>
+
+<div>
+  <% if @company.logo.attached? %>
+    <%= image_tag @company.logo %>
+  <% end %>
+</div>
 
 <h3>Jobs opportunities</h3>
-<% if employee_signed_in? %>
-  <% if current_employee.company_id === @company.id && current_employee.admin == 1 %>
-    <%= link_to 'Register a job opportunity', new_company_job_path(@company) %>
+<div>
+  <% if employee_signed_in? %>
+    <% if current_employee.company_id === @company.id && current_employee.admin == 1 %>
+      <%= link_to 'Register a job opportunity', new_company_job_path(@company) %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 
 <% if @company.jobs.empty? %>
   <h4>No registered jobs </h4>
 <% else %>
   <% @company.jobs.each do |job| %>
-    <%= link_to job.title, company_job_path(job.company, job) %>
-    <% if job.inactive? %>
-      <span>is <%= job.status %></span>
-    <% end %>
+    <div>
+      <%= link_to job.title, company_job_path(job.company, job) %>
+      <% if job.inactive? %>
+        <span>is <%= job.status %></span>
+      <% end %>
+    </div>
   <% end %>
 <% end %>

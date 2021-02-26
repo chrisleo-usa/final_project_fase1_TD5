@@ -1,4 +1,4 @@
-<h1>Index jobs</h1>
+<h1>Opportunities from <%= @company.name %></h1>
 
 <% if @jobs.empty? %>
   <h4>No registered jobs </h4>
@@ -9,6 +9,8 @@
     <% if job.inactive? %>
       <span>is <%= job.status %></span>
     <% end %>
+    <p>Deadline application: <%= job.deadline_application %></p>
   </div>
+  <hr>
   <% end %>
 <% end %>

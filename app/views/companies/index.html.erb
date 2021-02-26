@@ -1,7 +1,15 @@
 <h1>Index Companies</h1>
 
-<% @companies.each do |company| %>
-  <div>
-    <%= link_to company.name, company_path(company) %>
-  </div>
+<% if @companies.empty?%>
+  <h4>None company registered </h4>
+<% else %>
+  <% @companies.each do |company| %>
+    <div>
+      <dl>
+        <dt>Nome:</dt>
+        <dd><%= link_to company.name, company_path(company) %></dd>
+        <hr>
+      </dl>
+    </div>
+  <% end %>
 <% end %>

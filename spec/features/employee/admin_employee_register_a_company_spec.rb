@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+#TODO: No edit ao dar refresh ele libera cadastrar a empresa sem os dados. Corrigir essa situação
 feature 'The first employee to register need register the company as well' do
   scenario 'only the first employee can register the company' do
     company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', domain: 'campuscode')
