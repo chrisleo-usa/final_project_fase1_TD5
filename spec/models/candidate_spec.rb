@@ -28,4 +28,16 @@ RSpec.describe Candidate, type: :model do
       expect(candidate).to be_valid
     end
   end
+
+  context 'Delete #destroy' do
+    it 'delete account' do
+      candidate = Candidate.create!(name: 'Christopher Alves', phone: '48988776655', cpf: 12345678910, 
+                                    biography: 'Profissional da área de eventos migrando para a área da tecnologia', 
+                                    email: 'chris@campuscode.com.br', password: '123456')
+
+      Candidate.destroy(candidate.id)
+
+      expect(Candidate.count).to eq(0)
+    end
+  end
 end

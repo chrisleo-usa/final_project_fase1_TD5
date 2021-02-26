@@ -9,38 +9,38 @@
   </div>
 <% end %>
 
-<%= form_with model: @company, html: { class: "signup__form" } do |f| %>
+<%= form_with model: @company, html: { class: "create__form" } do |f| %>
 
-<div class="signup__block">
-  <%= f.label :name, 'Company name', class: "signup__label" %> <br>
-  <%= f.text_field :name, class: "signup__field"  %>
+<div class="create__block">
+  <%= f.label :name, 'Company name', class: "create__label" %> <br>
+  <%= f.text_field :name, class: "create__field" %>
 </div>
 
-<div class="signup__block">
-  <%= f.label :logo, 'Logo' , class: "signup__label" %> <br>
-  <%= f.file_field :logo, class: "signup__field"  %>
+<div class="create__block">
+  <%= f.label :logo, 'Logo' , class: "create__label" %> <br>
+  <%= f.file_field :logo, class: "create__field"  %>
 </div>
 
-<div class="signup__block">
-  <%= f.label :address, 'Address', class: "signup__label" %> <br>
-  <%= f.text_field :address, class: "signup__field"  %>
+<div class="create__block">
+  <%= f.label :address, 'Address', class: "create__label" %> <br>
+  <%= f.text_field :address, class: "create__field"  %>
 </div>
 
-<div class="signup__block">
-  <%= f.label :cnpj, 'CNPJ', class: "signup__label" %> <br>
-  <%= f.number_field :cnpj, class: "signup__field"  %>
+<div class="create__block">
+  <%= f.label :cnpj, 'CNPJ', class: "create__label" %> <br>
+  <%= f.number_field :cnpj, class: "create__field"  %>
 </div>
 
-<div class="signup__block">
-  <%= f.label :site, 'Site', class: "signup__label" %> <br>
-  <%= f.text_field :site, class: "signup__field"  %>
+<div class="create__block">
+  <%= f.label :site, 'Site', class: "create__label" %> <br>
+  <%= f.text_field :site, class: "create__field"  %>
 </div>
 
-<div class="signup__block">
-  <%= f.label :social_media, 'Social media', class: "signup__label" %> <br>
-  <%= f.text_field :social_media, class: "signup__field"   %>
+<div class="create__block">
+  <%= f.label :social_media, 'Social media', class: "create__label" %> <br>
+  <%= f.text_field :social_media, class: "create__field"   %>
 </div>
 
-<%= f.submit 'Save', class: "signup__btn" %>
+<%= f.submit 'Save', class: "create__btn" %>
 
 <% end %>

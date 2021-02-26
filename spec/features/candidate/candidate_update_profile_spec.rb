@@ -39,7 +39,7 @@ feature 'Candidate can update his own profile' do
     login_as candidate, scope: :candidate
     visit candidate_path(candidate)
     click_on 'Edit'
-    within('form.edit_candidate') do
+    within('form.signup__form') do
       fill_in 'Full name', with: ''
       fill_in 'Phone', with: ''
       fill_in 'CPF', with: ''
@@ -66,7 +66,7 @@ feature 'Candidate can update his own profile' do
     login_as candidate, scope: :candidate
     visit candidate_path(candidate)
     click_on 'Edit'
-    within('form.edit_candidate') do
+    within('form.signup__form') do
       fill_in 'Full name', with: 'Susan Ristau'
       fill_in 'Phone', with: '4891122334455'
       fill_in 'CPF', with: '98765432109'

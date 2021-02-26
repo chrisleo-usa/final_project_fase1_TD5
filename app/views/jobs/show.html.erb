@@ -71,7 +71,8 @@
       <div class="index__list">
         <div class="index__item">
           <p class="index__label">Candidate:</p>
-            <%= link_to enrollment.candidate.name, candidate_path(enrollment.candidate), class: "index__attribute link" %>
+          <%= link_to enrollment.candidate.name, candidate_path(enrollment.candidate), class: "index__attribute link" %>
+          <%= link_to 'Approve', new_enrollment_proposal_path(enrollment, enrollment.proposal),class: "index__attribute link approve" %>
         </div>
       </div>
     <% end %>

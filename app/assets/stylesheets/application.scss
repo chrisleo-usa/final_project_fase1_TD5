@@ -136,11 +136,29 @@ header .container {
     background-color: lightblue;
     color: white;
     border-radius: 4px;
+    margin-right: 24px;
 
     &:hover {
       border: 1px solid lightblue;
       background-color: transparent;
       color: darken(lightblue, 50%);
+
+      transition: ease-in-out .3s;
+    }
+  }
+
+  &__btn.delete {
+    padding: 8px 16px;
+
+    border: 1px solid lightcoral;
+    background-color: lightcoral;
+    color: white;
+    border-radius: 4px;
+
+    &:hover {
+      border: 1px solid lightcoral;
+      background-color: transparent;
+      color: darken(lightcoral, 50%);
 
       transition: ease-in-out .3s;
     }
@@ -336,7 +354,7 @@ header .container {
 // --Sign up or edit Form--
 
 
-.signup {
+.create {
   width: 40%;
   background-color: lightblue;
   margin: 0 auto;
@@ -373,6 +391,11 @@ header .container {
     &[name="candidate[biography]"] {
       resize: none;
     }
+
+    // Verificar porque inicia na metade do campo
+    // &[name="proposal_message"] {
+    //   resize: none;
+    // }
   }
 
   &__btn {
@@ -426,17 +449,17 @@ header .container {
   column-gap: 24px;
 }
 
-.signup.edit {
+.create.edit {
   width: 40%;
   min-width: 600px;
 }
 
-.signup.job {
+.create.job {
   width: 40%;
 }
 
 // Edit candidate
-.delete.signup {
+.delete.create {
   width: 90%;
   max-width: 500px;
   max-height: 250px;

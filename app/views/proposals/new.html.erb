@@ -1,0 +1,23 @@
+<div class="container create">
+  <h2 class="create__title">Proposal</h2>
+
+  <%= form_with model: @enrollment do |f| %>
+
+    <div class="create__block">
+      <%= f.label :proposal_message, 'Proposal message', class: "create__label" %> <br>
+      <%= f.text_field :proposal_message, class: "create__field" %>
+    </div>
+
+    <div class="create__block">
+      <%= f.label :proposal_salary, 'Proposal salary', class: "create__label" %> <br>
+      <%= f.number_field :proposal_salary, class: "create__field" %>
+    </div>
+
+    <div class="create__block">
+      <%= f.label :start_date, 'Start date', class: "create__label" %> <br>
+      <%= f.date_field :start_date, class: "create__field" %>
+    </div>
+
+    <%= f.submit 'Send', class: "create__btn" %>
+  <% end %>
+</div>

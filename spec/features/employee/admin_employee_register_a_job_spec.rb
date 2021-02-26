@@ -47,7 +47,7 @@ feature 'Employee admin register a job opportunity' do
     end
 
     expect(current_path).to eq(company_jobs_path(company))
-    within("div.alert") do
+    within("div.warnings") do
       expect(page).to have_content('There were problems with the following fields')
       expect(page).to have_content('Title can\'t be blank')
       expect(page).to have_content('Description can\'t be blank')

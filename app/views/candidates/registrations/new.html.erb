@@ -1,50 +1,50 @@
-<div class="container signup">
+<div class="container create">
 
-  <h2 class="signup__title">Sign up</h2>
+  <h2 class="create__title">Sign up</h2>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "signup__form"}) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "create__form"}) do |f| %>
     <%= render "candidates/shared/error_messages", resource: resource %>
 
-    <div class="field signup__block">
-      <%= f.label :name, 'Full name', class: "signup__label" %><br />
-      <%= f.text_field :name, autofocus: true, class: "signup__field" %>
+    <div class="field create__block">
+      <%= f.label :name, 'Full name', class: "create__label" %><br />
+      <%= f.text_field :name, autofocus: true, class: "create__field" %>
     </div>
 
-      <div class="field signup__block">
-      <%= f.label :phone, class: "signup__label" %><br />
-      <%= f.telephone_field :phone, class: "signup__field" %>
+      <div class="field create__block">
+      <%= f.label :phone, class: "create__label" %><br />
+      <%= f.telephone_field :phone, class: "create__field" %>
     </div>
 
-      <div class="field signup__block">
-      <%= f.label :cpf, 'CPF', class: "signup__label" %><br />
-      <%= f.number_field :cpf, class: "signup__field" %>
+      <div class="field create__block">
+      <%= f.label :cpf, 'CPF', class: "create__label" %><br />
+      <%= f.number_field :cpf, class: "create__field" %>
     </div>
 
-      <div class="field signup__block">
-      <%= f.label :biography, 'Biography', class: "signup__label" %><br />
-      <%= f.text_area :biography, size: "60x10", class: "signup__field" %>
+      <div class="field create__block">
+      <%= f.label :biography, 'Biography', class: "create__label" %><br />
+      <%= f.text_area :biography, size: "60x10", class: "create__field" %>
     </div>
 
-    <div class="field signup__block">
-      <%= f.label :email, class: "signup__label" %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "signup__field" %>
+    <div class="field create__block">
+      <%= f.label :email, class: "create__label" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "create__field" %>
     </div>
 
-    <div class="field signup__block">
-      <%= f.label :password, class: "signup__label" %>
+    <div class="field create__block">
+      <%= f.label :password, class: "create__label" %>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password", class: "signup__field" %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "create__field" %>
     </div>
 
-    <div class="field signup__block">
-      <%= f.label :password_confirmation, class: "signup__label" %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "signup__field" %>
+    <div class="field create__block">
+      <%= f.label :password_confirmation, class: "create__label" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "create__field" %>
     </div>
 
     <div class="actions">
-      <%= f.submit "Sign up", class: "signup__btn" %>
+      <%= f.submit "Sign up", class: "create__btn" %>
     </div>
   <% end %>
 

@@ -15,7 +15,7 @@ feature 'A employee disapprove a enrollment' do
     expect(page).to have_link('Logout')
   end
 
-  scenario 'and message cannot be blank' do
+  xscenario 'and message cannot be blank' do
     company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011,
                               site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode',
                               domain: 'campuscode')

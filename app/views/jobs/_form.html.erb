@@ -1,5 +1,5 @@
 <% if @job.errors.any? %>
-  <div>
+  <div class="warnings">
     <%= I18n.t("errors.template.body")%>
     <ul>
       <% @job.errors.full_messages.each do |m| %>

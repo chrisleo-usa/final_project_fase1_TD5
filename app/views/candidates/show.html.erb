@@ -3,9 +3,12 @@
     <h2 class="dashboard__name"><%= @candidate.name %> profile</h2>
 
     <% if candidate_signed_in? %>
-      <div class="dashboard__settings">
-        <%= link_to 'Edit', edit_candidate_registration_path(current_candidate), class: "dashboard__btn edit" %>
-      </div>
+      <% if current_candidate === @candidate %>
+        <div class="dashboard__settings">
+          <%= link_to 'Edit', edit_candidate_registration_path(current_candidate), class: "dashboard__btn edit" %>
+          <%= link_to 'Delete', candidate_registration_path, method: :delete, class: "dashboard__btn delete" %>
+        </div>
+      <% end %>
     <% end %>
   </div>
   <div class="dashboard__grid candidate">
@@ -30,7 +33,7 @@
           <%= @candidate.phone %>
         </p>
       </div>
-      <% if employee_signed_in? %>
+      <% if employee_signed_in? || current_candidate === @candidate %>
         <div class="dashboard__item">
           <p class="dashboard__label">CPF: </p>
           <p class="dashboard__attribute">
