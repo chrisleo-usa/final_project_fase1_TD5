@@ -1,59 +1,59 @@
-<div class="container company">
-  <div class="company__header">
+<div class="container dashboard">
+  <div class="dashboard__header">
     <% if !@company.name.blank?%>
-      <h2 class="company__name"><%= @company.name %> profile</h2>
+      <h2 class="dashboard__name"><%= @company.name %> profile</h2>
     <% end %>
 
     <% if employee_signed_in? %>
       <% if current_employee.company_id === @company.id %>
-      <div class="company__settings">
-        <%= link_to 'Edit', edit_company_path, class: "company__btn edit" %>
+      <div class="dashboard__settings">
+        <%= link_to 'Edit', edit_company_path, class: "dashboard__btn edit" %>
       </div>
       <% end %>
     <% end %>
   </div>
 
-  <div class="company__grid">
-    <div class="company__list">
-      <div class="company__item">
-        <p class="company__label">Company name: </p>
-        <p class="company__attribute">
+  <div class="dashboard__grid company">
+    <div class="dashboard__list">
+      <div class="dashboard__item">
+        <p class="dashboard__label">Company name: </p>
+        <p class="dashboard__attribute">
           <%= @company.name %>
         </p>
       </div>
 
-      <div class="company__item">
-        <p class="company__label">Address: </p>
-        <p class="company__attribute">
+      <div class="dashboard__item">
+        <p class="dashboard__label">Address: </p>
+        <p class="dashboard__attribute">
           <%= @company.address %>
         </p>
       </div>
 
-      <div class="company__item">
-        <p class="company__label">CNPJ: </p>
-        <p class="company__attribute">
+      <div class="dashboard__item">
+        <p class="dashboard__label">CNPJ: </p>
+        <p class="dashboard__attribute">
           <%= @company.cnpj %>
         </p>
       </div>
 
-      <div class="company__item">
-        <p class="company__label">Site: </p>
-        <p class="company__attribute">
+      <div class="dashboard__item">
+        <p class="dashboard__label">Site: </p>
+        <p class="dashboard__attribute">
           <%= @company.site %>
         </p>
       </div>
 
-      <div class="company__item">
-        <p class="company__label">Social media: </p>
-        <p class="company__attribute">
+      <div class="dashboard__item">
+        <p class="dashboard__label">Social media: </p>
+        <p class="dashboard__attribute">
           <%= @company.social_media %>
         </p>
       </div>
     </div>
 
-    <div class="company__logo">
+    <div class="dashboard__avatar">
       <% if @company.logo.attached? %>
-        <%= image_tag @company.logo, class: "company__logo__img" %>
+        <%= image_tag @company.logo %>
       <% end %>
     </div>
   </div>

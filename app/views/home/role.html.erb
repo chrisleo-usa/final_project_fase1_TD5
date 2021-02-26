@@ -1,3 +1,8 @@
-<h1>You are a candidate or employee?</h1>
-<%= link_to 'Candidate', new_candidate_session_path %>
-<%= link_to 'Employee', new_employee_session_path %>
+<div class="container category">
+  <h3 class="category__title">Choose your category</h3>
+
+  <div class="category__list">
+    <%= link_to 'Candidate', new_candidate_session_path, class: "category__btn candidate" %>
+    <%= link_to 'Employee', new_employee_session_path, class: "category__btn employee" %>
+  </div>
+</div>

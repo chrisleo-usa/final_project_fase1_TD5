@@ -1,49 +1,52 @@
-<h2>Sign up</h2>
+<div class="container signup">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "candidates/shared/error_messages", resource: resource %>
+  <h2 class="signup__title">Sign up</h2>
 
-  <div class="field">
-    <%= f.label :name, 'Full name' %><br />
-    <%= f.text_field :name, autofocus: true %>
-  </div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "signup__form"}) do |f| %>
+    <%= render "candidates/shared/error_messages", resource: resource %>
 
-    <div class="field">
-    <%= f.label :phone %><br />
-    <%= f.telephone_field :phone %>
-  </div>
+    <div class="field signup__block">
+      <%= f.label :name, 'Full name', class: "signup__label" %><br />
+      <%= f.text_field :name, autofocus: true, class: "signup__field" %>
+    </div>
 
-    <div class="field">
-    <%= f.label :cpf, 'CPF' %><br />
-    <%= f.number_field :cpf %>
-  </div>
+      <div class="field signup__block">
+      <%= f.label :phone, class: "signup__label" %><br />
+      <%= f.telephone_field :phone, class: "signup__field" %>
+    </div>
 
-    <div class="field">
-    <%= f.label :biography, 'Biography' %><br />
-    <%= f.text_area :biography, size: "60x10" %>
-  </div>
+      <div class="field signup__block">
+      <%= f.label :cpf, 'CPF', class: "signup__label" %><br />
+      <%= f.number_field :cpf, class: "signup__field" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <div class="field signup__block">
+      <%= f.label :biography, 'Biography', class: "signup__label" %><br />
+      <%= f.text_area :biography, size: "60x10", class: "signup__field" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="field signup__block">
+      <%= f.label :email, class: "signup__label" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "signup__field" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <div class="field signup__block">
+      <%= f.label :password, class: "signup__label" %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password", class: "signup__field" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <div class="field signup__block">
+      <%= f.label :password_confirmation, class: "signup__label" %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "signup__field" %>
+    </div>
 
-<%= render "candidates/shared/links" %>
+    <div class="actions">
+      <%= f.submit "Sign up", class: "signup__btn" %>
+    </div>
+  <% end %>
+
+  <%= render "candidates/shared/links" %>
+</div>

@@ -39,6 +39,10 @@
                 </li>
 
                 <li class="navbar__item">
+                  <%= link_to 'My applications', candidate_enrollments_path(current_candidate), class: 'navbar__link' %>
+                </li>
+
+                <li class="navbar__item">
                   <%= link_to 'My profile', candidate_path(current_candidate), class: 'navbar__link' %>
                 </li>
 
@@ -66,10 +70,10 @@
       </div>
     </header>
 
-  <div class="messages">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  </div>
+    <div class="messages">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+    </div>
 
     <%= yield %>
   </body>

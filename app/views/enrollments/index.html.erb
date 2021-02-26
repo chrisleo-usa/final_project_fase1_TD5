@@ -1,13 +1,21 @@
-<h1>Index Enrollments Candidate</h1>
+<div class="container index">
 
-<% @enrollments.each do |enrollment| %>
-  <div>
-    <div>
-      <p>Job:</p>
-      <%= link_to enrollment.job.title, company_job_path(enrollment.job.company, enrollment.job) %>
-      <p>Company:</p>
-      <%= enrollment.job.company.name %>
-    </div>
-    <hr>
-  </div>
-<% end %>
+  <h2 class="index__title">Index Enrollments Candidate</h2>
+
+  <% if @enrollments.empty? %>
+    <h4 class="index__none">No registered applications</h4>
+  <% else %>
+    <% @enrollments.each do |enrollment| %>
+      <div class="index__list">
+        <div class="index__item">
+          <p class="index__label">Job:</p>
+            <%= link_to enrollment.job.title, company_job_path(enrollment.job.company, enrollment.job), class: "index__attribute link" %>
+          <p class="index__label second">Company:</p>
+          <p class="index__attribute">
+            <%= enrollment.job.company.name %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

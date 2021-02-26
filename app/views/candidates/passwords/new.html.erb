@@ -1,16 +1,18 @@
-<h2>Forgot your password?</h2>
+<div class="container forgot_password">
+  <h2 class="forgot_password__title">Forgot your password?</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "candidates/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: "forgot_password__form", method: :post }) do |f| %>
+    <%= render "candidates/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="field forgot_password__block">
+      <%= f.label :email, class: "forgot_password__label" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "forgot_password__field" %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "Send me reset password instructions", class: "forgot_password__btn" %>
+    </div>
+  <% end %>
 
-<%= render "candidates/shared/links" %>
+  <%= render "candidates/shared/links" %>
+</div>

@@ -23,7 +23,7 @@ header .container {
 
 .navbar {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   align-items: center;
 
   &__logo {
@@ -66,7 +66,12 @@ header .container {
 }
 
 // --Companies Index--
-.companies {
+.index {
+  margin-top: 20px;
+
+  &__none {
+    color: lightslategray;
+  }
 
   &__list {
     padding: 24px 0;
@@ -76,24 +81,52 @@ header .container {
   &__label {
     color: rgba(0, 0, 0, 0.596);
     margin-bottom: 8px;
+
+    &.second {
+      margin-top: 16px;
+    }
   }
 
-  &__name {
-    color: black;
+  &__attribute.link {
+    color: darkblue;
   }
+
 }
 
 // --Company Show--
-.company {
+.dashboard {
+  margin-top: 20px;
 
   &__header {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr auto;
     margin-bottom: 24px;
   }
 
   &__settings {
     text-align: right;
+  }
+
+  &__btn.apply, 
+  &__btn--disable {
+    padding: 8px 16px;
+
+    border: 1px solid lightblue;
+    background-color: lightblue;
+    color: white;
+    border-radius: 4px;
+
+    &:hover {
+      border: 1px solid lightblue;
+      background-color: transparent;
+      color: darken(lightblue, 50%);
+
+      transition: ease-in-out .3s;
+    }
+  }
+
+  &__btn--disable {
+    margin-right: 24px;
   }
 
   &__btn.edit {
@@ -113,9 +146,15 @@ header .container {
     }
   }
 
-  &__grid {
+  &__grid.company {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+
+  &__grid.candidate,
+  &__grid.applications {
+    display: grid;
+    grid-template-columns: 1fr;
   }
 
   &__item {
@@ -127,7 +166,7 @@ header .container {
     margin-bottom: 8px;
   }
 
-  &__logo {
+  &__avatar {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -138,7 +177,8 @@ header .container {
 }
 
 .jobs {
-
+  margin-top: 24px;
+  
   &__header {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -186,3 +226,298 @@ header .container {
     }
   }
 }
+
+// --Role--
+.category {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0 auto;
+
+  background: rgb(221,235,238);
+  background: linear-gradient(135deg, rgba(221,235,238,1) 9%, rgba(113,195,233,1) 79%);
+  border-radius: 16px;
+
+  width: 40%;
+  height: 70vh;
+
+  &__title {
+    color: white;
+    font-size: 40px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-around;
+
+    width: 100%;
+  }
+
+  &__btn {
+    color: white;
+    font-size: 20px;
+    padding: 8px 16px;
+
+    border: 2px solid white;
+    border-radius: 16px;
+
+    &:hover {
+      background-color: white;
+      color: darken(lightblue, 50%);
+
+      transition: ease-in-out .3s;
+    }
+  }
+}
+
+
+// --Log in Candidate--
+.log_in {
+  width: 25%;
+  background-color: lightblue;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 24px;
+
+  &__title {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 24px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__block {
+    padding: 16px 0;
+  }
+
+  &__label {
+    color: lightslategray;
+  }
+
+  &__field {
+    margin-top: 8px;
+    width: 100%;
+  }
+
+  &__btn {
+    font-size: 16px;
+    color: darken(lightblue, 50%);
+    font-size: 20px;
+    padding: 8px 16px;
+    margin: 16px 0;
+
+    background-color: transparent;
+    border: 2px solid darken(lightblue, 50%);
+    border-radius: 16px;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: white;
+      color: darken(lightblue, 50%);
+
+      transition: ease-in-out .3s;
+    }
+  }
+
+  &__signup,
+  &__forgot {
+    margin-top: 16px;
+    color: black;
+    text-decoration: underline;
+  }
+}
+
+// --Sign up or edit Form--
+
+
+.signup {
+  width: 40%;
+  background-color: lightblue;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 24px;
+
+  &__form {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 24px;
+  }
+
+  &__block {
+
+    em {
+      color: lightslategray;
+    }
+  }
+
+  &__label {
+    color: lightslategray;
+  }
+
+  &__field {
+    margin-top: 8px;
+    width: 100%;
+
+    &[name="candidate[biography]"] {
+      resize: none;
+    }
+  }
+
+  &__btn {
+    font-size: 16px;
+    color: darken(lightblue, 50%);
+    font-size: 20px;
+    padding: 8px 16px;
+    margin: 16px 0;
+
+    background-color: transparent;
+    border: 2px solid darken(lightblue, 50%);
+    border-radius: 16px;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: white;
+      color: darken(lightblue, 50%);
+
+      transition: ease-in-out .3s;
+    }
+  }
+
+  &__log_in{
+    margin-top: 16px;
+    color: black;
+    text-decoration: underline;
+  }
+
+  &__delete {
+
+    &__title {
+      text-align: center;
+      font-size: 24px;
+    }
+  }
+
+  & .alert{
+    color: red;
+  } 
+}
+
+// Candidate edit form
+.edit__or__delete {
+  & .signup {
+    width: 60%;
+    min-width: 600px;
+  }
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  column-gap: 24px;
+}
+
+.signup.edit {
+  width: 40%;
+  min-width: 600px;
+}
+
+.signup.job {
+  width: 40%;
+}
+
+// Edit candidate
+.delete.signup {
+  width: 90%;
+  max-width: 500px;
+  max-height: 250px;
+
+  background-color: lightcoral;
+
+  &__title {
+    color: white;
+  }
+
+  form.button_to {
+    text-align: center;
+    margin: 16px 0;
+  }
+
+  &__btn {
+    color: white;
+    border-color: white;
+
+    &:hover {
+      color: lightcoral;
+    }
+  }
+
+  &__back {
+    color: white;
+  }
+}
+
+// --Forgot Password Candidate--
+.forgot_password {
+  width: 30%;
+  background-color: lightblue;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 24px;
+
+  &__title {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 24px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__block {
+    padding: 16px 0;
+  }
+
+  &__label {
+    color: lightslategray;
+  }
+
+  &__field {
+    margin-top: 8px;
+    width: 100%;
+  }
+
+  &__btn {
+    font-size: 16px;
+    color: darken(lightblue, 50%);
+    font-size: 20px;
+    padding: 8px 16px;
+    margin: 16px 0;
+
+    background-color: transparent;
+    border: 2px solid darken(lightblue, 50%);
+    border-radius: 16px;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: white;
+      color: darken(lightblue, 50%);
+
+      transition: ease-in-out .3s;
+    }
+  }
+}
+
+

@@ -1,16 +1,16 @@
-<div class="container companies">
+<div class="container index">
 
-  <h3>Index Companies</h3>
+  <h2 class="index__title">Index Companies</h2>
 
   <% if @companies.empty?%>
-    <h4>None company registered </h4>
+    <h4 class="index__none">None company registered </h4>
   <% else %>
     <% @companies.each do |company| %>
-      <div class="companies__list">
-        <dl>
-          <dt class="companies__label">Nome:</dt>
-          <dd><%= link_to company.name, company_path(company), class: "companies__name" %></dd>
-        </dl>
+      <div class="index__list">
+        <div class="index__item">
+          <p class="index__label">Company:</p>
+          <%= link_to company.name, company_path(company), class: "index__attribute link" %>
+        </div>
       </div>
     <% end %>
   <% end %>

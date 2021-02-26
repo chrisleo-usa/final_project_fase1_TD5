@@ -1,34 +1,50 @@
-<h1>Show candidate</h1>
+<div class="container dashboard">
+  <div class="dashboard__header">
+    <h2 class="dashboard__name"><%= @candidate.name %> profile</h2>
 
-<% if candidate_signed_in? %>
-  <div>
-    <%= current_candidate.email %>
-    <%= link_to 'Edit', edit_candidate_registration_path(current_candidate) %>
+    <% if candidate_signed_in? %>
+      <div class="dashboard__settings">
+        <%= link_to 'Edit', edit_candidate_registration_path(current_candidate), class: "dashboard__btn edit" %>
+      </div>
+    <% end %>
   </div>
+  <div class="dashboard__grid candidate">
+    <div class="dashboard__list">
+      <div class="dashboard__item">
+        <p class="dashboard__label">Name: </p>
+        <p class="dashboard__attribute">
+          <%= @candidate.name %>
+        </p>
+      </div>
 
-  <div>
-  <%= link_to 'Home', root_path %>
-  <%= link_to 'Companies', companies_path %>
-  <%= link_to 'My applications', candidate_enrollments_path(current_candidate) %>
+      <div class="dashboard__item">
+        <p class="dashboard__label">Email: </p>
+        <p class="dashboard__attribute">
+          <%= @candidate.email %>
+        </p>
+      </div>
+
+      <div class="dashboard__item">
+        <p class="dashboard__label">Phone: </p>
+        <p class="dashboard__attribute">
+          <%= @candidate.phone %>
+        </p>
+      </div>
+      <% if employee_signed_in? %>
+        <div class="dashboard__item">
+          <p class="dashboard__label">CPF: </p>
+          <p class="dashboard__attribute">
+            <%= @candidate.cpf %>
+          </p>
+        </div>
+      <% end %>
+
+      <div class="dashboard__item">
+        <p class="dashboard__label">Biography: </p>
+        <p class="dashboard__attribute">
+          <%= @candidate.biography %>
+        </p>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<div>
-  <%= @candidate.name %>
-</div>
-
-<div>
-  <%= @candidate.email %>
-</div>
-
-<div>
-  <%= @candidate.phone %>
-</div>
-
-<div>
-  <%= @candidate.cpf %>
-</div>
-
-<div>
-  <%= @candidate.biography %>
 </div>

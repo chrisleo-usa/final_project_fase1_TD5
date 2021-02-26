@@ -1,53 +1,53 @@
 <% if @job.errors.any? %>
-  <div class="alert">
+  <div>
     <%= I18n.t("errors.template.body")%>
     <ul>
       <% @job.errors.full_messages.each do |m| %>
-        <li><%= m %></li>
+        <li class="alert"><%= m %></li>
       <% end %>
     </ul>
 
   </div>
 <% end %>
 
-<%= form_with(model: [@company, @job]) do |job| %>
-  <div>
-    <%= job.label :title, 'Title' %> <br>
-    <%= job.text_field :title %>
+<%= form_with model: [@company, @job], html: { class: "signup__form" } do |job| %>
+  <div class="signup__block">
+    <%= job.label :title, 'Title', class: "signup__label" %> <br>
+    <%= job.text_field :title, class: "signup__field" %>
   </div>
 
-  <div>
-    <%= job.label :description, 'Description' %> <br>
-    <%= job.text_field :description %>
+  <div class="signup__block">
+    <%= job.label :description, 'Description', class: "signup__label" %> <br>
+    <%= job.text_field :description, class: "signup__field" %>
   </div>
 
-  <div>
-    <%= job.label :salary_range, 'Salary range' %> <br>
-    <%= job.number_field :salary_range %>
+  <div class="signup__block">
+    <%= job.label :salary_range, 'Salary range', class: "signup__label" %> <br>
+    <%= job.number_field :salary_range, class: "signup__field" %>
   </div>
 
 
-  <div>
-    <%= job.label :level, 'Job level' %> <br>
+  <div class="signup__block">
+    <%= job.label :level, 'Job level', class: "signup__label" %> <br>
     <%= job.collection_select :level, @levels.map{ |level| [level.first, level.first.humanize] }, :first, :second %> 
   </div>
 
 
-  <div>
-    <%= job.label :requirements, 'Requirements' %> <br>
-    <%= job.text_area :requirements, size: "70x5" %>
+  <div class="signup__block">
+    <%= job.label :requirements, 'Requirements', class: "signup__label" %> <br>
+    <%= job.text_area :requirements, size: "70x5", class: "signup__field" %>
   </div>
 
-  <div>
-    <%= job.label :deadline_application, 'Deadline application' %> <br>
-    <%= job.date_field :deadline_application %>
+  <div class="signup__block">
+    <%= job.label :deadline_application, 'Deadline application', class: "signup__label" %> <br>
+    <%= job.date_field :deadline_application, class: "signup__field" %>
   </div>
 
-  <div>
-    <%= job.label :total_vacancies, 'Total vacancies' %> <br>
-    <%= job.number_field :total_vacancies %>
+  <div class="signup__block">
+    <%= job.label :total_vacancies, 'Total vacancies', class: "signup__label" %> <br>
+    <%= job.number_field :total_vacancies, class: "signup__field" %>
   </div>
 
-  <%= job.submit 'Save' %>
+  <%= job.submit 'Save', class: "signup__btn" %>
 
 <% end %>
