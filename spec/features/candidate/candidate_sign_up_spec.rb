@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-feature 'Visitor sign up as candidate' do
+feature 'Candidate sign up' do
   scenario 'successfully' do
     visit root_path
     click_on 'Login'
     click_on 'Candidate'
     click_on 'Sign up'
-    within('form') do
+    within('form.create__form') do
       fill_in 'Full name', with: 'Christopher Leonardo Alves'
       fill_in 'Phone', with: '48 988776655'
       fill_in 'CPF', with: '12345678910'
@@ -22,15 +22,17 @@ feature 'Visitor sign up as candidate' do
     expect(page).to have_link('Home')
     expect(page).to have_link('Companies')
     expect(page).to have_link('My applications')
-    expect(page).to have_content(candidate.email)
-    expect(page).to have_content(candidate.name)
-    expect(page).to have_content(candidate.phone)
-    expect(page).to have_content(candidate.cpf)
-    expect(page).to have_content(candidate.biography)
+    expect(page).to have_css('p.dashboard__attribute', text: candidate.email)
+    expect(page).to have_css('p.dashboard__attribute', text: candidate.name)
+    expect(page).to have_css('p.dashboard__attribute', text: candidate.phone)
+    expect(page).to have_css('p.dashboard__attribute', text: candidate.cpf)
+    expect(page).to have_css('p.dashboard__attribute', text: candidate.biography)
   end
 
   scenario 'and logout' do
-    candidate = Candidate.create!(name: 'Christopher Alves', phone: '48988776655', cpf: 12345678910, biography: 'Profissional da área de eventos migrando para a área da tecnologia', email: 'chris@campuscode.com', password: '123456')
+    candidate = Candidate.create!(name: 'Christopher Alves', phone: '48988776655', cpf: 12345678910, 
+                                  biography: 'Profissional da área de eventos migrando para a área da tecnologia', 
+                                  email: 'chris@campuscode.com', password: '123456')
 
     login_as candidate, scope: :candidate
     visit candidate_path(candidate)
