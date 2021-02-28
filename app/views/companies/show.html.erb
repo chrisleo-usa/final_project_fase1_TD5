@@ -5,9 +5,10 @@
     <% end %>
 
     <% if employee_signed_in? %>
-      <% if current_employee.company_id === @company.id %>
+      <% if current_employee.company_id === @company.id && current_employee.admin === 1 %>
       <div class="dashboard__settings">
         <%= link_to 'Edit', edit_company_path, class: "dashboard__btn edit" %>
+        <%= link_to 'Delete', company_path, method: :delete, class: "dashboard__btn delete" %>
       </div>
       <% end %>
     <% end %>
@@ -54,6 +55,8 @@
     <div class="dashboard__avatar">
       <% if @company.logo.attached? %>
         <%= image_tag @company.logo %>
+      <% else %>
+        <%= image_tag 'https://lh3.googleusercontent.com/proxy/YNaiV3aJcSfJw_QQh4qv1hTQ4wuXNOVtThAAvcGoeMgt-4zhK8Zg6ah9ByWdcTJElmb2xmqXEVxx0ShUI4y2I0RVZYsK9A' %>
       <% end %>
     </div>
   </div>

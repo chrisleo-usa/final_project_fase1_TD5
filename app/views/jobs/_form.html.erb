@@ -10,44 +10,44 @@
   </div>
 <% end %>
 
-<%= form_with model: [@company, @job], html: { class: "signup__form" } do |job| %>
-  <div class="signup__block">
-    <%= job.label :title, 'Title', class: "signup__label" %> <br>
-    <%= job.text_field :title, class: "signup__field" %>
+<%= form_with model: [@company, @job], html: { class: "create__form" } do |job| %>
+  <div class="create__block">
+    <%= job.label :title, 'Title', class: "create__label" %> <br>
+    <%= job.text_field :title, class: "create__field" %>
   </div>
 
-  <div class="signup__block">
-    <%= job.label :description, 'Description', class: "signup__label" %> <br>
-    <%= job.text_field :description, class: "signup__field" %>
+  <div class="create__block">
+    <%= job.label :description, 'Description', class: "create__label" %> <br>
+    <%= job.text_field :description, class: "create__field" %>
   </div>
 
-  <div class="signup__block">
-    <%= job.label :salary_range, 'Salary range', class: "signup__label" %> <br>
-    <%= job.number_field :salary_range, class: "signup__field" %>
+  <div class="create__block">
+    <%= job.label :salary_range, 'Salary range', class: "create__label" %> <br>
+    <%= job.number_field :salary_range, class: "create__field" %>
   </div>
 
 
-  <div class="signup__block">
-    <%= job.label :level, 'Job level', class: "signup__label" %> <br>
+  <div class="create__block">
+    <%= job.label :level, 'Job level', class: "create__label" %> <br>
     <%= job.collection_select :level, @levels.map{ |level| [level.first, level.first.humanize] }, :first, :second %> 
   </div>
 
 
-  <div class="signup__block">
-    <%= job.label :requirements, 'Requirements', class: "signup__label" %> <br>
-    <%= job.text_area :requirements, size: "70x5", class: "signup__field" %>
+  <div class="create__block">
+    <%= job.label :requirements, 'Requirements', class: "create__label" %> <br>
+    <%= job.text_area :requirements, size: "70x5", class: "create__field" %>
   </div>
 
-  <div class="signup__block">
-    <%= job.label :deadline_application, 'Deadline application', class: "signup__label" %> <br>
-    <%= job.date_field :deadline_application, class: "signup__field" %>
+  <div class="create__block">
+    <%= job.label :deadline_application, 'Deadline application', class: "create__label" %> <br>
+    <%= job.date_field :deadline_application, class: "create__field" %>
   </div>
 
-  <div class="signup__block">
-    <%= job.label :total_vacancies, 'Total vacancies', class: "signup__label" %> <br>
-    <%= job.number_field :total_vacancies, class: "signup__field" %>
+  <div class="create__block">
+    <%= job.label :total_vacancies, 'Total vacancies', class: "create__label" %> <br>
+    <%= job.number_field :total_vacancies, class: "create__field" %>
   </div>
 
-  <%= job.submit 'Save', class: "signup__btn" %>
+  <%= job.submit 'Save', class: "create__btn" %>
 
 <% end %>

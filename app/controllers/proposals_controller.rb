@@ -5,9 +5,10 @@ class ProposalsController < ApplicationController
   end
 
   def create
-    @enrollment = Enrollment.find(params[:enrollment_id])
+    #PRoblema está por aqui!
     @proposal = Proposal.new(proposal_params)
-    @proposal.enrollment_id = enrollment.id
+    @enrollment = Enrollment.find(params[:enrollment_id])
+    @proposal.enrollment_id = @enrollment.id
 
     if @proposal.save
       redirect_to @proposal

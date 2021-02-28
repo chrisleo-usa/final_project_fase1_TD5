@@ -71,7 +71,7 @@ feature 'Employee approve a enrollment' do
     end
   end
 
-  xscenario 'but the proposal form cannot be blank' do
+  scenario 'but the proposal form cannot be blank' do
     company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
                               site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
                               domain: 'campuscode')

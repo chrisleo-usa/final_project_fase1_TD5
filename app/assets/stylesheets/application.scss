@@ -191,6 +191,10 @@ header .container {
 
     max-width: 225px;
     margin: 0 auto;
+
+    & img {
+      width: 100%;
+    }
   }
 }
 
@@ -262,7 +266,7 @@ header .container {
 
   &__title {
     color: white;
-    font-size: 40px;
+    font-size: 32px;
   }
 
   &__list {
@@ -352,8 +356,6 @@ header .container {
 }
 
 // --Sign up or edit Form--
-
-
 .create {
   width: 40%;
   background-color: lightblue;

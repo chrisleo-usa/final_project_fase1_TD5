@@ -1,10 +1,8 @@
-<div class="container signup edit">
+<div class="container create edit">
   <% if @company.name.blank?%>
-    <h2 class="signup__title">Please, fill the form</h2>
+    <h2 class="create__title">Please, fill the form</h2>
   <% else %>
-    <h2 class="signup__title"><%= @company.name %> Page</h2>
+    <h2 class="create__title"><%= @company.name %> Page</h2>
   <% end %>
-
   <%= render 'form' %>
-
 </div>

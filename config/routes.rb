@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :proposals, only: %i[new create]
   end
 
-  resources :companies, only: %i[index new show edit update] do
+  resources :companies, only: %i[index new show edit update destroy] do
     resources :jobs, only: %i[index new create show edit update] do
       member do
         post 'disable'
