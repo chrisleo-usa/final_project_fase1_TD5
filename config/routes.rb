@@ -11,9 +11,13 @@ Rails.application.routes.draw do
     resources :enrollments, only: [:index]
   end
 
-  resources :enrollments, only: %i[show] do
-    resources :proposals, only: %i[new create]
+  resources :enrollments, only: [:show] do
+    resources :proposals, only: %i[new create edit update]
+    post 'approve', on: :member
+
   end
+
+  resources :proposals, only: [:show]
 
   resources :companies, only: %i[index new show edit update destroy] do
     resources :jobs, only: %i[index new create show edit update] do
@@ -23,7 +27,6 @@ Rails.application.routes.draw do
       end
     end
   end
-
 
   get 'role', to: 'home#role'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

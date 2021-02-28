@@ -107,7 +107,8 @@ header .container {
     text-align: right;
   }
 
-  &__btn.apply, 
+  &__btn.apply,
+  &__btn.approve, 
   &__btn--disable {
     padding: 8px 16px;
 
@@ -125,7 +126,8 @@ header .container {
     }
   }
 
-  &__btn--disable {
+  &__btn--disable,
+  &__btn.approve {
     margin-right: 24px;
   }
 
@@ -147,7 +149,8 @@ header .container {
     }
   }
 
-  &__btn.delete {
+  &__btn.delete,
+  &__btn.deny {
     padding: 8px 16px;
 
     border: 1px solid lightcoral;
@@ -164,15 +167,41 @@ header .container {
     }
   }
 
-  &__grid.company {
+  &__status {
+    display: inline-block;
+    font-size: 16px;
+    color: lightslategray;
+    border: 2px solid lightslategray;
+    border-radius: 30px;
+    padding: 8px 16px;
+    margin: 16px 0;
+  }
+
+  &__status.approved {
+    color: limegreen;
+    border: 1px solid limegreen;
+  }
+
+  &__status.denied {
+    color: red;
+    border: 1px solid red;
+  }
+
+  &__grid.two__columns {
+    margin-top: 24px;
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
 
-  &__grid.candidate,
-  &__grid.applications {
+  &__grid.one__column{
+    margin-top: 24px;
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  &__subtitle {
+    font-size: 20px;
+    text-transform: uppercase;
   }
 
   &__item {
@@ -246,6 +275,39 @@ header .container {
 
       transition: all .4s;
     }
+  }
+}
+
+// --Response--
+.response {
+  margin-top: 20px;
+
+  &__title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  &__subtitle {
+    display: inline-block;
+    color: lightslategrey;
+    padding: 8px 0;
+  }
+
+  &__item {
+    padding: 16px 0;
+  }
+
+  &__block {
+    margin: 20px 0;
+  }
+
+  &__label {
+    color: rgba(0, 0, 0, 0.596);
+    margin-bottom: 8px;
+  }
+
+  &__attribute {
+    margin-bottom: 8px;
   }
 }
 

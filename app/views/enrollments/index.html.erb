@@ -1,6 +1,6 @@
 <div class="container index">
 
-  <h2 class="index__title">Index Enrollments Candidate</h2>
+  <h2 class="index__title">Here is your enrollments</h2>
 
   <% if @enrollments.empty? %>
     <h4 class="index__none">No registered applications</h4>
@@ -9,10 +9,14 @@
       <div class="index__list">
         <div class="index__item">
           <p class="index__label">Job:</p>
-            <%= link_to enrollment.job.title, company_job_path(enrollment.job.company, enrollment.job), class: "index__attribute link" %>
+            <%= link_to enrollment.job.title, enrollment_path(enrollment), class: "index__attribute link" %>
           <p class="index__label second">Company:</p>
           <p class="index__attribute">
             <%= enrollment.job.company.name %>
+          </p>
+          <p class="index__label">Status:</p>
+          <p class="index__attribute">
+            <%= enrollment.status %>
           </p>
         </div>
       </div>

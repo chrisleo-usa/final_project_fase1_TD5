@@ -15,7 +15,7 @@
     <% end %>
   </div>
 
-  <div class="dashboard__grid applications">
+  <div class="dashboard__grid one__column">
     <div class="dashboard__list">
       <div class="dashboard__item">
         <p class="dashboard__label">Job description: </p>
@@ -62,19 +62,20 @@
   </div>
 </div>
 
-<div class="container index">
-  <% if @job.enrollments.empty? %>
-    <h4 class="index__none">None enrollments yet</h4>
-  <% else %>
-    <h2 class="index__title">Enrollments received:</h2>
-    <% @enrollments.each do |enrollment|%>
-      <div class="index__list">
-        <div class="index__item">
-          <p class="index__label">Candidate:</p>
-          <%= link_to enrollment.candidate.name, candidate_path(enrollment.candidate), class: "index__attribute link" %>
-          <%= link_to 'Approve', new_enrollment_proposal_path(enrollment, enrollment.proposal),class: "index__attribute link approve" %>
+<% if employee_signed_in? %>
+  <div class="container index">
+    <% if @job.enrollments.empty? %>
+      <h4 class="index__none">None enrollments yet</h4>
+    <% else %>
+      <h2 class="index__title">Enrollments received:</h2>
+      <% @enrollments.each do |enrollment|%>
+        <div class="index__list">
+          <div class="index__item">
+            <p class="index__label">Candidate:</p>
+            <%= link_to enrollment.candidate.name, enrollment_path(enrollment), class: "index__attribute link" %>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% end %>

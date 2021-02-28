@@ -64,7 +64,7 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
 
     if @job.applied(current_candidate)
-      redirect_to candidate_enrollments_path(current_candidate), notice: 'Successfully applied'
+      redirect_to enrollment_path(@job), notice: 'Successfully applied'
     else
       redirect_to company_job_path(@job.company, @job), alert: 'Already applied for this job'
     end

@@ -1,7 +1,19 @@
 <div class="container create">
   <h2 class="create__title">Proposal</h2>
 
-  <%= form_with model: @enrollment do |f| %>
+  <% if @proposal.errors.any? %>
+    <div class="warnings">
+      <%= I18n.t("errors.template.body")%>
+      <ul>
+        <% @proposal.errors.full_messages.each do |m| %>
+          <li class="alert"><%= m %></li>
+        <% end %>
+      </ul>
+
+    </div>
+  <% end %>
+
+  <%= form_with model: [@enrollment, @proposal], html: { class: 'create__form'} do |f| %>
 
     <div class="create__block">
       <%= f.label :proposal_message, 'Proposal message', class: "create__label" %> <br>
