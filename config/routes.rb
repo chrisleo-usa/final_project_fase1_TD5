@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'search', to: 'home#search'
   get 'role', to: 'home#role'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

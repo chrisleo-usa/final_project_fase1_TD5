@@ -1,0 +1,27 @@
+<div class="container index">
+  <% if @jobs.any? %>
+    <h2 class="index__title">Search results</h2>
+    <% @jobs.each do |job| %>
+      <div class="index__list">
+        <div class="index__item">
+          <p class="index__label">Job:</p>
+            <%= link_to job.title, company_job_path(job.company, job), class: "index__attribute link" %>
+        </div>
+        <div class="index__item">
+          <p class="index__label">From company:</p>
+            <%= link_to job.company.name, company_path(job.company), class: "index__attribute link"%>
+        </div>
+        <div class="index__item">
+          <p class="index__label">Created at:</p>
+          <p class="index__attribute"><%= job.created_at.strftime("%d %B %Y at %H:%M") %></p>
+        </div>
+        <div class="index__item">
+          <p class="index__label">Status:</p>
+          <span class="index__status <%= job.status %>"><%= job.status %></span>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <h2 class="index__title">Sorry, we didn't find</h2>
+  <% end %>
+</div>

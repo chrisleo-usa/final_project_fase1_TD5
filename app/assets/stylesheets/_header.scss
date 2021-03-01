@@ -7,11 +7,36 @@ header .container {
 
 .navbar {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 0.7fr 1fr 2fr;
   align-items: center;
 
   &__logo {
     color: black;
+  }
+
+  &__search__form {
+    display: flex;
+    & input {
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+    }
+
+    & .navbar__btn {
+      border: 2px solid white;
+      border-radius: 8px;
+      background-color: white;
+      color: darken(lightblue, 50%);
+      transition: ease-in-out .3s;
+      cursor: pointer;
+      margin-left: 8px;
+
+      &:hover {
+        border-color: darken(lightblue, 50%);
+        background-color: darken(lightblue, 50%);
+        color: white
+      }
+    }
   }
 
   &__list {

@@ -22,13 +22,12 @@
     background-color: lightblue;
     color: white;
     border-radius: 4px;
+    transition: ease-in-out .3s;
 
     &:hover {
       border: 1px solid lightblue;
       background-color: transparent;
       color: darken(lightblue, 50%);
-
-      transition: ease-in-out .3s;
     }
   }
 
@@ -139,7 +138,7 @@
   &__avatar {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 
     max-width: 225px;
     margin: 0 auto;
