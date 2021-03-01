@@ -1,0 +1,185 @@
+// --Sign up or edit Form--
+.create {
+  width: 40%;
+  background-color: lightblue;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 24px;
+
+  &__form {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 16px;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 24px;
+  }
+
+  &__block {
+
+    em {
+      color: lightslategray;
+    }
+  }
+
+  &__label {
+    color: lightslategray;
+  }
+
+  &__field {
+    margin-top: 8px;
+    width: 100%;
+
+    &[name="candidate[biography]"] {
+      resize: none;
+    }
+
+  }
+
+  &__btn {
+    font-size: 16px;
+    color: darken(lightblue, 50%);
+    font-size: 20px;
+    padding: 8px 16px;
+    margin: 16px 0;
+
+    background-color: transparent;
+    border: 2px solid darken(lightblue, 50%);
+    border-radius: 16px;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: white;
+      color: darken(lightblue, 50%);
+
+      transition: ease-in-out .3s;
+    }
+  }
+
+  &__log_in{
+    margin-top: 16px;
+    color: black;
+    text-decoration: underline;
+  }
+
+  &__delete {
+
+    &__title {
+      text-align: center;
+      font-size: 24px;
+    }
+  }
+
+  & .alert{
+    color: red;
+  } 
+}
+
+// Candidate edit form
+.edit__or__delete {
+  & .create {
+    width: 60%;
+    min-width: 600px;
+  }
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  column-gap: 24px;
+}
+
+.create.edit {
+  width: 40%;
+  min-width: 600px;
+}
+
+.create.job {
+  width: 40%;
+}
+
+// Edit candidate
+.delete.create {
+  width: 90%;
+  max-width: 500px;
+  max-height: 250px;
+
+  background-color: lightcoral;
+
+  &__title {
+    color: white;
+  }
+
+  form.button_to {
+    text-align: center;
+    margin: 16px 0;
+  }
+
+  &__btn {
+    color: white;
+    border-color: white;
+
+    &:hover {
+      color: lightcoral;
+    }
+  }
+
+  &__back {
+    color: white;
+  }
+}
+
+// --Forgot Password Candidate--
+.forgot_password {
+  width: 30%;
+  background-color: lightblue;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 24px;
+
+  &__title {
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 24px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__block {
+    padding: 16px 0;
+  }
+
+  &__label {
+    color: lightslategray;
+  }
+
+  &__field {
+    margin-top: 8px;
+    width: 100%;
+  }
+
+  &__btn {
+    font-size: 16px;
+    color: darken(lightblue, 50%);
+    font-size: 20px;
+    padding: 8px 16px;
+    margin: 16px 0;
+
+    background-color: transparent;
+    border: 2px solid darken(lightblue, 50%);
+    border-radius: 16px;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: white;
+      color: darken(lightblue, 50%);
+
+      transition: ease-in-out .3s;
+    }
+  }
+}

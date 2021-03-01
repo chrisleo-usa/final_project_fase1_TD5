@@ -1,0 +1,42 @@
+.response {
+  &__header {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    max-width: 400px;
+    padding: 30px;
+  }
+
+  &__item {
+    border: 1px solid black;
+    max-width: 600px;
+    padding: 30px;
+  }
+
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  &__label {
+    color: lightslategrey;
+    margin-bottom: 8px;
+  }
+
+  &__btn {
+    margin-top: 16px;
+    padding: 8px 16px;
+    text-align: center;
+    border: 1px solid lightblue;
+    background-color: lightblue;
+    color: white;
+    border-radius: 4px;
+
+    &:hover {
+      border: 1px solid lightblue;
+      background-color: transparent;
+      color: darken(lightblue, 50%);
+
+      transition: ease-in-out .3s;
+    }
+  }
+}

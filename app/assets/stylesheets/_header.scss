@@ -1,0 +1,43 @@
+// --Layouts/application
+header .container {
+  padding: 30px;
+  margin-bottom: 50px;
+  background-color: lightblue;
+}
+
+.navbar {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+
+  &__logo {
+    color: black;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+  }
+
+  &__item {
+    margin-right: 3em;
+  }
+
+  &__profile {
+    display: flex;
+
+    span {
+      color: rgba(0, 0, 0, 0.596);
+    }
+  }
+
+  &__link {
+    color: darkblue;
+  }
+}
+
+.messages {
+  padding: 0 30px;
+  text-align: right;
+}

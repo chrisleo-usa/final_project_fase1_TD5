@@ -1,0 +1,60 @@
+// --Log in Candidate--
+.log_in {
+  width: 25%;
+  background-color: lightblue;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 24px;
+
+  &__title {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 24px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__block {
+    padding: 16px 0;
+  }
+
+  &__label {
+    color: lightslategray;
+  }
+
+  &__field {
+    margin-top: 8px;
+    width: 100%;
+  }
+
+  &__btn {
+    font-size: 16px;
+    color: darken(lightblue, 50%);
+    font-size: 20px;
+    padding: 8px 16px;
+    margin: 16px 0;
+
+    background-color: transparent;
+    border: 2px solid darken(lightblue, 50%);
+    border-radius: 16px;
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: white;
+      color: darken(lightblue, 50%);
+
+      transition: ease-in-out .3s;
+    }
+  }
+
+  &__signup,
+  &__forgot {
+    margin-top: 16px;
+    color: black;
+    text-decoration: underline;
+  }
+}

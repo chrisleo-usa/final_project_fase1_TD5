@@ -1,0 +1,44 @@
+
+// --Role--
+.category {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0 auto;
+
+  background: rgb(221,235,238);
+  background: linear-gradient(135deg, rgba(221,235,238,1) 9%, rgba(113,195,233,1) 79%);
+  border-radius: 16px;
+
+  width: 40%;
+  height: 70vh;
+
+  &__title {
+    color: white;
+    font-size: 32px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-around;
+
+    width: 100%;
+  }
+
+  &__btn {
+    color: white;
+    font-size: 20px;
+    padding: 8px 16px;
+
+    border: 2px solid white;
+    border-radius: 16px;
+
+    &:hover {
+      background-color: white;
+      color: darken(lightblue, 50%);
+
+      transition: ease-in-out .3s;
+    }
+  }
+}

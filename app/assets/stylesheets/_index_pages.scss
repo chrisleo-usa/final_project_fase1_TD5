@@ -1,0 +1,25 @@
+.index {
+  margin-top: 20px;
+
+  &__none {
+    color: lightslategray;
+  }
+
+  &__list {
+    padding: 24px 0;
+    border-bottom: 1px solid black;
+  }
+
+  &__label {
+    color: rgba(0, 0, 0, 0.596);
+    margin-bottom: 8px;
+
+    &.second {
+      margin-top: 16px;
+    }
+  }
+
+  &__attribute.link {
+    color: darkblue;
+  }
+}
