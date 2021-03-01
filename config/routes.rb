@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   end
 
   resources :companies, only: %i[index new show edit update destroy] do
-    resources :jobs, only: %i[index new create show edit update] do
+    resources :jobs, only: %i[new create show edit update] do
       member do
         post 'disable'
         post 'apply'
