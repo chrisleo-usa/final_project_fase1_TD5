@@ -61,9 +61,19 @@ entre na pasta do projeto:
 cd final_project_fase1_td5
 ```
 
-instale as dependências:
+Rode o comando:
 ```
-yarn install
+bin/setup
+```
+
+Execute o comando abaixo para criar o banco de dados:
+```
+rails db:migrate
+```
+
+Execute o comando abaixo para popular o Banco de Dados com os dados que estão no arquivo *db/seeds.rb*:
+```
+rails db:seed
 ```
 
 Execute a aplicação:
@@ -71,10 +81,35 @@ Execute a aplicação:
 rails server
 ```
 
-Para rodar os testes:
+Para rodar os testes execute o comando rspec
 ```
-rspec spec/pasta_de_testes
+rspec
 ```
+
+## Dados para teste
+
+## **Candidatos**
+* Christopher - Email: `chris@gmail.com`, senha: `123456`
+* Susan - Email: `susan@yahoo.com.br`, senha: `123456`
+
+## **Empresas**
+* Campus Code
+* TreinaDev
+
+## **Colaboradores das Empresas**
+* Campus Code - João (Admin) - email: `joao@campuscode.com`, senha: `123456`
+* Campus Code - Henrique - email: `henrique@campuscode.com`, senha: `123456`
+
+* TreinaDev - Fred (Admin) - email: `fred@treinadev.com.br`, senha: `123456`
+* TreinaDev - Jonata - email: `fred@treinadev.com.br`, senha: `123456`
+
+## **Vagas de empregos**
+* Campus Code - `Ruby on Rails Developer Jr`
+* Campus Code - `Back End Developer`
+
+* TreinaDev - `Javascript Developer Pl`
+* TreinaDev - `Front End Developer Jr`
+
 
 ## Trello
 Para a construção deste projeto a Campus Code encaminhou todas as informações e funcionalidades que deveriam conter nele e para uma melhor organização estou utilizando a plataforma Trello. Para acompanhar meu raciocínio, você pode visitar o meu quadro no Trello com o link abaixo: 

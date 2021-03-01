@@ -83,12 +83,6 @@ ActiveRecord::Schema.define(version: 2021_03_01_021259) do
     t.index ["proposal_id"], name: "index_declines_on_proposal_id"
   end
 
-  create_table "domains", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "employees", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

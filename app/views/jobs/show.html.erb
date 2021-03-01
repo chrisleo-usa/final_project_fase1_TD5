@@ -1,5 +1,6 @@
 <div class="container dashboard">
   <div class="dashboard__header">
+    <%= link_to 'Back', company_path(@job.company), class: 'dashboard__btn apply back' %>
     <h2 class="dashboard__name"><%= @job.title %></h2>
     <% if employee_signed_in? %>
       <% if current_employee.company_id === @job.company.id %>

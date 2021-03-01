@@ -1,5 +1,6 @@
 <div class="container dashboard">
   <div class="dashboard__header">
+    <%= link_to 'Back', companies_path, class: 'dashboard__btn apply back' %>
     <% if !@company.name.blank?%>
       <h2 class="dashboard__name"><%= @company.name %> profile</h2>
     <% end %>
