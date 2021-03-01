@@ -1,5 +1,5 @@
 <% if @company.errors.any? %>
-  <div class="">
+  <div class="warnings">
     <%= I18n.t("errors.template.body")%>
     <ul>
       <% @company.errors.full_messages.each do |m| %>

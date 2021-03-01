@@ -59,6 +59,12 @@ header .container {
 
   &__link {
     color: darkblue;
+
+    transition: ease-in-out .3s;
+
+    &:hover {
+      color: mediumorchid;
+    }
   }
 }
 
