@@ -1,3 +1,4 @@
+//Faltou separar em arquivos e fazer import no principal
 * {
   margin: 0;
   padding: 0;
@@ -485,7 +486,7 @@ header .container {
 
 // Candidate edit form
 .edit__or__delete {
-  & .signup {
+  & .create {
     width: 60%;
     min-width: 600px;
   }
