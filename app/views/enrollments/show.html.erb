@@ -86,22 +86,26 @@
 
 <div class="container response">
   <% if @enrollment.proposal %>
-    <p>Congratulations, you got approved, take a look on your proposal. </p>
-    <%= link_to 'Proposal', proposal_path(@enrollment.proposal) %>
+    <div class="response__item">
+      <div class="response__header">
+        <h4 class="response__title">Congratulations, you got approved, take a look on your proposal.</h4>
+        <%= link_to 'Proposal', proposal_path(@enrollment.proposal), class: "response__btn" %>
+      </div>
+    </div>
   <% elsif @enrollment.denied? %>
-    <h4 class="response__title">Company response</h4>
-
-    <span class="response__subtitle">message received on: 
-      <%= @enrollment.reject.created_at.strftime("%d %B %Y at %H:%M") %>
-    </span>
-    <div class="response__block">
-      <div class="response__label">Message:</div>
-      <p class="response__attribute">
-        <%= @enrollment.reject.message %>
+    <div class="response__item">
+      <h4 class="response__title">Company response</h4>
+      <p class="response__label">Message received on: 
+        <%= @enrollment.reject.created_at.strftime("%d %B %Y at %H:%M") %>
       </p>
+      <div class="response__block">
+        <div class="response__label">Message:</div>
+        <p class="response__attribute">
+          <%= @enrollment.reject.message %>
+        </p>
+      </div>
     </div>
   <% else %>
-    <h4 class="response__subtitle">Enrollment in progress</h4>
+    <h4 class="response__title">Enrollment in progress, wait for a response.</h4>
   <% end %>
-
 </div>

@@ -1,49 +1,54 @@
-<div class="container response">
-  <div class="response__list">
-    <div class="response__header">
-      <h4 class="response__title">Company response</h4>
-      <div class="response__settings">
-        <%= link_to 'Decline', decline_proposal_path(@proposal), method: :post, class: 'response__btn deny' %>
-      </div>
+<div class="container dashboard">
+  <div class="dashboard__header">
+    <h2 class="dashboard__title">Proposal</h2>
+    <div class="dashboard__settings">
+      
+      <% unless @proposal.declined? %>
+        <%= link_to 'Decline', decline_proposal_path(@proposal), method: :post, class: 'dashboard__btn deny' %>
+      <% end %>
     </div>
-    <div class="response__item">
-      <span class="response__subtitle">message received on: 
+  </div>
+
+  <span class="dashboard__status <%= @proposal.status %>"><%= @proposal.status%></span>
+
+  <div class="dashboard__grid one__column">
+    <h3 class="dashboard__name">Company response</h3>
+    <div class="dashboard__item proposal">
+      <p class="dashboard__label">Message received on: 
         <%= @proposal.created_at.strftime("%d %B %Y at %H:%M") %>
-      </span>
-      <div class="response__block">
-        <p class="response__label">Message content:</p>
-        <p class="response__attribute">
+      </p>
+      <div class="dashboard__block">
+        <p class="dashboard__label">Message content:</p>
+        <p class="dashboard__attribute">
           <%= @proposal.proposal_message %>
         </p>
       </div>
-      <div class="response__block">
-        <p class="response__label">Salary:</p>
-        <p class="response__attribute">
+      <div class="dashboard__block">
+        <p class="dashboard__label">Salary:</p>
+        <p class="dashboard__attribute">
           <%= @proposal.proposal_salary %>
         </p>
       </div>
 
-      <div class="response__block">
-        <p class="response__label">Start date:</p>
-        <p class="response__attribute">
+      <div class="dashboard__block">
+        <p class="dashboard__label">Start date:</p>
+        <p class="dashboard__attribute">
           <%= @proposal.start_date.strftime("%d/%m/%Y") %>
         </p>
       </div>
     </div>
   </div>
   <% if @proposal.declined? %>
-    <div class="response__list">
-      <h4 class="response__title">Candidate response</h4>
-      <div class="response__item">
-        <span class="response__subtitle">message received on: 
-          <%= @proposal.decline.created_at.strftime("%d %B %Y at %H:%M") %>
-        </span>
-        <div class="response__block">
-          <p class="response__label">Message content:</p>
-          <p class="response__attribute">
-            <%= @proposal.decline.reason %>
-          </p>
-        </div>
+    <h3 class="dashboard__name">Candidate response</h3>
+    <div class="dashboard__item proposal">
+      <p class="dashboard__label">Message received on: 
+        <%= @proposal.decline.created_at.strftime("%d %B %Y at %H:%M") %>
+      </p>
+      <div class="dashboard__block">
+        <p class="dashboard__label">Message content:</p>
+        <p class="dashboard__attribute">
+          <%= @proposal.decline.reason %>
+        </p>
       </div>
     </div>
   <% end %>

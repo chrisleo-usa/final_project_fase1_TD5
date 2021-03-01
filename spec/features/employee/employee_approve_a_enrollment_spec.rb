@@ -54,7 +54,7 @@ feature 'Employee approve a enrollment' do
 
     proposal = Proposal.last
     expect(current_path).to eq(new_enrollment_proposal_path(enrollment, proposal))
-    within('form') do
+    within('form.create__form') do
       expect(page).to have_content('Proposal message')
       expect(page).to have_content('Proposal salary')
       expect(page).to have_content('Start date')
@@ -128,15 +128,15 @@ feature 'Employee approve a enrollment' do
 
     enrollment.reload
     proposal = Proposal.last
-    expect(current_path).to eq(enrollment_path(enrollment))
-    expect(page).to have_css('span.dashboard__status', text: enrollment.status)
-    within('div.response__item') do
-      expect(page).to have_css('p.response__attribute', text: 'Congratulations, you have been approved')
-      expect(page).to have_css('p.response__attribute', text: '6000.0')
-      expect(page).to have_css('p.response__attribute', text: '10/04/2023')
+    expect(current_path).to eq(proposal_path(proposal))
+    expect(page).to have_css('span.dashboard__status', text: proposal.status)
+    within('div.dashboard__item') do
+      expect(page).to have_css('p.dashboard__attribute', text: 'Congratulations, you have been approved')
+      expect(page).to have_css('p.dashboard__attribute', text: '6000.0')
+      expect(page).to have_css('p.dashboard__attribute', text: '10/04/2023')
     end
 
-    expect(page).not_to have_css('span.dashboard__status', text: 'pending')
-    expect(page).not_to have_css('span.dashboard__status', text: 'denied')
+    expect(page).not_to have_css('span.dashboard__status', text: 'accepted')
+    expect(page).not_to have_css('span.dashboard__status', text: 'declined')
   end
 end

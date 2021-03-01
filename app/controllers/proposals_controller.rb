@@ -10,7 +10,7 @@ class ProposalsController < ApplicationController
     @proposal.enrollment_id = @enrollment.id
 
     if @proposal.save
-      redirect_to enrollment_path(@enrollment), notice: 'Candidate approved, proposal successfully created'
+      redirect_to proposal_path(@proposal), notice: 'Candidate approved, proposal successfully created'
     else
       render :new
     end
@@ -27,7 +27,7 @@ class ProposalsController < ApplicationController
       proposal.declined!
       redirect_to new_proposal_decline_path(proposal)
     elsif proposal.declined?
-      if proposal.declined.blank?
+      if proposal.decline.blank?
         redirect_to new_proposal_decline_path(proposal)
       else
       redirect_to proposal_path(proposal), alert: 'You already declined this proposal'
