@@ -10,6 +10,14 @@
     border-bottom: 1px solid black;
   }
 
+  &__item {
+    margin-top: 16px;
+  }
+
+  &__item:first-child {
+    margin-top: 0;
+  }
+
   &__label {
     color: rgba(0, 0, 0, 0.596);
     margin-bottom: 8px;
@@ -21,5 +29,20 @@
 
   &__attribute.link {
     color: darkblue;
+  }
+
+  &__status {
+    padding: 6px 12px;
+    border-radius: 16px;
+  }
+
+  &__status.active {
+    color: limegreen;
+    border: 1px solid limegreen;
+  }
+
+  &__status.inactive {
+    color: lightslategray;
+    border: 1px solid lightslategray;
   }
 }

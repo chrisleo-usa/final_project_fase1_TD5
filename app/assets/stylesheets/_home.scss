@@ -2,4 +2,9 @@
 .welcome {
   text-align: center;
   font-size: 36px;
+
+  &__subtitle {
+    margin: 24px 0;
+    font-size: 24px;
+  }
 }
