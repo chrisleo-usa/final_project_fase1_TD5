@@ -20,21 +20,20 @@ class ProposalsController < ApplicationController
     @proposal = Proposal.find(params[:id])
   end
 
-  # def edit
-  #   @enrollment = Enrollment.find(params[:enrollment_id])
-  #   @proposal = Proposal.find(params[:id])
-  # end
+  def decline
+    proposal = Proposal.find(params[:id])
 
-  # def update
-  #   @enrollment = Enrollment.find(params[:enrollment_id])
-  #   @proposal = Proposal.find(params[:id])
-
-  #   if @proposal.update(proposal_message)
-  #     redirect_to @proposal, notice: 'A new proposal has been send'
-  #   else
-  #     render :edit
-  #   end
-  # end
+    if proposal.pending?
+      proposal.declined!
+      redirect_to new_proposal_decline_path(proposal)
+    elsif proposal.declined?
+      if proposal.declined.blank?
+        redirect_to new_proposal_decline_path(proposal)
+      else
+      redirect_to proposal_path(proposal), alert: 'You already declined this proposal'
+      end
+    end
+  end
 
   private
     def proposal_params

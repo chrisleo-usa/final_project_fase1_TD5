@@ -1,0 +1,25 @@
+<div class="container create">
+  <h2 class="create__title">Decline proposal</h2>
+
+  <% if @decline.errors.any? %>
+    <div class="warnings">
+      <%= I18n.t("errors.template.body")%>
+      <ul>
+        <% @decline.errors.full_messages.each do |m| %>
+          <li class="alert"><%= m %></li>
+        <% end %>
+      </ul>
+
+    </div>
+  <% end %>
+
+  <%= form_with model: [@proposal, @decline], html: { class: 'create__form'} do |f| %>
+
+    <div class="create__block">
+      <%= f.label :reason, 'Reason', class: "create__label" %> <br>
+      <%= f.text_field :reason, class: "create__field" %>
+    </div>
+
+    <%= f.submit 'Send', class: "create__btn" %>
+  <% end %>
+</div>

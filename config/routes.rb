@@ -12,12 +12,18 @@ Rails.application.routes.draw do
   end
 
   resources :enrollments, only: [:show] do
-    resources :proposals, only: %i[new create edit update]
-    post 'approve', on: :member
-
+    resources :proposals, only: %i[new create]
+    resources :rejects, only: %i[new create]
+    member do
+      post 'approve'
+      post 'reject'
+    end
   end
 
-  resources :proposals, only: [:show]
+  resources :proposals, only: [:show] do
+    resources :declines, only: %i[new create]
+    post 'decline', on: :member
+  end
 
   resources :companies, only: %i[index new show edit update destroy] do
     resources :jobs, only: %i[index new create show edit update] do

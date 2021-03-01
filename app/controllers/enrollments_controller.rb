@@ -24,4 +24,19 @@ class EnrollmentsController < ApplicationController
       end
     end
   end
+
+  def reject
+    enrollment = Enrollment.find(params[:id])
+
+    if enrollment.pending?
+      enrollment.denied!
+      redirect_to new_enrollment_reject_path(enrollment)
+    elsif enrollment.denied?
+      if enrollment.reject.blank?
+        redirect_to new_enrollment_reject_path(enrollment)
+      else
+      redirect_to enrollment_path(enrollment), alert: 'Candidate is already denied!'
+      end
+    end
+  end
 end

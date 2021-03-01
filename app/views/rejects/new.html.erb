@@ -1,0 +1,25 @@
+<div class="container create">
+  <h2 class="create__title">Reject</h2>
+
+  <% if @reject.errors.any? %>
+    <div class="warnings">
+      <%= I18n.t("errors.template.body")%>
+      <ul>
+        <% @reject.errors.full_messages.each do |m| %>
+          <li class="alert"><%= m %></li>
+        <% end %>
+      </ul>
+
+    </div>
+  <% end %>
+
+  <%= form_with model: [@enrollment, @reject], html: { class: 'create__form'} do |f| %>
+
+    <div class="create__block">
+      <%= f.label :message, 'Message', class: "create__label" %> <br>
+      <%= f.text_field :message, class: "create__field" %>
+    </div>
+
+    <%= f.submit 'Send', class: "create__btn" %>
+  <% end %>
+</div>

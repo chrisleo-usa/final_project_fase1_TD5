@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_215827) do
+ActiveRecord::Schema.define(version: 2021_02_28_224352) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -65,6 +65,14 @@ ActiveRecord::Schema.define(version: 2021_02_26_215827) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "domain"
+  end
+
+  create_table "declines", force: :cascade do |t|
+    t.text "reason"
+    t.integer "proposal_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["proposal_id"], name: "index_declines_on_proposal_id"
   end
 
   create_table "domains", force: :cascade do |t|
@@ -124,11 +132,21 @@ ActiveRecord::Schema.define(version: 2021_02_26_215827) do
     t.index ["enrollment_id"], name: "index_proposals_on_enrollment_id"
   end
 
+  create_table "rejects", force: :cascade do |t|
+    t.text "message"
+    t.integer "enrollment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["enrollment_id"], name: "index_rejects_on_enrollment_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "declines", "proposals"
   add_foreign_key "employees", "companies"
   add_foreign_key "enrollments", "candidates"
   add_foreign_key "enrollments", "jobs"
   add_foreign_key "jobs", "companies"
   add_foreign_key "proposals", "enrollments"
+  add_foreign_key "rejects", "enrollments"
 end
