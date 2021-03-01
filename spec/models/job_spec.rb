@@ -52,8 +52,7 @@ RSpec.describe Job, type: :model do
     end
   end
 
-  #TODO: Verificar onde melhor se encaixa esse teste! 
-  xcontext '#applied' do
+  context '#applied' do
     it 'return false if candidate already applied' do
       company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
                                 site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
@@ -69,7 +68,7 @@ RSpec.describe Job, type: :model do
 
       Enrollment.create!(job: job, candidate: candidate)
       enrollment = Enrollment.create!(job: job, candidate: candidate)
-      job.applied(enrollment)
+      job.applied(candidate)
 
       job.reload 
       expect(job.valid?).to eq(true)

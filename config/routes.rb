@@ -21,8 +21,12 @@ Rails.application.routes.draw do
   end
 
   resources :proposals, only: [:show] do
+    resources :accepts, only: %i[new create]
     resources :declines, only: %i[new create]
-    post 'decline', on: :member
+    member do
+      post 'accept'
+      post 'decline'
+    end
   end
 
   resources :companies, only: %i[index new show edit update destroy] do

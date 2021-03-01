@@ -1,6 +1,6 @@
 class EnrollmentsController < ApplicationController
-  # before_action :authenticate_employee!, only: [:show]
-  # before_action :authenticate_candidate!, only: %i[index show]
+  before_action :authenticate_employee!, only: %i[approve reject]
+  before_action :authenticate_candidate!, only: %i[index]
 
   def index
     @enrollments = Enrollment.includes(:job).where(candidate: current_candidate)

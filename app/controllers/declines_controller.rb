@@ -1,4 +1,6 @@
 class DeclinesController < ApplicationController
+  before_action :authenticate_candidate!, only: %i[new]
+
   def new
     @proposal = Proposal.find(params[:proposal_id])
     @decline = Decline.new

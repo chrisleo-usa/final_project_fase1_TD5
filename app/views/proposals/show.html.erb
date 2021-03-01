@@ -2,8 +2,8 @@
   <div class="dashboard__header">
     <h2 class="dashboard__title">Proposal</h2>
     <div class="dashboard__settings">
-      
-      <% unless @proposal.declined? %>
+      <% unless @proposal.declined? || @proposal.accepted? %>
+        <%= link_to 'Accept', accept_proposal_path(@proposal), method: :post, class: 'dashboard__btn apply' %>
         <%= link_to 'Decline', decline_proposal_path(@proposal), method: :post, class: 'dashboard__btn deny' %>
       <% end %>
     </div>
@@ -48,6 +48,19 @@
         <p class="dashboard__label">Message content:</p>
         <p class="dashboard__attribute">
           <%= @proposal.decline.reason %>
+        </p>
+      </div>
+    </div>
+  <% elsif @proposal.accepted? %>
+    <h3 class="dashboard__name">Candidate response</h3>
+    <div class="dashboard__item proposal">
+      <p class="dashboard__label">Message received on: 
+        <%= @proposal.accept.created_at.strftime("%d %B %Y at %H:%M") %>
+      </p>
+      <div class="dashboard__block">
+        <p class="dashboard__label">Message content:</p>
+        <p class="dashboard__attribute">
+          <%= @proposal.accept.start_date.strftime("%d/%m/%Y") %>
         </p>
       </div>
     </div>

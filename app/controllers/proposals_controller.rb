@@ -1,4 +1,7 @@
 class ProposalsController < ApplicationController
+  before_action :authenticate_candidate!, only: %i[accept decline]
+  before_action :authenticate_employee!, only: %i[new]
+
   def new
     @enrollment = Enrollment.find(params[:enrollment_id])
     @proposal = Proposal.new
@@ -18,6 +21,21 @@ class ProposalsController < ApplicationController
 
   def show
     @proposal = Proposal.find(params[:id])
+  end
+
+  def accept
+    proposal = Proposal.find(params[:id])
+
+    if proposal.pending?
+      proposal.accepted!
+      redirect_to new_proposal_accept_path(proposal)
+    elsif proposal.accepted?
+      if proposal.accept.blank?
+        redirect_to new_proposal_accept_path(proposal)
+      else
+      redirect_to proposal_path(proposal), alert: 'You already accepted this proposal'
+      end
+    end
   end
 
   def decline

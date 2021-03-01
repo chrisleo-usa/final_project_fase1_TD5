@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_28_224352) do
+ActiveRecord::Schema.define(version: 2021_03_01_021259) do
+
+  create_table "accepts", force: :cascade do |t|
+    t.date "start_date"
+    t.integer "proposal_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["proposal_id"], name: "index_accepts_on_proposal_id"
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -140,6 +148,7 @@ ActiveRecord::Schema.define(version: 2021_02_28_224352) do
     t.index ["enrollment_id"], name: "index_rejects_on_enrollment_id"
   end
 
+  add_foreign_key "accepts", "proposals"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "declines", "proposals"

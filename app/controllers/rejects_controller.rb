@@ -1,4 +1,6 @@
 class RejectsController < ApplicationController
+  before_action :authenticate_employee!, only: %i[new]
+
   def new
     @enrollment = Enrollment.find(params[:enrollment_id])
     @reject = Reject.new

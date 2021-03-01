@@ -37,9 +37,9 @@
 - [X] Visitante cria sua conta como candidato
 - [X] Visitante se candidata para uma vaga
 - [X] Colaboradores recebem as candidaturas
-- [] Colaboradores declinam ou fazem propostas para candidatos 
-- [] Candidato acompanha suas candidaturas
-- [] Candidato aceita/recusa uma proposta
+- [X] Colaboradores declinam ou fazem propostas para candidatos 
+- [X] Candidato acompanha suas candidaturas
+- [X] Candidato aceita/recusa uma proposta
 - [] Vaga é desativada automaticamente devido sua data
 
 ## Ferramentas necessárias:
