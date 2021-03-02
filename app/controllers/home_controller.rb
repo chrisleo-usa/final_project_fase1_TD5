@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @jobs = Job.order(created_at: :desc)
+    @jobs = Job.order(created_at: :desc).limit(4)
   end
 
   def search

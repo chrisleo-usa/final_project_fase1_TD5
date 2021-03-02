@@ -6,8 +6,19 @@
   list-style: none;
 }
 
+html,
 body {
+  min-height: 100vh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
   font-family: Roboto, sans-serif;
+}
+
+footer {
+  margin-top: auto;
 }
 
 .container {

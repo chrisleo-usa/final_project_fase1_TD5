@@ -8,7 +8,12 @@
   &__list {
     padding: 24px 0;
     border-bottom: 1px solid black;
+
+    &:last-child {
+      border: none;
+    }
   }
+
 
   &__item {
     margin-top: 16px;
