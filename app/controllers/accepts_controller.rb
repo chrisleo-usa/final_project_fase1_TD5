@@ -12,7 +12,7 @@ class AcceptsController < ApplicationController
     @accept.proposal_id = @proposal.id
 
     if @accept.save
-      redirect_to proposal_path(@proposal), notice: 'Congratulations! Welcome to your new job!'
+      redirect_to proposal_path(@proposal), notice: t('.success')
     else
       render :new
     end

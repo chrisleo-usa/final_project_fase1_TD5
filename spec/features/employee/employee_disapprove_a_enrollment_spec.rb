@@ -27,6 +27,31 @@ feature 'A employee disapprove a enrollment' do
     expect(page).to have_link('Reprovar')
   end
 
+  scenario 'candidate is already disapproved' do
+    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011,
+                              site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode',
+                              domain: 'campuscode')
+    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', company: company)
+
+    job = Job.create!(title: 'Ruby on Rails Developer', description: 'Vaga para Ruby on Rails Developer', 
+                      salary_range: 9000.0, requirements: 'Conhecimento sólido em Java, Ruby, Ruby on Rails, NodeJS, SQLite3',
+                      deadline_application: '10/04/2023', total_vacancies: 2, level: 1, company: company)
+
+    candidate = Candidate.create!(name: 'Christopher Alves', phone: '48988776655', cpf: 12345678910,
+                                  biography: 'Profissional da área de eventos migrando para a área da tecnologia',
+                                  email: 'chris@gmail.com', password: '123456')
+
+    enrollment = Enrollment.create!(job: job, candidate: candidate, status: :denied)
+    Reject.create!(message: 'Agradecemos o interesse, mas procuramos pessoas mais experientes.', enrollment: enrollment)
+
+    login_as employee, scope: :employee
+    visit enrollment_path(enrollment)
+    click_on 'Reprovar'
+
+    expect(current_path).to eq(enrollment_path(enrollment))
+    expect(page).to have_content('Esta inscrição já está reprovada!')
+  end
+
   scenario 'see form to fill with disapproval message' do
     company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011,
                               site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode',

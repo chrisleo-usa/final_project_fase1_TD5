@@ -12,7 +12,7 @@ class DeclinesController < ApplicationController
     @decline.proposal_id = @proposal.id
 
     if @decline.save
-      redirect_to proposal_path(@proposal), notice: 'Proposal declined with success!'
+      redirect_to proposal_path(@proposal), notice: t('.declined')
     else
       render :new
     end

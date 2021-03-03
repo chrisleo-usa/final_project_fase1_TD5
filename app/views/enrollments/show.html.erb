@@ -92,7 +92,7 @@
         <%= link_to 'Proposta', proposal_path(@enrollment.proposal), class: "response__btn" %>
       </div>
     </div>
-  <% elsif @enrollment.denied? %>
+  <% elsif @enrollment.denied? && @enrollment.reject %>
     <div class="response__item">
       <h4 class="response__title">Resposta da empresa</h4>
       <p class="response__label">Mensagem recebida em: 

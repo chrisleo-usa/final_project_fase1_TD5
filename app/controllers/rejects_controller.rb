@@ -12,7 +12,7 @@ class RejectsController < ApplicationController
     @reject.enrollment_id = @enrollment.id
 
     if @reject.save
-      redirect_to enrollment_path(@enrollment), notice: 'Enrollment rejected'
+      redirect_to enrollment_path(@enrollment), notice: t('.rejected')
     else
       render :new
     end

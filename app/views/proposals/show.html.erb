@@ -10,7 +10,6 @@
   </div>
 
   <span class="dashboard__status <%= @proposal.status %>"><%= @proposal.status%></span>
-
   <div class="dashboard__grid one__column">
     <h3 class="dashboard__name">Resposta da empresa</h3>
     <div class="dashboard__item proposal">
@@ -51,7 +50,7 @@
         </p>
       </div>
     </div>
-  <% elsif @proposal.accepted? %>
+  <% elsif @proposal.accepted? && !@proposal.accept.blank? %>
     <h3 class="dashboard__name">Resposta do candidato</h3>
     <div class="dashboard__item proposal">
       <p class="dashboard__label">Mensagem recebida em: 

@@ -1,0 +1,29 @@
+pt-BR:
+  jobs:
+    disable:
+      already_disabled: 'Esta vaga já está inativada!'
+      other_company: 'Essa vaga não pertence a sua empresa!'
+    apply:
+      sucess: 'Inscrição realizada com sucesso!'
+      already_applied: 'Você já se inscreveu para esta vaga!'
+  enrollments:
+    approve:
+      already_approved: 'Esta inscrição já está aprovada!'
+    reject:
+      already_rejected: 'Esta inscrição já está reprovada!'
+  proposals:
+    create:
+      success: 'Candidato aprovado com sucesso!'
+    accept:
+      already_accepted: 'Você já aceitou esta proposta!'
+    decline:
+      already_declined: 'Você já recusou esta proposta!'
+  rejects:
+    create:
+      rejected: 'Inscrição recusada'
+  accepts:
+    create:
+      success: 'Parabéns, bem vindo a sua nova jornada!'
+  declines:
+    create:
+      declined: 'Proposta recusada.'

@@ -2,7 +2,9 @@ require 'rails_helper'
 
 feature 'Employee disable a job opportunity' do
   scenario 'and must be signed in' do
-    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', domain: 'campuscode')
+    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
+                              site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode',
+                              domain: 'campuscode')
     employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', company: company)
 
     login_as employee, scope: :employee
@@ -11,6 +13,42 @@ feature 'Employee disable a job opportunity' do
     expect(page).not_to have_link('Login')
     expect(page).to have_content(employee.email)
     expect(page).to have_link('Logout')
+  end
+
+  scenario ', if job is already disabled, employee cannot see the button to disable again' do
+    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
+                              site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode',
+                              domain: 'campuscode')
+    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', company: company)
+    job = Job.create!(title: 'Ruby on Rails Developer', description: 'Vaga para Ruby on Rails Developer', 
+                      salary_range: 9000.0, requirements: 'Conhecimento sólido em Java, Ruby, Ruby on Rails, NodeJS, SQLite3',
+                      deadline_application: '10/04/2023', total_vacancies: 2, level: 1, company: company, status: :inactive)
+
+    login_as employee, scope: :employee
+    visit company_job_path(company, job)
+
+    expect(current_path).to eq(company_job_path(company, job))
+    expect(page).not_to have_link('Inativar')
+  end
+
+  scenario 'and employee from another company, cannot see the button to disable job' do
+    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
+                              site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode',
+                              domain: 'campuscode')
+    other_company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
+                                    site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode',
+                                    domain: 'campuscode')
+    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', company: company)
+    other_employee = Employee.create!(email: 'joao@portalsolar.com', password: '123456', company: other_company)
+    job = Job.create!(title: 'Ruby on Rails Developer', description: 'Vaga para Ruby on Rails Developer', 
+                      salary_range: 9000.0, requirements: 'Conhecimento sólido em Java, Ruby, Ruby on Rails, NodeJS, SQLite3',
+                      deadline_application: '10/04/2023', total_vacancies: 2, level: 1, company: company, status: :inactive)
+
+    login_as other_employee, scope: :employee
+    visit company_job_path(company, job)
+
+    expect(current_path).to eq(company_job_path(company, job))
+    expect(page).not_to have_link('Inativar')
   end
 
   scenario 'successfully' do

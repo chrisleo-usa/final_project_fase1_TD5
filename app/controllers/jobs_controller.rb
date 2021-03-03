@@ -51,9 +51,9 @@ class JobsController < ApplicationController
   def disable
     @job = Job.find(params[:id])
     if @job.inactive?
-      redirect_to @job.company, notice: 'Job already disabled'
+      redirect_to @job.company, notice: t('.already_disabled')
     elsif current_employee.company != @job.company
-      redirect_to root_path, notice: 'This job doesn\'t belongs to your company!'
+      redirect_to root_path, notice: t('.other_company')
     else
       @job.inactive!
       redirect_to @job.company
@@ -65,9 +65,9 @@ class JobsController < ApplicationController
 
 
     if @job.applied(current_candidate)
-      redirect_to candidate_enrollments_path(current_candidate), notice: 'Successfully applied'
+      redirect_to candidate_enrollments_path(current_candidate), notice: t('.sucess')
     else
-      redirect_to company_job_path(@job.company, @job), alert: 'Already applied for this job'
+      redirect_to company_job_path(@job.company, @job), alert: t('.already_applied')
     end
   end
 
