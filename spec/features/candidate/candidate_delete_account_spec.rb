@@ -9,7 +9,7 @@ feature 'Candidate delete account' do
     login_as candidate, scope: :candidate
     visit candidate_path(candidate)
 
-    expect(page).to have_link('Delete')
+    expect(page).to have_link('Deletar')
   end
 
   scenario 'successfully' do
@@ -19,7 +19,7 @@ feature 'Candidate delete account' do
 
     login_as candidate, scope: :candidate
     visit candidate_path(candidate)
-    click_on 'Delete'
+    click_on 'Deletar'
 
     expect(current_path).to eq(root_path)
     expect(Candidate.count).to eq(0)
@@ -44,7 +44,7 @@ feature 'Candidate delete account' do
 
     login_as candidate, scope: :candidate
     visit candidate_path(candidate)
-    click_on 'Delete'
+    click_on 'Deletar'
 
     expect(current_path).to eq(root_path)
     expect(Candidate.count).to eq(0)

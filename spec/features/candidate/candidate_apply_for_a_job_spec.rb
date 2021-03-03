@@ -40,7 +40,7 @@ feature 'Candidate apply for a job' do
     within('div.index__list') do
       expect(page).to have_link(job.title)
       expect(page).to have_css('p.index__attribute', text: company.name)
-      expect(page).to have_css('p.index__attribute', text: enrollment.status)
+      expect(page).to have_css('p.index__attribute', text: 'Em análise')
     end
   end
 
