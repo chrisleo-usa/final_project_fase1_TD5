@@ -23,11 +23,11 @@ feature 'Employee approve a enrollment' do
     login_as employee, scope: :employee
     visit company_job_path(company, job)
     click_on candidate.name
-    click_on 'Approve'
+    click_on 'Aprovar'
 
     expect(current_path).to eq(enrollment_path(enrollment))
-    expect(page).to have_css('span.dashboard__status', text: 'approved')
-    expect(page).to have_content('Candidate is already approved!')
+    expect(page).to have_css('span.dashboard__status', text: 'Aprovada')
+    expect(page).to have_content('Esta inscrição já está aprovada!')
   end
 
   scenario 'and see a form to make a proposal' do
@@ -50,15 +50,15 @@ feature 'Employee approve a enrollment' do
     login_as employee, scope: :employee
     visit company_job_path(company, job)
     click_on candidate.name
-    click_on 'Approve'
+    click_on 'Aprovar'
 
     proposal = Proposal.last
     expect(current_path).to eq(new_enrollment_proposal_path(enrollment, proposal))
     within('form.create__form') do
-      expect(page).to have_content('Proposal message')
-      expect(page).to have_content('Proposal salary')
-      expect(page).to have_content('Start date')
-      expect(page).to have_button('Send')
+      expect(page).to have_content('Mensagem de proposta')
+      expect(page).to have_content('Proposta salarial')
+      expect(page).to have_content('Data de início')
+      expect(page).to have_button('Enviar')
     end
   end
 
@@ -82,19 +82,19 @@ feature 'Employee approve a enrollment' do
     login_as employee, scope: :employee
     visit company_job_path(company, job)
     click_on candidate.name
-    click_on 'Approve'
+    click_on 'Aprovar'
     within 'form.create__form' do
-      fill_in 'Proposal message', with: ''
-      fill_in 'Proposal salary', with: ''
-      fill_in 'Start date', with: ''
-      click_on 'Send'
+      fill_in 'Mensagem de proposta', with: ''
+      fill_in 'Proposta salarial', with: ''
+      fill_in 'Data de início', with: ''
+      click_on 'Enviar'
     end
 
     expect(current_path).to eq(enrollment_proposals_path(enrollment))
     within('div.warnings') do
-      expect(page).to have_css('li.alert', text: 'Proposal message can\'t be blank')
-      expect(page).to have_css('li.alert', text: 'Proposal salary can\'t be blank')
-      expect(page).to have_css('li.alert', text: 'Start date can\'t be blank')
+      expect(page).to have_css('li.alert', text: 'Mensagem de proposta não pode ficar em branco')
+      expect(page).to have_css('li.alert', text: 'Proposta salarial não pode ficar em branco')
+      expect(page).to have_css('li.alert', text: 'Data de início não pode ficar em branco')
     end
   end
 
@@ -118,12 +118,12 @@ feature 'Employee approve a enrollment' do
     login_as employee, scope: :employee
     visit company_job_path(company, job)
     click_on candidate.name
-    click_on 'Approve'
+    click_on 'Aprovar'
     within 'form.create__form' do
-      fill_in 'Proposal message', with: 'Congratulations, you have been approved'
-      fill_in 'Proposal salary', with: '6000.0'
-      fill_in 'Start date', with: '10/04/2023'
-      click_on 'Send'
+      fill_in 'Mensagem de proposta', with: 'Parabéns, você foi aprovado!'
+      fill_in 'Proposta salarial', with: '6000.0'
+      fill_in 'Data de início', with: '10/04/2023'
+      click_on 'Enviar'
     end
 
     enrollment.reload
@@ -131,12 +131,12 @@ feature 'Employee approve a enrollment' do
     expect(current_path).to eq(proposal_path(proposal))
     expect(page).to have_css('span.dashboard__status', text: proposal.status)
     within('div.dashboard__item') do
-      expect(page).to have_css('p.dashboard__attribute', text: 'Congratulations, you have been approved')
+      expect(page).to have_css('p.dashboard__attribute', text: 'Parabéns, você foi aprovado!')
       expect(page).to have_css('p.dashboard__attribute', text: '6000.0')
       expect(page).to have_css('p.dashboard__attribute', text: '10/04/2023')
     end
 
-    expect(page).not_to have_css('span.dashboard__status', text: 'accepted')
-    expect(page).not_to have_css('span.dashboard__status', text: 'declined')
+    expect(page).not_to have_css('span.dashboard__status', text: 'aceita')
+    expect(page).not_to have_css('span.dashboard__status', text: 'recusada')
   end
 end

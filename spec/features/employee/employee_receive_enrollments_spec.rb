@@ -16,7 +16,7 @@ feature 'Employee can see enrollments' do
     enrollment = Enrollment.create!(job: job, candidate: candidate)
 
     visit root_path
-    click_on 'Companies'
+    click_on 'Empresas'
     click_on company.name
     click_on job.title
 
@@ -37,11 +37,11 @@ feature 'Employee can see enrollments' do
 
     login_as employee, scope: :employee
     visit root_path
-    click_on 'My company'
+    click_on 'Minha empresa'
     click_on job.title
 
     expect(current_path).to eq(company_job_path(company, job)) 
-    expect(page).to have_content('None enrollments yet')
+    expect(page).to have_content('Sem inscrições no momento')
   end
 
   scenario 'successfully' do
@@ -68,11 +68,11 @@ feature 'Employee can see enrollments' do
 
     login_as employee, scope: :employee
     visit root_path
-    click_on 'My company'
+    click_on 'Minha empresa'
     click_on job.title
 
     expect(current_path).to eq(company_job_path(company, job))
-    expect(page).to have_content('Enrollments received:')
+    expect(page).to have_content('Inscrições recebidas:')
     expect(page).to have_link(candidate.name)
     expect(page).to have_link(other_candidate.name)
   end
@@ -96,12 +96,12 @@ feature 'Employee can see enrollments' do
 
     login_as employee, scope: :employee
     visit root_path
-    click_on 'My company'
+    click_on 'Minha empresa'
     click_on job.title
     click_on candidate.name
 
     expect(current_path).to eq(enrollment_path(enrollment))
-    expect(page).to have_css('h2.dashboard__name', text: "Enrollment from #{enrollment.candidate.name} for #{enrollment.job.title} job")
+    expect(page).to have_css('h2.dashboard__name', text: "Inscrição de #{enrollment.candidate.name} para a vaga de #{enrollment.job.title}")
     within('div.dashboard__grid') do
       expect(page).to have_css('p.dashboard__attribute', text: candidate.name)
       expect(page).to have_css('p.dashboard__attribute', text: candidate.email)

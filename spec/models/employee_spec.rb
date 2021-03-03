@@ -18,7 +18,7 @@ RSpec.describe Employee, type: :model do
       employee = Employee.new(email: 'chris@campus.com.br')
 
       expect(employee.valid?).to eq(false)
-      expect(employee.errors[:email]).to include('has already been taken')
+      expect(employee.errors[:email]).to include('já está em uso')
     end
 
     it 'create a valid employee' do

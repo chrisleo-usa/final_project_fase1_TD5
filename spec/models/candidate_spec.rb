@@ -17,7 +17,7 @@ RSpec.describe Candidate, type: :model do
       candidate = Candidate.new(email: 'chris@campuscode.com.br')
 
       expect(candidate.valid?).to eq(false)
-      expect(candidate.errors[:email]).to include('has already been taken')
+      expect(candidate.errors[:email]).to include('já está em uso')
     end
 
     it 'create a valid candidate' do

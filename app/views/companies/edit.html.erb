@@ -1,8 +1,8 @@
 <div class="container create edit">
   <% if @company.name.blank?%>
-    <h2 class="create__title">Please, fill the form</h2>
+    <h2 class="create__title">Registre sua empresa</h2>
   <% else %>
-    <h2 class="create__title"><%= @company.name %> Page</h2>
+    <h2 class="create__title">Editar <%= @company.name %></h2>
   <% end %>
   <%= render 'form' %>
 </div>

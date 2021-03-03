@@ -1,10 +1,10 @@
 <div class="container dashboard">
   <div class="dashboard__header">
-    <h2 class="dashboard__title">Proposal</h2>
+    <h2 class="dashboard__title">Proposta</h2>
     <div class="dashboard__settings">
       <% unless @proposal.declined? || @proposal.accepted? %>
-        <%= link_to 'Accept', accept_proposal_path(@proposal), method: :post, class: 'dashboard__btn apply' %>
-        <%= link_to 'Decline', decline_proposal_path(@proposal), method: :post, class: 'dashboard__btn deny' %>
+        <%= link_to 'Aceitar', accept_proposal_path(@proposal), method: :post, class: 'dashboard__btn apply' %>
+        <%= link_to 'Recusar', decline_proposal_path(@proposal), method: :post, class: 'dashboard__btn deny' %>
       <% end %>
     </div>
   </div>
@@ -12,26 +12,26 @@
   <span class="dashboard__status <%= @proposal.status %>"><%= @proposal.status%></span>
 
   <div class="dashboard__grid one__column">
-    <h3 class="dashboard__name">Company response</h3>
+    <h3 class="dashboard__name">Resposta da empresa</h3>
     <div class="dashboard__item proposal">
-      <p class="dashboard__label">Message received on: 
+      <p class="dashboard__label">Mensagem recebida em: 
         <%= @proposal.created_at.strftime("%d %B %Y at %H:%M") %>
       </p>
       <div class="dashboard__block">
-        <p class="dashboard__label">Message content:</p>
+        <p class="dashboard__label">Conteúdo da mensagem:</p>
         <p class="dashboard__attribute">
           <%= @proposal.proposal_message %>
         </p>
       </div>
       <div class="dashboard__block">
-        <p class="dashboard__label">Salary:</p>
+        <p class="dashboard__label">Salário:</p>
         <p class="dashboard__attribute">
           <%= @proposal.proposal_salary %>
         </p>
       </div>
 
       <div class="dashboard__block">
-        <p class="dashboard__label">Start date:</p>
+        <p class="dashboard__label">Data de início:</p>
         <p class="dashboard__attribute">
           <%= @proposal.start_date.strftime("%d/%m/%Y") %>
         </p>
@@ -39,26 +39,26 @@
     </div>
   </div>
   <% if @proposal.declined? %>
-    <h3 class="dashboard__name">Candidate response</h3>
+    <h3 class="dashboard__name">Resposta do candidato</h3>
     <div class="dashboard__item proposal">
-      <p class="dashboard__label">Message received on: 
+      <p class="dashboard__label">Mensagem recebida em: 
         <%= @proposal.decline.created_at.strftime("%d %B %Y at %H:%M") %>
       </p>
       <div class="dashboard__block">
-        <p class="dashboard__label">Message content:</p>
+        <p class="dashboard__label">Conteúdo da mensagem:</p>
         <p class="dashboard__attribute">
           <%= @proposal.decline.reason %>
         </p>
       </div>
     </div>
   <% elsif @proposal.accepted? %>
-    <h3 class="dashboard__name">Candidate response</h3>
+    <h3 class="dashboard__name">Resposta do candidato</h3>
     <div class="dashboard__item proposal">
-      <p class="dashboard__label">Message received on: 
+      <p class="dashboard__label">Mensagem recebida em: 
         <%= @proposal.accept.created_at.strftime("%d %B %Y at %H:%M") %>
       </p>
       <div class="dashboard__block">
-        <p class="dashboard__label">Message content:</p>
+        <p class="dashboard__label">Conteúdo da mensagem:</p>
         <p class="dashboard__attribute">
           <%= @proposal.accept.start_date.strftime("%d/%m/%Y") %>
         </p>

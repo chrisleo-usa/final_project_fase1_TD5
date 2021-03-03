@@ -20,7 +20,7 @@ feature 'Employee admin register a job opportunity' do
 
     login_as employee, scope: :employee
     visit root_path
-    click_on 'My company'
+    click_on 'Minha empresa'
 
     expect(current_path).to eq(company_path(company))
     expect(page).not_to have_link('Register a job opportunity')
@@ -34,27 +34,26 @@ feature 'Employee admin register a job opportunity' do
 
     login_as employee, scope: :employee
     visit root_path
-    click_on 'My company'
-    click_on 'Register a job opportunity'
-    within 'form' do
-      fill_in 'Title', with: ''
-      fill_in 'Description', with: ''
-      fill_in 'Salary range', with: ''
-      fill_in 'Requirements', with: ''
-      fill_in 'Deadline application', with: ''
-      fill_in 'Total vacancies', with: ''
-      click_on 'Save'
+    click_on 'Minha empresa'
+    click_on 'Registrar novo emprego'
+    within 'form.create__form' do
+      fill_in 'Título', with: ''
+      fill_in 'Descrição', with: ''
+      fill_in 'Média salarial', with: ''
+      fill_in 'Requerimentos', with: ''
+      fill_in 'Data limite para aplicação', with: ''
+      fill_in 'Total de vagas', with: ''
+      click_on 'Salvar'
     end
 
     expect(current_path).to eq(company_jobs_path(company))
     within("div.warnings") do
-      expect(page).to have_content('There were problems with the following fields')
-      expect(page).to have_content('Title can\'t be blank')
-      expect(page).to have_content('Description can\'t be blank')
-      expect(page).to have_content('Salary range can\'t be blank')
-      expect(page).to have_content('Requirements can\'t be blank')
-      expect(page).to have_content('Deadline application can\'t be blank')
-      expect(page).to have_content('Total vacancies can\'t be blank')
+      expect(page).to have_content('Título não pode ficar em branco')
+      expect(page).to have_content('Descrição não pode ficar em branco')
+      expect(page).to have_content('Média salarial não pode ficar em branco')
+      expect(page).to have_content('Requerimentos não pode ficar em branco')
+      expect(page).to have_content('Data limite para aplicação não pode ficar em branco')
+      expect(page).to have_content('Total de vagas não pode ficar em branco')
     end
   end
 
@@ -66,17 +65,17 @@ feature 'Employee admin register a job opportunity' do
 
     login_as employee, scope: :employee
     visit root_path
-    click_on 'My company'
-    click_on 'Register a job opportunity'
-    within('form') do
-      fill_in 'Title', with: 'Dev Front-End'
-      fill_in 'Description', with: 'Vaga para desenvolvedor Front End'
-      fill_in 'Salary range', with: 3000.00
-      select 'Intern', from: 'Job level'
-      fill_in 'Requirements', with: 'Necessário Javascript, React, Rails, Php, Python, Java e etc...'
-      fill_in 'Deadline application', with: '20/01/2050'
-      fill_in 'Total vacancies', with: 5
-      click_on 'Save'
+    click_on 'Minha empresa'
+    click_on 'Registrar novo emprego'
+    within 'form.create__form' do
+      fill_in 'Título', with: 'Dev Front-End'
+      fill_in 'Descrição', with: 'Vaga para desenvolvedor Front End'
+      fill_in 'Média salarial', with: 3000.00
+      select 'Intern', from: 'Nível'
+      fill_in 'Requerimentos', with: 'Necessário Javascript, React, Rails, Php, Python, Java e etc...'
+      fill_in 'Data limite para aplicação', with: '20/01/2050'
+      fill_in 'Total de vagas', with: 5
+      click_on 'Salvar'
     end
     click_on 'Dev Front-End'
 
@@ -87,9 +86,9 @@ feature 'Employee admin register a job opportunity' do
     expect(page).to have_content('3000.0')
     expect(page).to have_content('Necessário Javascript, React, Rails, Php, Python, Java e etc...')
     expect(page).to have_content('20/01/2050')
-    expect(page).to have_content('intern')
-    expect(page).not_to have_content('junior')
-    expect(page).not_to have_content('pleno')
-    expect(page).not_to have_content('senior')
+    expect(page).to have_content('Estágio')
+    expect(page).not_to have_content('Júnior')
+    expect(page).not_to have_content('Pleno')
+    expect(page).not_to have_content('Senior')
   end
 end

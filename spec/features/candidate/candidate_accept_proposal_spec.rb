@@ -20,17 +20,17 @@ feature 'Candidate accept proposal' do
 
     login_as candidate, scope: :candidate
     visit enrollment_path(enrollment)
-    click_on 'Proposal'
-    click_on 'Accept'
+    click_on 'Proposta'
+    click_on 'Aceitar'
     within 'form.create__form' do
-      fill_in 'Start date', with: ''
-      click_on 'Send'
+      fill_in 'Data de início', with: ''
+      click_on 'Enviar'
     end
 
     expect(current_path).to eq(proposal_accepts_path(proposal))
     expect(Accept.count).to eq(0)
     within('div.warnings') do
-      expect(page).to have_content('Start date can\'t be blank')
+      expect(page).to have_content('Data de início não pode ficar em branco')
     end
   end
 
@@ -53,11 +53,11 @@ feature 'Candidate accept proposal' do
 
     login_as candidate, scope: :candidate
     visit enrollment_path(enrollment)
-    click_on 'Proposal'
-    click_on 'Accept'
+    click_on 'Proposta'
+    click_on 'Aceitar'
     within 'form.create__form' do
-      fill_in 'Start date', with: '01/03/2021'
-      click_on 'Send'
+      fill_in 'Data de início', with: '01/03/2021'
+      click_on 'Enviar'
     end
 
     expect(current_path).to eq(proposal_path(proposal))

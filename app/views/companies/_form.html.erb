@@ -3,7 +3,7 @@
     <%= I18n.t("errors.template.body")%>
     <ul>
       <% @company.errors.full_messages.each do |m| %>
-        <li class="alert"><%= m %>TESTE</li>
+        <li class="alert"><%= m %></li>
       <% end %>
     </ul>
   </div>
@@ -12,35 +12,35 @@
 <%= form_with model: @company, html: { class: "create__form" } do |f| %>
 
 <div class="create__block">
-  <%= f.label :name, 'Company name', class: "create__label" %> <br>
+  <%= f.label :name, class: "create__label" %> <br>
   <%= f.text_field :name, class: "create__field" %>
 </div>
 
 <div class="create__block">
-  <%= f.label :logo, 'Logo' , class: "create__label" %> <br>
+  <%= f.label :logo , class: "create__label" %> <br>
   <%= f.file_field :logo, class: "create__field"  %>
 </div>
 
 <div class="create__block">
-  <%= f.label :address, 'Address', class: "create__label" %> <br>
+  <%= f.label :address, class: "create__label" %> <br>
   <%= f.text_field :address, class: "create__field"  %>
 </div>
 
 <div class="create__block">
-  <%= f.label :cnpj, 'CNPJ', class: "create__label" %> <br>
+  <%= f.label :cnpj, class: "create__label" %> <br>
   <%= f.number_field :cnpj, class: "create__field"  %>
 </div>
 
 <div class="create__block">
-  <%= f.label :site, 'Site', class: "create__label" %> <br>
+  <%= f.label :site, class: "create__label" %> <br>
   <%= f.text_field :site, class: "create__field"  %>
 </div>
 
 <div class="create__block">
-  <%= f.label :social_media, 'Social media', class: "create__label" %> <br>
+  <%= f.label :social_media, class: "create__label" %> <br>
   <%= f.text_field :social_media, class: "create__field"   %>
 </div>
 
-<%= f.submit 'Save', class: "create__btn" %>
+<%= f.submit 'Salvar', class: "create__btn" %>
 
 <% end %>

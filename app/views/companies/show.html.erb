@@ -1,15 +1,15 @@
 <div class="container dashboard">
   <div class="dashboard__header">
-    <%= link_to 'Back', companies_path, class: 'dashboard__btn apply back' %>
+    <%= link_to 'Voltar', companies_path, class: 'dashboard__btn apply back' %>
     <% if !@company.name.blank?%>
-      <h2 class="dashboard__name"><%= @company.name %> profile</h2>
+      <h2 class="dashboard__name">Página da empresa <%= @company.name %></h2>
     <% end %>
 
     <% if employee_signed_in? %>
       <% if current_employee.company_id === @company.id && current_employee.admin === 1 %>
       <div class="dashboard__settings">
-        <%= link_to 'Edit', edit_company_path, class: "dashboard__btn edit" %>
-        <%= link_to 'Delete', company_path, method: :delete, class: "dashboard__btn delete" %>
+        <%= link_to 'Editar', edit_company_path, class: "dashboard__btn edit" %>
+        <%= link_to 'Deletar', company_path, method: :delete, class: "dashboard__btn delete" %>
       </div>
       <% end %>
     <% end %>
@@ -18,14 +18,14 @@
   <div class="dashboard__grid two__columns">
     <div class="dashboard__list">
       <div class="dashboard__item">
-        <p class="dashboard__label">Company name: </p>
+        <p class="dashboard__label">Empresa: </p>
         <p class="dashboard__attribute">
           <%= @company.name %>
         </p>
       </div>
 
       <div class="dashboard__item">
-        <p class="dashboard__label">Address: </p>
+        <p class="dashboard__label">Endereço: </p>
         <p class="dashboard__attribute">
           <%= @company.address %>
         </p>
@@ -46,7 +46,7 @@
       </div>
 
       <div class="dashboard__item">
-        <p class="dashboard__label">Social media: </p>
+        <p class="dashboard__label">Redes Sociais: </p>
         <p class="dashboard__attribute">
           <%= @company.social_media %>
         </p>
@@ -65,28 +65,26 @@
 
 <div class="container jobs">
   <div class="jobs__header">
-    <h3>Jobs opportunities</h3>
+    <h3>Oportunidades de emprego</h3>
     <% if employee_signed_in? %>
       <% if current_employee.company_id === @company.id && current_employee.admin == 1 %>
         <div class="jobs__settings">
-          <%= link_to 'Register a job opportunity', new_company_job_path(@company), class: "jobs__btn new" %>
+          <%= link_to 'Registrar novo emprego', new_company_job_path(@company), class: "jobs__btn new" %>
         </div>
       <% end %>
     <% end %>
   </div>
 
   <% if @company.jobs.empty? %>
-    <h4>No registered jobs </h4>
+    <h4>Sem vagas de emprego registradas no momento</h4>
   <% else %>
     <% @company.jobs.each do |job| %>
       <div class="jobs__item">
         <%= link_to job.title, company_job_path(job.company, job), class: "jobs__name" %>
         <% if job.inactive? %>
-          <span class="jobs__status">is <%= job.status %></span>
+          <span class="jobs__status">está <%= Job.human_attribute_name("status.#{job.status}") %></span>
         <% end %>
       </div>
     <% end %>
   <% end %>
 </div>
-
-    

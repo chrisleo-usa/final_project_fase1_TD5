@@ -20,7 +20,7 @@ class EnrollmentsController < ApplicationController
       if enrollment.proposal.blank?
         redirect_to new_enrollment_proposal_path(enrollment)
       else
-        redirect_to enrollment_path(enrollment), alert: 'Candidate is already approved!'
+        redirect_to enrollment_path(enrollment), alert: 'Esta inscrição já está aprovada!'
       end
     end
   end
@@ -35,7 +35,7 @@ class EnrollmentsController < ApplicationController
       if enrollment.reject.blank?
         redirect_to new_enrollment_reject_path(enrollment)
       else
-      redirect_to enrollment_path(enrollment), alert: 'Candidate is already denied!'
+      redirect_to enrollment_path(enrollment), alert: 'Esta inscrição já foi reprovada!'
       end
     end
   end

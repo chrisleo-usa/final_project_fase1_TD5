@@ -20,17 +20,18 @@ feature 'Candidate decline a proposal' do
 
     login_as candidate, scope: :candidate
     visit enrollment_path(enrollment)
-    click_on 'Proposal'
-    click_on 'Decline'
+    click_on 'Proposta'
+    click_on 'Recusar'
     within 'form.create__form' do
-      fill_in 'Reason', with: ''
-      click_on 'Send'
+      fill_in 'Motivo', with: ''
+      click_on 'Enviar'
     end
 
     expect(current_path).to eq(proposal_declines_path(proposal))
     expect(Decline.count).to eq(0)
     within('div.warnings') do
-      expect(page).to have_content('Reason can\'t be blank')
+      expect(page).to have_content('Motivo não pode ficar em branco')
+      expect(page).to have_content('Motivo é muito curto (mínimo: 10 caracteres)')
     end
   end
 
@@ -53,15 +54,15 @@ feature 'Candidate decline a proposal' do
 
     login_as candidate, scope: :candidate
     visit enrollment_path(enrollment)
-    click_on 'Proposal'
-    click_on 'Decline'
+    click_on 'Proposta'
+    click_on 'Recusar'
     within 'form.create__form' do
-      fill_in 'Reason', with: 'I already got a new job'
-      click_on 'Send'
+      fill_in 'Motivo', with: 'Eu já consegui um novo emprego, obrigado'
+      click_on 'Enviar'
     end
 
     expect(current_path).to eq(proposal_path(proposal))
     expect(page).to have_content('Proposal declined')
-    expect(page).to have_content('I already got a new job')
+    expect(page).to have_content('Eu já consegui um novo emprego, obrigado')
   end
 end

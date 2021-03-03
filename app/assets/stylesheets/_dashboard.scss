@@ -25,13 +25,23 @@
     transition: ease-in-out .3s;
 
     &:hover {
-      border: 1px solid lightblue;
+      border-color: lightblue;
       background-color: transparent;
       color: darken(lightblue, 50%);
     }
   }
 
-  &__btn--disable,
+  &__btn--disable {
+    background-color: lightslategray;
+    border-color: lightslategray;
+
+    &:hover {
+      border-color: lightslategray;
+      background-color: white;
+      color: lightslategray;
+    }
+  }
+
   &__btn.approve {
     margin-right: 24px;
   }

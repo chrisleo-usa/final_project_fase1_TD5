@@ -19,12 +19,12 @@ feature 'A employee disapprove a enrollment' do
 
     login_as employee, scope: :employee
     visit root_path
-    click_on 'My company'
+    click_on 'Minha empresa'
     click_on job.title
     click_on candidate.name
 
     expect(current_path).to eq(enrollment_path(enrollment))
-    expect(page).to have_link('Deny')
+    expect(page).to have_link('Reprovar')
   end
 
   scenario 'see form to fill with disapproval message' do
@@ -45,7 +45,7 @@ feature 'A employee disapprove a enrollment' do
 
     login_as employee, scope: :employee
     visit enrollment_path(enrollment)
-    click_on 'Deny'
+    click_on 'Reprovar'
 
     expect(current_path).to eq(new_enrollment_reject_path(enrollment))
     expect(page).to have_css('form.create__form')
@@ -69,13 +69,13 @@ feature 'A employee disapprove a enrollment' do
 
     login_as employee, scope: :employee
     visit enrollment_path(enrollment)
-    click_on 'Deny'
+    click_on 'Reprovar'
     within 'form.create__form' do
-      fill_in 'Message', with: 'We appreciate your application, but we are looking for a employee with more experience'
-      click_on 'Send'
+      fill_in 'Mensagem de recusa', with: 'Agradecemos o seu interesse em nossa empresa, mas no momento estamos procurando alguém com mais experiência.'
+      click_on 'Enviar'
     end
 
     expect(current_path).to eq(enrollment_path(enrollment))
-    expect(page).to have_content('We appreciate your application, but we are looking for a employee with more experience')
+    expect(page).to have_content('Agradecemos o seu interesse em nossa empresa, mas no momento estamos procurando alguém com mais experiência.')
   end
 end

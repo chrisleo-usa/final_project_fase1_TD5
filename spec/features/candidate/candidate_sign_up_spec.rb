@@ -4,24 +4,24 @@ feature 'Candidate sign up' do
   scenario 'successfully' do
     visit root_path
     click_on 'Login'
-    click_on 'Candidate'
-    click_on 'Sign up'
+    click_on 'Candidato'
+    click_on 'Cadastrar'
     within('form.create__form') do
-      fill_in 'Full name', with: 'Christopher Leonardo Alves'
-      fill_in 'Phone', with: '48 988776655'
+      fill_in 'Nome completo', with: 'Christopher Leonardo Alves'
+      fill_in 'Telefone', with: '48 988776655'
       fill_in 'CPF', with: '12345678910'
-      fill_in 'Biography', with: 'Profissional da área de eventos migrando para a área da tecnologia'
+      fill_in 'Biografia', with: 'Profissional da área de eventos migrando para a área da tecnologia'
       fill_in 'Email', with: 'chris@campuscode.com'
-      fill_in 'Password', with: '123456'
-      fill_in 'Password confirmation', with: '123456'
-      click_on 'Sign up'
+      fill_in 'Senha', with: '123456'
+      fill_in 'Confirmar senha', with: '123456'
+      click_on 'Salvar'
     end
 
     candidate = Candidate.last
     expect(current_path).to eq(candidate_path(candidate))
     expect(page).to have_link('Home')
-    expect(page).to have_link('Companies')
-    expect(page).to have_link('My applications')
+    expect(page).to have_link('Empresas')
+    expect(page).to have_link('Minhas inscrições')
     expect(page).to have_css('p.dashboard__attribute', text: candidate.email)
     expect(page).to have_css('p.dashboard__attribute', text: candidate.name)
     expect(page).to have_css('p.dashboard__attribute', text: candidate.phone)

@@ -10,10 +10,10 @@ feature 'The visitor applies for a job opportunity' do
                         deadline_application: '20/08/2022', total_vacancies: 5, level: 1, company: company)
 
     visit root_path
-    click_on 'Companies'
+    click_on 'Empresas'
     click_on company.name
     click_on job.title
-    click_on 'Apply'
+    click_on 'Aplicar'
 
     expect(current_path).to eq(new_candidate_session_path)
   end

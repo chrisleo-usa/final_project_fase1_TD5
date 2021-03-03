@@ -1,5 +1,5 @@
 <div class="container create">
-  <h2 class="create__title">Accept proposal</h2>
+  <h2 class="create__title">Aceitar Proposta</h2>
 
   <% if @accept.errors.any? %>
     <div class="warnings">
@@ -16,10 +16,10 @@
   <%= form_with model: [@proposal, @accept], html: { class: 'create__form'} do |f| %>
 
     <div class="create__block">
-      <%= f.label :start_date, 'Start date', class: "create__label" %> <br>
+      <%= f.label :start_date, class: "create__label" %> <br>
       <%= f.date_field :start_date, class: "create__field" %>
     </div>
 
-    <%= f.submit 'Send', class: "create__btn" %>
+    <%= f.submit 'Enviar', class: "create__btn" %>
   <% end %>
 </div>

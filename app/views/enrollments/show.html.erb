@@ -1,20 +1,20 @@
 <div class="container dashboard enrollment">
   <div class="dashboard__header">
-    <h2 class="dashboard__name">Enrollment from <%= @enrollment.candidate.name %> for <%= @enrollment.job.title %> job</h2>
+    <h2 class="dashboard__name">Inscrição de <%= @enrollment.candidate.name %> para a vaga de <%= @enrollment.job.title %></h2>
 
     <div class="dashboard__settings">
       <% if employee_signed_in? %>
-        <%= link_to 'Approve', approve_enrollment_path(@enrollment), method: :post, class: "dashboard__btn approve" %>
-        <%= link_to 'Deny', reject_enrollment_path(@enrollment), method: :post, class: "dashboard__btn deny" %>
+        <%= link_to 'Aprovar', approve_enrollment_path(@enrollment), method: :post, class: "dashboard__btn approve" %>
+        <%= link_to 'Reprovar', reject_enrollment_path(@enrollment), method: :post, class: "dashboard__btn deny" %>
       <% end %>
     </div>
   </div>
 
-  <span class="dashboard__status <%= @enrollment.status %>"><%= @enrollment.status%></span>
+  <span class="dashboard__status <%= @enrollment.status %>"><%= Enrollment.human_attribute_name("status.#{@enrollment.status}")%></span>
 
   <div class="dashboard__grid two__columns">
     <div class="dashboard__list">
-      <h4 class="dashboard__subtitle">Candidate data</h4>
+      <h4 class="dashboard__subtitle">Dados do candidato</h4>
       <div class="dashboard__item">
         <p class="dashboard__label">Candidato: </p>
         <p class="dashboard__attribute">
@@ -30,14 +30,14 @@
       </div>
 
       <div class="dashboard__item">
-        <p class="dashboard__label">Phone: </p>
+        <p class="dashboard__label">Telefone: </p>
         <p class="dashboard__attribute">
           <%= @enrollment.candidate.phone %>
         </p>
       </div>
 
       <div class="dashboard__item">
-        <p class="dashboard__label">Biography: </p>
+        <p class="dashboard__label">Biografia: </p>
         <p class="dashboard__attribute">
           <%= @enrollment.candidate.biography %>
         </p>
@@ -45,37 +45,37 @@
     </div>
 
     <div class="dashboard__list">
-      <h4 class="dashboard__subtitle">Job data</h4>
+      <h4 class="dashboard__subtitle">Dados da vaga</h4>
       <div class="dashboard__item">
-        <p class="dashboard__label">Title: </p>
+        <p class="dashboard__label">Título: </p>
         <p class="dashboard__attribute">
           <%= @enrollment.job.title %>
         </p>
       </div>
 
       <div class="dashboard__item">
-        <p class="dashboard__label">Description: </p>
+        <p class="dashboard__label">Descrição: </p>
         <p class="dashboard__attribute">
           <%= @enrollment.job.description %>
         </p>
       </div>
 
       <div class="dashboard__item">
-        <p class="dashboard__label">Level: </p>
+        <p class="dashboard__label">Nível: </p>
         <p class="dashboard__attribute">
           <%= @enrollment.job.level %>
         </p>
       </div>
 
       <div class="dashboard__item">
-        <p class="dashboard__label">Salary: </p>
+        <p class="dashboard__label">Salário: </p>
         <p class="dashboard__attribute">
           <%= @enrollment.job.salary_range %>
         </p>
       </div>
 
       <div class="dashboard__item">
-        <p class="dashboard__label">Requirements: </p>
+        <p class="dashboard__label">Requerimentos: </p>
         <p class="dashboard__attribute">
           <%= @enrollment.job.requirements %>
         </p>
@@ -88,24 +88,24 @@
   <% if @enrollment.proposal %>
     <div class="response__item">
       <div class="response__header">
-        <h4 class="response__title">Congratulations, you got approved, take a look on your proposal.</h4>
-        <%= link_to 'Proposal', proposal_path(@enrollment.proposal), class: "response__btn" %>
+        <h4 class="response__title">Parabéns você foi aprovado, dê uma olhada na proposta enviada.</h4>
+        <%= link_to 'Proposta', proposal_path(@enrollment.proposal), class: "response__btn" %>
       </div>
     </div>
   <% elsif @enrollment.denied? %>
     <div class="response__item">
-      <h4 class="response__title">Company response</h4>
-      <p class="response__label">Message received on: 
+      <h4 class="response__title">Resposta da empresa</h4>
+      <p class="response__label">Mensagem recebida em: 
         <%= @enrollment.reject.created_at.strftime("%d %B %Y at %H:%M") %>
       </p>
       <div class="response__block">
-        <div class="response__label">Message:</div>
+        <div class="response__label">Mensagem:</div>
         <p class="response__attribute">
           <%= @enrollment.reject.message %>
         </p>
       </div>
     </div>
   <% else %>
-    <h4 class="response__title">Enrollment in progress, wait for a response.</h4>
+    <h4 class="response__title">Inscrição em andamento, aguarde por uma resposta da empresa.</h4>
   <% end %>
 </div>

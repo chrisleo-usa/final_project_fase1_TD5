@@ -9,23 +9,23 @@ feature 'The first employee to register need register the company as well' do
 
     visit root_path
     click_on 'Login'
-    click_on 'Employee'
-    click_on 'Sign up'
+    click_on 'Colaborador'
+    click_on 'Cadastrar'
     within 'form.create__form' do
       fill_in 'Email', with: 'joao@campuscode.com.br'
-      fill_in 'Password', with: '123456'
-      fill_in 'Password confirmation', with: '123456'
-      click_on 'Sign up'
+      fill_in 'Senha', with: '123456'
+      fill_in 'Confirmar senha', with: '123456'
+      click_on 'Salvar'
     end
 
     employee = Employee.last
     expect(current_path).not_to eq(edit_company_path(company))
     expect(current_path).to eq(company_path(employee.company))
     expect(page).to have_content(employee.email)
-    expect(page).to have_css('h2.dashboard__name', text: "#{company.name} profile")
+    expect(page).to have_css('h2.dashboard__name', text: "Página da empresa #{company.name}")
     expect(page).to have_link('Logout')
     expect(page).not_to have_content(admin_employee.email)
-    expect(page).not_to have_link('Register a job opportunity')
+    expect(page).not_to have_link('Registrar novo emprego')
   end
 
   scenario 'and view company register form' do
@@ -38,13 +38,13 @@ feature 'The first employee to register need register the company as well' do
     expect(current_path).to eq (edit_company_path(Employee.last.company))
     expect(page).to have_content(employee.email)
     within('form.create__form') do
-      expect(page).to have_content('Company name')
+      expect(page).to have_content('Nome da empresa')
       expect(page).to have_content('Logo')
-      expect(page).to have_content('Address')
+      expect(page).to have_content('Endereço')
       expect(page).to have_content('CNPJ')
       expect(page).to have_content('Site')
-      expect(page).to have_content('Social media')
-      expect(page).to have_button('Save')
+      expect(page).to have_content('Redes sociais')
+      expect(page).to have_button('Salvar')
     end
   end
 
@@ -55,18 +55,18 @@ feature 'The first employee to register need register the company as well' do
     login_as employee, scope: :employee
     visit edit_company_path(employee.company)
     within 'form.create__form' do
-      fill_in 'Company name', with: ''
-      fill_in 'Address', with: ''
+      fill_in 'Nome da empresa', with: ''
+      fill_in 'Endereço', with: ''
       fill_in 'Site', with: ''
-      click_on 'Save'
+      click_on 'Salvar'
     end
 
     employee = Employee.last
     expect(current_path).to eq (company_path(employee.company))
     within('div.warnings') do
-      expect(page).to have_content('Name can\'t be blank')
-      expect(page).to have_content('Address can\'t be blank')
-      expect(page).to have_content('Site can\'t be blank')
+      expect(page).to have_content('Nome da empresa não pode ficar em branco')
+      expect(page).to have_content('Endereço não pode ficar em branco')
+      expect(page).to have_content('Site não pode ficar em branco')
     end
   end
 
@@ -77,13 +77,13 @@ feature 'The first employee to register need register the company as well' do
     login_as employee, scope: :employee
     visit edit_company_path(employee.company)
     within 'form.create__form' do
-      fill_in 'Company name', with: 'Campus Code'
+      fill_in 'Nome da empresa', with: 'Campus Code'
       attach_file 'Logo', Rails.root.join('spec', 'support', 'tdlogo.png')
-      fill_in 'Address', with: 'rua são paulo'
+      fill_in 'Endereço', with: 'rua são paulo'
       fill_in 'CNPJ', with: '12345678910112'
       fill_in 'Site', with: 'www.campuscode.com.br'
-      fill_in 'Social media', with: 'www.instagram.com/treinadev'
-      click_on 'Save'
+      fill_in 'Redes sociais', with: 'www.instagram.com/treinadev'
+      click_on 'Salvar'
     end
 
     company = Company.last

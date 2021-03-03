@@ -8,7 +8,7 @@ feature 'Candidate can update his own profile' do
 
     login_as candidate, scope: :candidate
     visit root_path
-    click_on 'My profile'
+    click_on 'Meu perfil'
 
     expect(current_path).to eq(candidate_path(candidate))
   end
@@ -20,7 +20,7 @@ feature 'Candidate can update his own profile' do
 
     login_as candidate, scope: :candidate
     visit root_path
-    click_on 'My profile'
+    click_on 'Meu perfil'
 
     expect(current_path).to eq(candidate_path(candidate))
     expect(page).to have_link('Edit')
@@ -35,22 +35,21 @@ feature 'Candidate can update his own profile' do
     visit candidate_path(candidate)
     click_on 'Edit'
     within('form.create__form') do
-      fill_in 'Full name', with: ''
-      fill_in 'Phone', with: ''
+      fill_in 'Nome completo', with: ''
+      fill_in 'Telefone', with: ''
       fill_in 'CPF', with: ''
-      fill_in 'Biography', with: ''
+      fill_in 'Biografia', with: ''
       fill_in 'Email', with: ''
-      fill_in 'Current password', with: ''
-      click_on 'Update'
+      fill_in 'Senha atual', with: ''
+      click_on 'Salvar'
     end
 
     expect(current_path).to eq(candidate_registration_path)
-    expect(page).to have_content('Name can\'t be blank')
-    expect(page).to have_content('Phone can\'t be blank')
-    expect(page).to have_content('Cpf can\'t be blank')
-    expect(page).to have_content('Biography can\'t be blank')
-    expect(page).to have_content('Email can\'t be blank')
-    expect(page).to have_content('Current password can\'t be blank')
+    expect(page).to have_content('Nome completo não pode ficar em branco')
+    expect(page).to have_content('Telefone não pode ficar em branco')
+    expect(page).to have_content('Email não pode ficar em branco')
+    expect(page).to have_content('CPF não pode ficar em branco')
+    expect(page).to have_content('Biografia não pode ficar em branco')
   end
 
   scenario 'successfully' do
@@ -62,13 +61,13 @@ feature 'Candidate can update his own profile' do
     visit candidate_path(candidate)
     click_on 'Edit'
     within('form.create__form') do
-      fill_in 'Full name', with: 'Susan Ristau'
-      fill_in 'Phone', with: '4891122334455'
+      fill_in 'Nome completo', with: 'Susan Ristau'
+      fill_in 'Telefone', with: '4891122334455'
       fill_in 'CPF', with: '98765432109'
-      fill_in 'Biography', with: 'Promotora de eventos e cerimonialista de casamentos'
+      fill_in 'Biografia', with: 'Promotora de eventos e cerimonialista de casamentos'
       fill_in 'Email', with: 'susan@ristau.com'
-      fill_in 'Current password', with: '123456'
-      click_on 'Update'
+      fill_in 'Senha atual', with: '123456'
+      click_on 'Salvar'
     end
 
     expect(current_path).to eq(candidate_path(candidate))

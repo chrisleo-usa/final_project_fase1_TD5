@@ -7,15 +7,15 @@ feature 'Employee sign in' do
 
     visit root_path
     click_on 'Login'
-    click_on 'Employee'
-    within('form') do
+    click_on 'Colaborador'
+    within('form.log_in__form') do
       fill_in 'Email', with: 'joao@campuscode.com'
-      fill_in 'Password', with: '111111'
-      click_on 'Log in'
+      fill_in 'Senha', with: '111111'
+      click_on 'Entrar'
     end
 
     expect(current_path).to eq(employee_session_path)
-    expect(page).to have_content('Invalid Email or password')
+    expect(page).to have_content('Email ou senha inválidos')
   end
 
   scenario 'successfully' do
@@ -24,11 +24,11 @@ feature 'Employee sign in' do
 
     visit root_path
     click_on 'Login'
-    click_on 'Employee'
-    within('form') do
+    click_on 'Colaborador'
+    within('form.log_in__form') do
       fill_in 'Email', with: employee.email
-      fill_in 'Password', with: employee.password
-      click_on 'Log in'
+      fill_in 'Senha', with: employee.password
+      click_on 'Entrar'
     end
 
     expect(current_path).to eq(company_path(employee.company))

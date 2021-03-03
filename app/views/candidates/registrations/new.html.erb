@@ -1,27 +1,27 @@
 <div class="container create">
 
-  <h2 class="create__title">Sign up</h2>
+  <h2 class="create__title">Cadastrar</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "create__form"}) do |f| %>
     <%= render "candidates/shared/error_messages", resource: resource %>
 
     <div class="field create__block">
-      <%= f.label :name, 'Full name', class: "create__label" %><br />
+      <%= f.label :name, class: "create__label" %><br />
       <%= f.text_field :name, autofocus: true, class: "create__field" %>
     </div>
 
-      <div class="field create__block">
+    <div class="field create__block">
       <%= f.label :phone, class: "create__label" %><br />
       <%= f.telephone_field :phone, class: "create__field" %>
     </div>
 
-      <div class="field create__block">
+    <div class="field create__block">
       <%= f.label :cpf, 'CPF', class: "create__label" %><br />
       <%= f.number_field :cpf, class: "create__field" %>
     </div>
 
-      <div class="field create__block">
-      <%= f.label :biography, 'Biography', class: "create__label" %><br />
+    <div class="field create__block">
+      <%= f.label :biography, class: "create__label" %><br />
       <%= f.text_area :biography, size: "60x10", class: "create__field" %>
     </div>
 
@@ -33,7 +33,7 @@
     <div class="field create__block">
       <%= f.label :password, class: "create__label" %>
       <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <em>(mínimo <%= @minimum_password_length %> caracteres)</em>
       <% end %><br />
       <%= f.password_field :password, autocomplete: "new-password", class: "create__field" %>
     </div>
@@ -44,7 +44,7 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Sign up", class: "create__btn" %>
+      <%= f.submit "Salvar", class: "create__btn" %>
     </div>
   <% end %>
 

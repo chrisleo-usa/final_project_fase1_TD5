@@ -1,0 +1,79 @@
+pt-BR:
+  activerecord:
+    models:
+      accept:
+        one: Aceita
+      candidate:
+        one: Candidato
+        other: Candidatos
+      company:
+        one: Empresa
+        other: Empresas
+      decline:
+        one: Recusa
+        other: Recusam
+      employee:
+        one: Colaborador
+        other: Colaboradores
+      enrollment:
+        one: Inscrição
+        other: Inscrições
+      job: 
+        one: Emprego
+        other: Empregos
+      proposal:
+        one: Proposta
+        other: Propostas
+      reject:
+        one: Rejeita
+        other: Rejeitam
+    attributes:
+      accept:
+        start_date: "Data de início"
+      candidate:
+        email: "Email"
+        password: "Senha"
+        password_confirmation: "Confirmar senha"
+        current_password: "Senha atual"
+        name: "Nome completo"
+        cpf: "CPF"
+        phone: "Telefone"
+        biography: "Biografia"
+      company:
+        name: "Nome da empresa"
+        address: "Endereço"
+        cnpj: "CNPJ"
+        social_media: "Redes sociais"
+      decline:
+        reason: "Motivo"
+      employee: 
+        email: "Email"
+        password: "Senha"
+        password_confirmation: "Confirmar senha"
+        current_password: "Senha atual"
+      job:
+        title: "Título"
+        description: "Descrição"
+        salary_range: "Média salarial"
+        requirements: "Requerimentos"
+        deadline_application: "Data limite para aplicação"
+        total_vacancies: "Total de vagas"
+        level: "Nível"
+      proposal:
+        proposal_message: "Mensagem de proposta"
+        proposal_salary: "Proposta salarial"
+        start_date: "Data de início"
+      reject:
+        message: "Mensagem de recusa"
+      job/level:
+        intern: "Estágio"
+        junior: "Júnior"
+        full: "Pleno"
+        senior: "Senior"
+      job/status:
+        active: "Ativa"
+        inactive: "Inativa"
+      enrollment/status:
+        pending: "Em análise"
+        approved: "Aprovada"
+        denied: "Reprovada"

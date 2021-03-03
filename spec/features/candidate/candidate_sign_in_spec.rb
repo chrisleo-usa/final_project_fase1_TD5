@@ -4,15 +4,15 @@ feature 'Candidate sign in' do
   scenario 'attributes cannot be blank' do
     visit root_path
     click_on 'Login'
-    click_on 'Candidate'
+    click_on 'Candidato'
     within('form.log_in__form') do
       fill_in 'Email', with: ''
-      fill_in 'Password', with: ''
-      click_on 'Log in'
+      fill_in 'Senha', with: ''
+      click_on 'Acessar'
     end
 
     expect(current_path).to eq(new_candidate_session_path)
-    expect(page).to have_content('Invalid Email or password')
+    expect(page).to have_content('Email ou senha inválidos')
   end
 
   scenario 'Successfully' do
@@ -22,11 +22,11 @@ feature 'Candidate sign in' do
 
     visit root_path
     click_on 'Login'
-    click_on 'Candidate'
+    click_on 'Candidato'
     within('form.log_in__form') do
       fill_in 'Email', with: candidate.email
-      fill_in 'Password', with: candidate.password
-      click_on 'Log in'
+      fill_in 'Senha', with: candidate.password
+      click_on 'Acessar'
     end
 
     expect(current_path).to eq(candidate_path(candidate))

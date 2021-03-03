@@ -10,10 +10,10 @@ feature 'Candidate apply for a job' do
                       deadline_application: '10/04/2023', total_vacancies: 2, level: 1, company: company)
 
     visit root_path
-    click_on 'Companies'
+    click_on 'Empresas'
     click_on company.name
     click_on job.title
-    click_on 'Apply for this job'
+    click_on 'Aplicar'
 
     expect(current_path). to eq(new_candidate_session_path)
   end
@@ -32,7 +32,7 @@ feature 'Candidate apply for a job' do
 
     login_as candidate, scope: :candidate
     visit company_job_path(company, job)
-    click_on 'Apply for this job'
+    click_on 'Aplicar'
 
     enrollment = Enrollment.last
     expect(current_path).to eq(candidate_enrollments_path(candidate))

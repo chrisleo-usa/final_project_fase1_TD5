@@ -18,7 +18,7 @@
           <div class="navbar__search">
             <%= form_with url: search_path, method: :get, html: { class: "navbar__search__form"} do %>
               <%= text_field_tag :q %>
-              <%= submit_tag 'Search', class: "navbar__btn" %>
+              <%= submit_tag 'Buscar', class: "navbar__btn" %>
             <% end %>
           </div>
           <div class="navbar__menu">
@@ -29,11 +29,11 @@
                 </li>
 
                 <li class="navbar__item">
-                  <%= link_to 'Companies', companies_path, class: 'navbar__link' %>
+                  <%= link_to 'Empresas', companies_path, class: 'navbar__link' %>
                 </li>
 
                 <li class="navbar__item">
-                  <%= link_to 'My company', company_path(current_employee.company), class: 'navbar__link' %>
+                  <%= link_to 'Minha empresa', company_path(current_employee.company), class: 'navbar__link' %>
                 </li>
 
                 <div class="navbar__profile">
@@ -49,15 +49,15 @@
                 </li>
 
                 <li class="navbar__item">
-                  <%= link_to 'Companies', companies_path, class: 'navbar__link' %>
+                  <%= link_to 'Empresas', companies_path, class: 'navbar__link' %>
                 </li>
 
                 <li class="navbar__item">
-                  <%= link_to 'My applications', candidate_enrollments_path(current_candidate), class: 'navbar__link' %>
+                  <%= link_to 'Minhas inscrições', candidate_enrollments_path(current_candidate), class: 'navbar__link' %>
                 </li>
 
                 <li class="navbar__item">
-                  <%= link_to 'My profile', candidate_path(current_candidate), class: 'navbar__link' %>
+                  <%= link_to 'Meu perfil', candidate_path(current_candidate), class: 'navbar__link' %>
                 </li>
 
                 <div class="navbar__profile">
@@ -73,7 +73,7 @@
                 </li>
 
                 <li class="navbar__item">
-                  <%= link_to 'Companies', companies_path, class: 'navbar__link' %>
+                  <%= link_to 'Empresas', companies_path, class: 'navbar__link' %>
                 </li>
 
                 <div>
@@ -97,7 +97,7 @@
 
     <footer>
       <div class="container footer">
-        <p class="footer__copyright">&copy created by Christopher Alves</p>
+        <p class="footer__copyright">&copy criado por Christopher Alves</p>
       </div>
     </footer>
   </body>

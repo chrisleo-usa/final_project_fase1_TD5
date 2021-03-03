@@ -1,22 +1,22 @@
 <div class="container index">
 
-  <h2 class="index__title">Here is your enrollments</h2>
+  <h2 class="index__title">Minhas inscrições</h2>
 
   <% if @enrollments.empty? %>
-    <h4 class="index__none">No registered applications</h4>
+    <h4 class="index__none">Você ainda não se inscreveu para nenhuma vaga</h4>
   <% else %>
     <% @enrollments.each do |enrollment| %>
       <div class="index__list">
         <div class="index__item">
-          <p class="index__label">Job:</p>
+          <p class="index__label">Vaga:</p>
             <%= link_to enrollment.job.title, enrollment_path(enrollment), class: "index__attribute link" %>
-          <p class="index__label second">Company:</p>
+          <p class="index__label second">Empresa:</p>
           <p class="index__attribute">
             <%= enrollment.job.company.name %>
           </p>
           <p class="index__label">Status:</p>
           <p class="index__attribute">
-            <%= enrollment.status %>
+            <%= Enrollment.human_attribute_name("status.#{enrollment.status}") %>
           </p>
         </div>
       </div>

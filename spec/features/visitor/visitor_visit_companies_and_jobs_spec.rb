@@ -10,7 +10,7 @@ feature 'Visitor visit' do
         domain: 'treinadev')
 
     visit root_path
-    click_on 'Companies'
+    click_on 'Empresas'
 
     expect(current_path).to eq(companies_path)
     expect(Company.count).to eq(2)
@@ -30,14 +30,14 @@ feature 'Visitor visit' do
                             deadline_application: '10/04/2023', total_vacancies: 2, level: 1, company: company)
 
     visit root_path
-    click_on 'Companies'
+    click_on 'Empresas'
     click_on company.name
 
     expect(current_path).to eq(company_path(company))
     expect(page).to have_content(company.name)
     expect(page).to have_content(company.address)
     expect(page).to have_content(company.site)
-    expect(page).to have_content('Jobs opportunities')
+    expect(page).to have_content('Oportunidades de emprego')
     expect(company.jobs.count).to eq(2)
     expect(page).to have_content(job_js.title)
     expect(page).to have_content(job_rails.title)
@@ -52,7 +52,7 @@ feature 'Visitor visit' do
                         deadline_application: '20/08/2022', total_vacancies: 5, level: 1, company: company)
 
     visit root_path
-    click_on 'Companies'
+    click_on 'Empresas'
     click_on company.name
     click_on job_js.title
 
@@ -61,9 +61,9 @@ feature 'Visitor visit' do
     expect(page).to have_content(job_js.description)
     expect(page).to have_content(job_js.salary_range)
     expect(page).to have_content(job_js.requirements)
-    expect(page).to have_content('junior')
-    expect(page).not_to have_content('intern')
-    expect(page).not_to have_content('pleno')
-    expect(page).not_to have_content('senior')
+    expect(page).to have_content('Júnior')
+    expect(page).not_to have_content('Estágio')
+    expect(page).not_to have_content('Pleno')
+    expect(page).not_to have_content('Senior')
   end
 end

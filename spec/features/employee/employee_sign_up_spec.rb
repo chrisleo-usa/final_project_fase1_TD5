@@ -7,54 +7,52 @@ feature 'Employee sign up' do
 
     visit root_path
     click_on 'Login'
-    click_on 'Employee'
-    click_on 'Sign up'
-    within('form') do
+    click_on 'Colaborador'
+    click_on 'Cadastrar'
+    within 'form.create__form' do
       fill_in 'Email', with: employee.email
-      fill_in 'Password', with: employee.password
-      fill_in 'Password confirmation', with: employee.password
-      click_on 'Sign up'
+      fill_in 'Senha', with: employee.password
+      fill_in 'Confirmar senha', with: employee.password
+      click_on 'Salvar'
     end
 
     expect(current_path).to eq(employee_registration_path)
-    expect(page).not_to have_content('Welcome! You have signed up successfully.')
-    expect(page).to have_content('1 error prohibited this employee from being saved:')
-    expect(page).to have_content('Email has already been taken')
+    expect(page).to have_content('Não foi possível salvar colaborador: 1 erro')
+    expect(page).to have_content('Email já está em uso')
   end
 
   scenario 'attributes cannot be blank' do
     visit root_path
     click_on 'Login'
-    click_on 'Employee'
-    click_on 'Sign up'
-    within('form') do
+    click_on 'Colaborador'
+    click_on 'Cadastrar'
+    within 'form.create__form' do
       fill_in 'Email', with: ''
-      fill_in 'Password', with: ''
-      fill_in 'Password confirmation', with: ''
-      click_on 'Sign up'
+      fill_in 'Senha', with: ''
+      fill_in 'Confirmar senha', with: ''
+      click_on 'Salvar'
     end
 
     expect(current_path).to eq(employee_registration_path)
-    expect(page).not_to have_content('Welcome! You have signed up successfully.')
-    expect(page).to have_content('2 errors prohibited this employee from being saved:')
-    expect(page).to have_content('Email can\'t be blank')
-    expect(page).to have_content('Password can\'t be blank')
+    expect(page).to have_content('Não foi possível salvar colaborador: 2 erros')
+    expect(page).to have_content('Email não pode ficar em branco')
+    expect(page).to have_content('Senha não pode ficar em branco')
   end
 
   scenario 'successfully' do
     visit root_path
     click_on 'Login'
-    click_on 'Employee'
-    click_on 'Sign up'
-    within('form') do
+    click_on 'Colaborador'
+    click_on 'Cadastrar'
+    within 'form.create__form' do
       fill_in 'Email', with: 'chris@campuscode.com'
-      fill_in 'Password', with: '123456'
-      fill_in 'Password confirmation', with: '123456'
-      click_on 'Sign up'
+      fill_in 'Senha', with: '123456'
+      fill_in 'Confirmar senha', with: '123456'
+      click_on 'Salvar'
     end
 
-    # expect(current_path).to eq(company_path(Company.last))
-    expect(page).to have_content('Welcome! You have signed up successfully.')
+    expect(current_path).to eq(edit_company_path(Company.last))
+    expect(page).to have_content('Bem vindo! Você realizou seu registro com sucesso')
     expect(page).to have_content('chris@campuscode.com')
   end
 end

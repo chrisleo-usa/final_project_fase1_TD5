@@ -24,12 +24,12 @@ feature 'Employee disable a job opportunity' do
 
     login_as employee, scope: :employee
     visit root_path
-    click_on 'My company'
+    click_on 'Minha empresa'
     click_on job.title
-    click_on 'Disable job'
+    click_on 'Inativar'
 
     job.reload
-    expect(page).to have_content("#{job.title} is inactive")
+    expect(page).to have_content("#{job.title} está Inativa")
     expect(job).to be_inactive
   end
 
@@ -44,7 +44,7 @@ feature 'Employee disable a job opportunity' do
 
     login_as employee, scope: :employee
     visit root_path
-    click_on 'My company'
+    click_on 'Minha empresa'
     click_on job.title
 
     expect(current_path).to eq(company_job_path(company, job))

@@ -26,9 +26,10 @@
   &__label {
     color: rgba(0, 0, 0, 0.596);
     margin-bottom: 8px;
+    margin-top: 16px;
 
-    &.second {
-      margin-top: 16px;
+    &:first-child {
+      margin-top: 0;
     }
   }
 

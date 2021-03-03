@@ -1,12 +1,12 @@
 <div class="container edit__or__delete">
   <div class="create">
-    <h2 class="create__title">Edit</h2>
+    <h2 class="create__title">Editar</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "create__form", method: :put }) do |f| %>
       <%= render "candidates/shared/error_messages", resource: resource %>
 
       <div class="field create__block">
-        <%= f.label :name, 'Full name', class: "create__label" %><br />
+        <%= f.label :name, class: "create__label" %><br />
         <%= f.text_field :name, autofocus: true, class: "create__field" %>
       </div>
 
@@ -16,12 +16,12 @@
       </div>
 
       <div class="field create__block">
-        <%= f.label :cpf, 'CPF', class: "create__label" %><br />
+        <%= f.label :cpf, class: "create__label" %><br />
         <%= f.number_field :cpf, class: "create__field" %>
       </div>
 
       <div class="field create__block">
-        <%= f.label :biography, 'Biography', class: "create__label" %><br />
+        <%= f.label :biography, class: "create__label" %><br />
         <%= f.text_area :biography, size: "60x10", class: "create__field" %>
       </div>
 
@@ -35,11 +35,11 @@
       <% end %>
 
       <div class="field">
-        <%= f.label :password, class: "create__label" %> <i class="create__label">(leave blank if you don't want to change it)</i><br />
+        <%= f.label :password, class: "create__label" %> <i class="create__label">(deixe em branco se não quiser alterar)</i><br />
         <%= f.password_field :password, autocomplete: "new-password", class: "create__field" %>
         <% if @minimum_password_length %>
           <br />
-          <em class="create__label"><%= @minimum_password_length %> characters minimum</em>
+          <em class="create__label">mínimo <%= @minimum_password_length %> caracteres</em>
         <% end %>
       </div>
 
@@ -49,22 +49,22 @@
       </div>
 
       <div class="field">
-        <%= f.label :current_password, class: "create__label" %> <i class="create__label">(we need your current password to confirm your changes)</i><br />
+        <%= f.label :current_password, class: "create__label" %> <i class="create__label">(precisamos de sua senha atual para confirmar as mudanças)</i><br />
         <%= f.password_field :current_password, autocomplete: "current-password", class: "create__field" %>
       </div>
 
       <div class="actions">
-        <%= f.submit "Update", class: "create__btn" %>
+        <%= f.submit "Salvar", class: "create__btn" %>
       </div>
     <% end %>
   </div>
 
   <div class="create delete">
-    <h3 class="create__title delete">Cancel my account</h3>
+    <h3 class="create__title delete">Cancelar conta</h3>
 
-    <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "create__btn delete" %>
+    <%= button_to "Cancelar", registration_path(resource_name), data: { confirm: "Tem certeza?" }, method: :delete, class: "create__btn delete" %>
 
-    <%= link_to "Back", :back, class: "create__back delete" %>
+    <%= link_to "Voltar", :back, class: "create__back delete" %>
   </div>
 
 </div>

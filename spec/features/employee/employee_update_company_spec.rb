@@ -23,7 +23,7 @@ feature 'Admin employee update company info' do
 
     login_as employee, scope: :employee
     visit root_path
-    click_on 'My company'
+    click_on 'Minha empresa'
 
     expect(current_path).to eq(company_path(company))
     expect(page).not_to have_link('Edit.create__btn')
@@ -37,21 +37,21 @@ feature 'Admin employee update company info' do
 
     login_as employee, scope: :employee
     visit company_path(company)
-    click_on 'Edit'
-    within '.create__form' do
-      fill_in 'Company name', with: ''
+    click_on 'Editar'
+    within 'form.create__form' do
+      fill_in 'Nome da empresa', with: ''
       attach_file 'Logo', Rails.root.join('spec', 'support', 'ruby.jpeg')
-      fill_in 'Address', with: ''
+      fill_in 'Endereço', with: ''
       fill_in 'CNPJ', with: '987654321014'
       fill_in 'Site', with: ''
-      fill_in 'Social media', with: 'www.linkedin.com/in/campuscode'
-      click_on 'Save'
+      fill_in 'Redes sociais', with: 'www.linkedin.com/in/campuscode'
+      click_on 'Salvar'
     end
 
     expect(current_path).to eq(company_path(company))
-    expect(page).to have_content('Name can\'t be blank')
-    expect(page).to have_content('Address can\'t be blank')
-    expect(page).to have_content('Site can\'t be blank')
+    expect(page).to have_content('Nome da empresa não pode ficar em branco')
+    expect(page).to have_content('Endereço não pode ficar em branco')
+    expect(page).to have_content('Site não pode ficar em branco')
   end
 
   scenario 'successfully' do
@@ -62,14 +62,14 @@ feature 'Admin employee update company info' do
 
     login_as employee, scope: :employee
     visit edit_company_path(company)
-    within '.create__form' do
-      fill_in 'Company name', with: 'TreinaDev'
+    within 'form.create__form' do
+      fill_in 'Nome da empresa', with: 'TreinaDev'
       attach_file 'Logo', Rails.root.join('spec', 'support', 'ruby.jpeg')
-      fill_in 'Address', with: 'Rua do TreinaDev'
+      fill_in 'Endereço', with: 'Rua do TreinaDev'
       fill_in 'CNPJ', with: '987654321014'
       fill_in 'Site', with: 'www.treinadev.com.br'
-      fill_in 'Social media', with: 'www.linkedin.com/in/treinadev'
-      click_on 'Save'
+      fill_in 'Redes sociais', with: 'www.linkedin.com/in/treinadev'
+      click_on 'Salvar'
     end
 
     expect(current_path).to eq(company_path(company.id))

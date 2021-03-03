@@ -1,5 +1,5 @@
 <div class="container create">
-  <h2 class="create__title">Reject</h2>
+  <h2 class="create__title">Rejeitar</h2>
 
   <% if @reject.errors.any? %>
     <div class="warnings">
@@ -16,10 +16,10 @@
   <%= form_with model: [@enrollment, @reject], html: { class: 'create__form'} do |f| %>
 
     <div class="create__block">
-      <%= f.label :message, 'Message', class: "create__label" %> <br>
+      <%= f.label :message, class: "create__label" %> <br>
       <%= f.text_field :message, class: "create__field" %>
     </div>
 
-    <%= f.submit 'Send', class: "create__btn" %>
+    <%= f.submit 'Enviar', class: "create__btn" %>
   <% end %>
 </div>
