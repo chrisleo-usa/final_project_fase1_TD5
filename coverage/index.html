@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-03-03T20:51:20-03:00">2021-03-03T20:51:20-03:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-03-03T21:09:18-03:00">2021-03-03T21:09:18-03:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -88,7 +88,7 @@
             <td class="cell--number">19</td>
             <td class="cell--number">19</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">34.79</td>
+            <td class="cell--number">34.63</td>
             
           </tr>
         
@@ -209,7 +209,7 @@
             <td class="cell--number">36</td>
             <td class="cell--number">28</td>
             <td class="cell--number">8</td>
-            <td class="cell--number">1.44</td>
+            <td class="cell--number">1.42</td>
             
           </tr>
         
@@ -1044,7 +1044,7 @@
 
             
 
-            <code class="ruby">      redirect_to proposal_path(@proposal), notice: &#39;Congratulations! Welcome to your new job!&#39;</code>
+            <code class="ruby">      redirect_to proposal_path(@proposal), notice: t(&#39;.success&#39;)</code>
           </li>
         </div>
       
@@ -1278,8 +1278,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="221" data-linenumber="9">
-            <span class="hits">221</span>
+          <li class="covered" data-hits="220" data-linenumber="9">
+            <span class="hits">220</span>
             
 
             
@@ -1289,8 +1289,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="177" data-linenumber="10">
-            <span class="hits">177</span>
+          <li class="covered" data-hits="176" data-linenumber="10">
+            <span class="hits">176</span>
             
 
             
@@ -1366,8 +1366,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="171" data-linenumber="17">
-            <span class="hits">171</span>
+          <li class="covered" data-hits="170" data-linenumber="17">
+            <span class="hits">170</span>
             
 
             
@@ -3419,7 +3419,7 @@
 
             
 
-            <code class="ruby">      redirect_to proposal_path(@proposal), notice: &#39;Proposal declined with success!&#39;</code>
+            <code class="ruby">      redirect_to proposal_path(@proposal), notice: t(&#39;.declined&#39;)</code>
           </li>
         </div>
       
@@ -6734,8 +6734,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="23">
-            <span class="hits">8</span>
+          <li class="covered" data-hits="7" data-linenumber="23">
+            <span class="hits">7</span>
             
 
             
@@ -7343,7 +7343,7 @@
 
             
 
-            <code class="ruby">      redirect_to enrollment_path(@enrollment), notice: &#39;Enrollment rejected&#39;</code>
+            <code class="ruby">      redirect_to enrollment_path(@enrollment), notice: t(&#39;.rejected&#39;)</code>
           </li>
         </div>
       
@@ -17348,7 +17348,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_content(&#39;Proposal declined&#39;)</code>
+            <code class="ruby">    expect(page).to have_content(&#39;Proposta recusada&#39;)</code>
           </li>
         </div>
       
@@ -23780,7 +23780,7 @@
 
             
 
-            <code class="ruby">    expect(page).to have_css(&#39;span.dashboard__status&#39;, text: proposal.status)</code>
+            <code class="ruby">    expect(page).to have_css(&#39;span.dashboard__status&#39;, text: &#39;Em análise&#39;)</code>
           </li>
         </div>
       

@@ -77,3 +77,7 @@ pt-BR:
         pending: "Em análise"
         approved: "Aprovada"
         denied: "Reprovada"
+      proposal/status:
+        pending: "Em análise"
+        accepted: "Aceita"
+        declined: "Recusada"

@@ -129,7 +129,7 @@ feature 'Employee approve a enrollment' do
     enrollment.reload
     proposal = Proposal.last
     expect(current_path).to eq(proposal_path(proposal))
-    expect(page).to have_css('span.dashboard__status', text: proposal.status)
+    expect(page).to have_css('span.dashboard__status', text: 'Em análise')
     within('div.dashboard__item') do
       expect(page).to have_css('p.dashboard__attribute', text: 'Parabéns, você foi aprovado!')
       expect(page).to have_css('p.dashboard__attribute', text: '6000.0')

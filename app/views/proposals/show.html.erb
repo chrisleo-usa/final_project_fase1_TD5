@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <span class="dashboard__status <%= @proposal.status %>"><%= @proposal.status%></span>
+  <span class="dashboard__status <%= @proposal.status %>"><%= Proposal.human_attribute_name("status.#{@proposal.status}") %></span>
   <div class="dashboard__grid one__column">
     <h3 class="dashboard__name">Resposta da empresa</h3>
     <div class="dashboard__item proposal">

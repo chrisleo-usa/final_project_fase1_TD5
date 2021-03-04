@@ -62,7 +62,7 @@ feature 'Candidate decline a proposal' do
     end
 
     expect(current_path).to eq(proposal_path(proposal))
-    expect(page).to have_content('Proposal declined')
+    expect(page).to have_content('Proposta recusada')
     expect(page).to have_content('Eu já consegui um novo emprego, obrigado')
   end
 end
