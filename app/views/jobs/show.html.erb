@@ -12,10 +12,11 @@
           <% end %>
         </div>
       <% end %>
-    <% else %>
+    <% elsif @job.active?%>
       <%= link_to 'Aplicar', apply_company_job_path(@job.company, @job), method: :post, class: "dashboard__btn apply" %>
     <% end %>
   </div>
+  <span class="dashboard__status <%= @job.status %>"><%= Job.human_attribute_name("status.#{@job.status}") %></span>
 
   <div class="dashboard__grid one__column">
     <div class="dashboard__list">
@@ -64,7 +65,7 @@
   </div>
 </div>
 
-<% if employee_signed_in? %>
+<% if employee_signed_in? && current_employee.company === @job.company %>
   <div class="container index">
     <% if @job.enrollments.empty? %>
       <h4 class="index__none">Sem inscrições no momento.</h4>

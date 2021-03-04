@@ -92,7 +92,8 @@
   }
 
   &__status.approved,
-  &__status.accepted {
+  &__status.accepted,
+  &__status.active {
     color: limegreen;
     border: 1px solid limegreen;
   }

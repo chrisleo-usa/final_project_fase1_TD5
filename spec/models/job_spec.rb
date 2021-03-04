@@ -37,7 +37,6 @@ RSpec.describe Job, type: :model do
       expect(job.status).to eq('active')
     end
 
-    #Está correto este teste??
     it 'is inactive when a company employee disables' do
       company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
                                 site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 

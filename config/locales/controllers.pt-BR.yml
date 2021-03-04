@@ -6,6 +6,7 @@ pt-BR:
     apply:
       sucess: 'Inscrição realizada com sucesso!'
       already_applied: 'Você já se inscreveu para esta vaga!'
+      inactivated: 'Não é possível se inscrever para uma vaga inativada!'
   enrollments:
     approve:
       already_approved: 'Esta inscrição já está aprovada!'

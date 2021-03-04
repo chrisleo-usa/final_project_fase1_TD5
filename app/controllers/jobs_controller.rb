@@ -63,11 +63,14 @@ class JobsController < ApplicationController
   def apply
     @job = Job.find(params[:id])
 
-
-    if @job.applied(current_candidate)
-      redirect_to candidate_enrollments_path(current_candidate), notice: t('.sucess')
-    else
-      redirect_to company_job_path(@job.company, @job), alert: t('.already_applied')
+    if @job.inactive?
+      redirect_to company_job_path(@job.company, @job), alert: t('.inactivated')
+    elsif @job.active?
+      if @job.applied(current_candidate)
+        redirect_to candidate_enrollments_path(current_candidate), notice: t('.sucess')
+      else
+        redirect_to company_job_path(@job.company, @job), alert: t('.already_applied')
+      end
     end
   end
 
