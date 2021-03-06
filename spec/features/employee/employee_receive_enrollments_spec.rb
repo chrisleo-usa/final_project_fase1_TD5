@@ -110,7 +110,7 @@ feature 'Employee can see enrollments' do
 
       expect(page).to have_css('p.dashboard__attribute', text: job.title)
       expect(page).to have_css('p.dashboard__attribute', text: job.description)
-      expect(page).to have_css('p.dashboard__attribute', text: job.level)
+      expect(page).to have_css('p.dashboard__attribute', text: 'Júnior')
       expect(page).to have_css('p.dashboard__attribute', text: job.salary_range)
       expect(page).to have_css('p.dashboard__attribute', text: job.requirements)
     end
@@ -148,7 +148,7 @@ feature 'Employee can see enrollments' do
 
       expect(page).to have_css('p.dashboard__attribute', text: job.title)
       expect(page).to have_css('p.dashboard__attribute', text: job.description)
-      expect(page).to have_css('p.dashboard__attribute', text: job.level)
+      expect(page).to have_css('p.dashboard__attribute', text: 'Júnior')
       expect(page).to have_css('p.dashboard__attribute', text: job.salary_range)
       expect(page).to have_css('p.dashboard__attribute', text: job.requirements)
     end

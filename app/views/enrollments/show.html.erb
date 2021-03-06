@@ -63,7 +63,7 @@
       <div class="dashboard__item">
         <p class="dashboard__label">Nível: </p>
         <p class="dashboard__attribute">
-          <%= @enrollment.job.level %>
+          <%= Job.human_attribute_name("level.#{@enrollment.job.level}") %>
         </p>
       </div>
 
