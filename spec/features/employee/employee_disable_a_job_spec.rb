@@ -67,7 +67,7 @@ feature 'Employee disable a job opportunity' do
     click_on 'Inativar'
 
     job.reload
-    expect(page).to have_content("#{job.title} está Inativa")
+    expect(page).to have_content("#{job.title} - Inativa")
     expect(job).to be_inactive
   end
 

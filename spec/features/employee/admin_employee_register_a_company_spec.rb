@@ -22,7 +22,7 @@ feature 'The first employee to register need register the company as well' do
     expect(current_path).not_to eq(edit_company_path(company))
     expect(current_path).to eq(company_path(employee.company))
     expect(page).to have_content(employee.email)
-    expect(page).to have_css('h2.dashboard__name', text: "Página da empresa #{company.name}")
+    expect(page).to have_css('h2.dashboard__title', text: "Página da empresa #{company.name}")
     expect(page).to have_link('Logout')
     expect(page).not_to have_content(admin_employee.email)
     expect(page).not_to have_link('Registrar novo emprego')

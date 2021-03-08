@@ -21,7 +21,7 @@ feature 'Candidate sign up' do
     expect(current_path).to eq(candidate_path(candidate))
     expect(page).to have_link('Home')
     expect(page).to have_link('Empresas')
-    expect(page).to have_link('Minhas inscrições')
+    expect(page).to have_link('Inscrições')
     expect(page).to have_css('p.dashboard__attribute', text: candidate.email)
     expect(page).to have_css('p.dashboard__attribute', text: candidate.name)
     expect(page).to have_css('p.dashboard__attribute', text: candidate.phone)

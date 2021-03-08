@@ -101,7 +101,7 @@ feature 'Employee can see enrollments' do
     click_on candidate.name
 
     expect(current_path).to eq(enrollment_path(enrollment))
-    expect(page).to have_css('h2.dashboard__name', text: "Inscrição de #{enrollment.candidate.name} para a vaga de #{enrollment.job.title}")
+    expect(page).to have_css('h2.dashboard__title', text: "Inscrição")
     within('div.dashboard__grid') do
       expect(page).to have_css('p.dashboard__attribute', text: candidate.name)
       expect(page).to have_css('p.dashboard__attribute', text: candidate.email)
@@ -139,7 +139,7 @@ feature 'Employee can see enrollments' do
     click_on candidate.name
 
     expect(current_path).to eq(enrollment_path(enrollment))
-    expect(page).to have_css('h2.dashboard__name', text: "Inscrição de #{enrollment.candidate.name} para a vaga de #{enrollment.job.title}")
+    expect(page).to have_css('h2.dashboard__title', text: "Inscrição")
     within('div.dashboard__grid') do
       expect(page).to have_css('p.dashboard__attribute', text: candidate.name)
       expect(page).to have_css('p.dashboard__attribute', text: candidate.email)

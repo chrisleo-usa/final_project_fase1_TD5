@@ -2,7 +2,6 @@ class JobsController < ApplicationController
   before_action :authenticate_employee!, only: %i[new edit]
   before_action :authenticate_candidate!, only: [:apply]
   before_action :select_level, only: %i[new edit]
-  before_action :select_type, only: %i[new edit]
 
   def index
     @jobs = Job.all

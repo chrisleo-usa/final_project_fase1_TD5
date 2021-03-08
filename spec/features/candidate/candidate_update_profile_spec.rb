@@ -8,7 +8,7 @@ feature 'Candidate can update his own profile' do
 
     login_as candidate, scope: :candidate
     visit root_path
-    click_on 'Meu perfil'
+    click_on 'Perfil'
 
     expect(current_path).to eq(candidate_path(candidate))
   end
@@ -20,7 +20,7 @@ feature 'Candidate can update his own profile' do
 
     login_as candidate, scope: :candidate
     visit root_path
-    click_on 'Meu perfil'
+    click_on 'Perfil'
 
     expect(current_path).to eq(candidate_path(candidate))
     expect(page).to have_link('Edit')
@@ -71,13 +71,13 @@ feature 'Candidate can update his own profile' do
     end
 
     expect(current_path).to eq(candidate_path(candidate))
-    expect(page).not_to have_css('h2.dashboard__name', text: "#{candidate.name} profile")
+    expect(page).not_to have_css('h2.dashboard__title', text: "#{candidate.name} profile")
     expect(page).not_to have_css('p.dashboard__attribute', text: '48988776655')
     expect(page).not_to have_css('p.dashboard__attribute', text: '12345678910')
     expect(page).not_to have_css('p.dashboard__attribute', text: 'Profissional da área de eventos migrando para a área da tecnologia')
     expect(page).not_to have_css('p.dashboard__attribute', text: 'chris@campuscode.com')
 
-    expect(page).to have_css('h2.dashboard__name', text: 'Susan Ristau')
+    expect(page).to have_css('h2.dashboard__title', text: 'Susan Ristau')
     expect(page).to have_css('p.dashboard__attribute', text: '4891122334455')
     expect(page).to have_css('p.dashboard__attribute', text: '98765432109')
     expect(page).to have_css('p.dashboard__attribute', text: 'Promotora de eventos e cerimonialista de casamentos')

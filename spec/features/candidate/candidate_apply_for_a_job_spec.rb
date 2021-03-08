@@ -39,8 +39,8 @@ feature 'Candidate apply for a job' do
     expect(page).to have_content('Inscrição realizada com sucesso!')
     within('div.index__list') do
       expect(page).to have_link(job.title)
-      expect(page).to have_css('p.index__attribute', text: company.name)
-      expect(page).to have_css('p.index__attribute', text: 'Em análise')
+      expect(page).to have_link(company.name)
+      expect(page).to have_css('p.index__card__attribute', text: 'Em análise')
     end
   end
 

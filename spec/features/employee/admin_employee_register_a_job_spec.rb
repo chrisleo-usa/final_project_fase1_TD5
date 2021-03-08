@@ -41,7 +41,7 @@ feature 'Employee admin register a job opportunity' do
       fill_in 'Descrição', with: ''
       fill_in 'Média salarial', with: ''
       fill_in 'Requerimentos', with: ''
-      fill_in 'Data limite para aplicação', with: ''
+      fill_in 'Data limite para aplicar', with: ''
       fill_in 'Total de vagas', with: ''
       click_on 'Salvar'
     end
@@ -52,7 +52,7 @@ feature 'Employee admin register a job opportunity' do
       expect(page).to have_content('Descrição não pode ficar em branco')
       expect(page).to have_content('Média salarial não pode ficar em branco')
       expect(page).to have_content('Requerimentos não pode ficar em branco')
-      expect(page).to have_content('Data limite para aplicação não pode ficar em branco')
+      expect(page).to have_content('Data limite para aplicar não pode ficar em branco')
       expect(page).to have_content('Total de vagas não pode ficar em branco')
     end
   end
@@ -73,7 +73,7 @@ feature 'Employee admin register a job opportunity' do
       fill_in 'Média salarial', with: 3000.00
       select 'Intern', from: 'Nível'
       fill_in 'Requerimentos', with: 'Necessário Javascript, React, Rails, Php, Python, Java e etc...'
-      fill_in 'Data limite para aplicação', with: '20/01/2050'
+      fill_in 'Data limite para aplicar', with: '20/01/2050'
       fill_in 'Total de vagas', with: 5
       click_on 'Salvar'
     end

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Employee approve a enrollment' do
-  scenario 'but the enrollment is already approved' do
+  scenario 'and cannot see the approve button if the enrollment is already approved' do
     company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
                               site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
                               domain: 'campuscode')
@@ -23,11 +23,9 @@ feature 'Employee approve a enrollment' do
     login_as employee, scope: :employee
     visit company_job_path(company, job)
     click_on candidate.name
-    click_on 'Aprovar'
 
     expect(current_path).to eq(enrollment_path(enrollment))
-    expect(page).to have_css('span.dashboard__status', text: 'Aprovada')
-    expect(page).to have_content('Esta inscrição já está aprovada!')
+    expect(page).not_to have_link('Aprovar')
   end
 
   scenario 'and see a form to make a proposal' do
@@ -129,14 +127,14 @@ feature 'Employee approve a enrollment' do
     enrollment.reload
     proposal = Proposal.last
     expect(current_path).to eq(proposal_path(proposal))
-    expect(page).to have_css('span.dashboard__status', text: 'Em análise')
-    within('div.dashboard__item') do
-      expect(page).to have_css('p.dashboard__attribute', text: 'Parabéns, você foi aprovado!')
-      expect(page).to have_css('p.dashboard__attribute', text: '6000.0')
-      expect(page).to have_css('p.dashboard__attribute', text: '10/04/2023')
+    expect(page).to have_css('span', text: 'Em análise')
+    within('div.response__item') do
+      expect(page).to have_css('p.response__attribute', text: 'Parabéns, você foi aprovado!')
+      expect(page).to have_css('p.response__attribute', text: '6000.0')
+      expect(page).to have_css('p.response__attribute', text: '10/04/2023')
     end
 
-    expect(page).not_to have_css('span.dashboard__status', text: 'aceita')
-    expect(page).not_to have_css('span.dashboard__status', text: 'recusada')
+    expect(page).not_to have_css('span', text: 'aceita')
+    expect(page).not_to have_css('span', text: 'recusada')
   end
 end

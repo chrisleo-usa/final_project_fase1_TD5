@@ -27,7 +27,7 @@ feature 'A employee disapprove a enrollment' do
     expect(page).to have_link('Reprovar')
   end
 
-  scenario 'candidate is already disapproved' do
+  scenario 'but cannot see the deny button if enrollment is already disapproved' do
     company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011,
                               site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode',
                               domain: 'campuscode')
@@ -46,10 +46,9 @@ feature 'A employee disapprove a enrollment' do
 
     login_as employee, scope: :employee
     visit enrollment_path(enrollment)
-    click_on 'Reprovar'
 
     expect(current_path).to eq(enrollment_path(enrollment))
-    expect(page).to have_content('Esta inscrição já está reprovada!')
+    expect(page).not_to have_link('Reprovar')
   end
 
   scenario 'see form to fill with disapproval message' do
@@ -96,7 +95,7 @@ feature 'A employee disapprove a enrollment' do
     visit enrollment_path(enrollment)
     click_on 'Reprovar'
     within 'form.create__form' do
-      fill_in 'Mensagem de recusa', with: 'Agradecemos o seu interesse em nossa empresa, mas no momento estamos procurando alguém com mais experiência.'
+      fill_in 'Motivo da reprovação', with: 'Agradecemos o seu interesse em nossa empresa, mas no momento estamos procurando alguém com mais experiência.'
       click_on 'Enviar'
     end
 

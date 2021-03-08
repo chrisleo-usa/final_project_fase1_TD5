@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(version: 2021_03_07_175342) do
     t.integer "level"
     t.integer "company_id", null: false
     t.integer "status", default: 0, null: false
-    t.integer "type_hiring"
+    t.integer "type_hiring", default: 0
     t.index ["company_id"], name: "index_jobs_on_company_id"
   end
 

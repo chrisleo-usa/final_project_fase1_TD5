@@ -61,7 +61,7 @@ feature 'Candidate accept proposal' do
     end
 
     expect(current_path).to eq(proposal_path(proposal))
-    expect(page).to have_css('span.dashboard__status', text: 'Aceita')
+    expect(page).to have_css('span.accepted', text: 'Aceita')
     expect(page).not_to have_css('span.dashboard__status', text: 'Em análise')
     expect(page).not_to have_css('span.dashboard__status', text: 'Recusada')
     expect(page).not_to have_link('Recusar')

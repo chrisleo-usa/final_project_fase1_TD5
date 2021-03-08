@@ -52,7 +52,6 @@ feature 'Employee sign up' do
     end
 
     expect(current_path).to eq(edit_company_path(Company.last))
-    expect(page).to have_content('Bem vindo! Você realizou seu registro com sucesso')
     expect(page).to have_content('chris@campuscode.com')
   end
 end

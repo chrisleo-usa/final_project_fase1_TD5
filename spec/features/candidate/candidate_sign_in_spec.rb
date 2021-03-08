@@ -8,7 +8,7 @@ feature 'Candidate sign in' do
     within('form.log_in__form') do
       fill_in 'Email', with: ''
       fill_in 'Senha', with: ''
-      click_on 'Acessar'
+      click_on 'Entrar'
     end
 
     expect(current_path).to eq(new_candidate_session_path)
@@ -26,11 +26,11 @@ feature 'Candidate sign in' do
     within('form.log_in__form') do
       fill_in 'Email', with: candidate.email
       fill_in 'Senha', with: candidate.password
-      click_on 'Acessar'
+      click_on 'Entrar'
     end
 
     expect(current_path).to eq(candidate_path(candidate))
-    expect(page).to have_css('h2.dashboard__name', text: candidate.name)
+    expect(page).to have_css('h2.dashboard__title', text: candidate.name)
   end
 
   scenario 'and Logout' do
