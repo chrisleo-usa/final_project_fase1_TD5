@@ -21,8 +21,6 @@ Bundler.require(*Rails.groups)
 
 module FinalProjectFase1Td5
   class Application < Rails::Application
-    config.sass.preferred_syntax = :scss
-
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
