@@ -135,8 +135,8 @@ Para auxiliar no entendimento do banco de dados utilizei o Db designer, uma ferr
 [https://dbdesigner.page.link/WjZ4qQ1BqhDPPeNM6](https://dbdesigner.page.link/WjZ4qQ1BqhDPPeNM6)
 
 ## Figma
-Para formar os layouts e estilos, fiz uma parte do projeto no Figma, para auxiliar na visualização. Devido ao tempo de entrega do projeto não consegui finalizar todas as páginas, algumas tive que fazer direto no código, mas o projeto está bem semelhante ao desenvolvido no Figma, salvo algumas alterações em que senti necessidade. 
+Para formar os layouts e estilos, fiz uma parte do projeto no Figma, para auxiliar na visualização. Devido ao tempo de entrega do projeto não consegui finalizar todas as páginas, algumas tive que fazer direto no código, mas mesmo assim está bem semelhante ao desenvolvido no Figma, salvo algumas alterações em que senti a necessidade. 
 
-#### Tenho como objetivo finalizar o projeto antes da 2ª data de entrega (01/03/2021), definitivamente avançar para a 2ª etapa e conseguir uma vaga em uma das empresas patrocinadoras será um divisor de águas em minha trajetória profissional. 
+[https://www.figma.com/file/HcLcMVsOEtYZPjIvGHpRCg/Red-Circle?node-id=0%3A1](https://www.figma.com/file/HcLcMVsOEtYZPjIvGHpRCg/Red-Circle?node-id=0%3A1)
 
 :copyright: 2021 - Projeto Final - Etapa 1 - TreinaDev - Christopher Leonardo Alves
