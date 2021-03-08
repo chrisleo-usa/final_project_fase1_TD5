@@ -34,7 +34,7 @@ feature 'Employee can update attributes' do
       fill_in 'Descrição', with: ''
       fill_in 'Média salarial', with: ''
       fill_in 'Requerimentos', with: ''
-      fill_in 'Data limite para aplicação', with: ''
+      fill_in 'Data limite para aplicar', with: ''
       fill_in 'Total de vagas', with: ''
       click_on 'Salvar'
     end
@@ -45,7 +45,7 @@ feature 'Employee can update attributes' do
     expect(page).to have_content('Descrição não pode ficar em branco')
     expect(page).to have_content('Média salarial não pode ficar em branco')
     expect(page).to have_content('Requerimentos não pode ficar em branco')
-    expect(page).to have_content('Data limite para aplicação não pode ficar em branco')
+    expect(page).to have_content('Data limite para aplicar não pode ficar em branco')
     expect(page).to have_content('Total de vagas não pode ficar em branco')
   end
 
@@ -69,7 +69,7 @@ feature 'Employee can update attributes' do
       fill_in 'Média salarial', with: 7000.0
       select 'Senior', from: 'Nível'
       fill_in 'Requerimentos', with: 'Conhecimento sólido em Javascript, CSS, HTML, Bootstrap, Gulp e React'
-      fill_in 'Data limite para aplicação', with: '25/10/2023'
+      fill_in 'Data limite para aplicar', with: '25/10/2023'
       fill_in 'Total de vagas', with: 10
       click_on 'Salvar'
     end

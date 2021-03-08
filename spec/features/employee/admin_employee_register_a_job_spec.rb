@@ -71,6 +71,7 @@ feature 'Employee admin register a job opportunity' do
       fill_in 'Título', with: 'Dev Front-End'
       fill_in 'Descrição', with: 'Vaga para desenvolvedor Front End'
       fill_in 'Média salarial', with: 3000.00
+      select 'Clt', from: 'Contratação'
       select 'Intern', from: 'Nível'
       fill_in 'Requerimentos', with: 'Necessário Javascript, React, Rails, Php, Python, Java e etc...'
       fill_in 'Data limite para aplicar', with: '20/01/2050'
@@ -87,6 +88,7 @@ feature 'Employee admin register a job opportunity' do
     expect(page).to have_content('Necessário Javascript, React, Rails, Php, Python, Java e etc...')
     expect(page).to have_content('20/01/2050')
     expect(page).to have_content('Estágio')
+    expect(page).to have_content('CLT')
     expect(page).not_to have_content('Júnior')
     expect(page).not_to have_content('Pleno')
     expect(page).not_to have_content('Senior')

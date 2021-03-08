@@ -8,7 +8,7 @@ class Job < ApplicationRecord
   enum type_hiring: { clt: 0, pj: 3, clt_pj: 4 }
   enum status: { active: 0, inactive: 4 }
 
-  validates :title, :description, :salary_range, :level, :requirements, :deadline_application, :total_vacancies, presence: true
+  validates :title, :description, :salary_range, :level, :type_hiring, :requirements, :deadline_application, :total_vacancies, presence: true
 
   def applied(candidate)
     return false if self.candidates.exists?(candidate.id)

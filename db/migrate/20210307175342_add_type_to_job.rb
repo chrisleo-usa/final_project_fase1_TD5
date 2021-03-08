@@ -1,5 +1,5 @@
 class AddTypeToJob < ActiveRecord::Migration[6.1]
   def change
-    add_column :jobs, :type_hiring, :integer, default: 0
+    add_column :jobs, :type_hiring, :integer, default: 0, null: false
   end
 end

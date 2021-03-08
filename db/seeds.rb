@@ -20,11 +20,11 @@ Employee.create!(email: 'henrique@campuscode.com', password: '123456', admin: 0,
 
 Job.create!(title: 'Ruby on Rails Developer Jr', description: 'Vaga para Ruby on Rails Developer', 
                       salary_range: 3300.0, requirements: 'Conhecimento em Ruby, Ruby on Rails, NodeJS, SQLite3',
-                      deadline_application: '05/04/2021', total_vacancies: 2, level: 1, company: campuscode)
+                      deadline_application: '05/04/2021', total_vacancies: 2, level: 1, type_hiring: :clt, company: campuscode)
 
 Job.create!(title: 'Back End Developer', description: 'Vaga para desenvolvedor Back End Júnior', 
                         salary_range: 5000.0, requirements: 'Conhecimento sólido em Java, Ruby, Ruby on Rails, NodeJS, SQLite3',
-                        deadline_application: '01/03/2021', total_vacancies: 2, level: 1, company: campuscode)
+                        deadline_application: '01/03/2021', total_vacancies: 2, level: 1, type_hiring: :clt, company: campuscode)
 
 # TreinaDev - Com logo
 treinadev = Company.create!(name: 'TreinaDev', address: 'Rua da Portal Solar', complement: '987, sala 900', city: 'São Paulo', state: 'SP', cnpj: 9876543211011, 
@@ -38,11 +38,11 @@ Employee.create!(email: 'jonata@treinadev.com', password: '123456', admin: 0, co
 
 Job.create!(title: 'Javascript Developer Pl', description: 'Vaga para Desenvolvedor Javascript com experiência (Pleno)', 
                       salary_range: 7500.0, requirements: 'Conhecimento sólido em Javascript, HTML, CSS, SASS, REACT',
-                      deadline_application: '10/08/2021', total_vacancies: 2, level: 2, company: treinadev)
+                      deadline_application: '10/08/2021', total_vacancies: 2, level: 2, type_hiring: :pj, company: treinadev)
 
 Job.create!(title: 'Front End Developer Jr', description: 'Vaga para Desenvolvedor Front End voltado para Vue.Js', 
                         salary_range: 6500.0, requirements: 'Conhecimento sólido em Java, Ruby, Ruby on Rails, NodeJS, SQLite3',
-                        deadline_application: '20/04/2021', total_vacancies: 2, level: 1, company: treinadev)
+                        deadline_application: '20/04/2021', total_vacancies: 2, level: 1, type_hiring: :clt_pj, company: treinadev)
 
 # # Enrollments, proposals and responses
 # chris_back_campus = Enrollment.create!(job: back_job, candidate: chris_candidate, status: :approved)
