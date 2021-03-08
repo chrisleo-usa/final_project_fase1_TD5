@@ -24,13 +24,13 @@
 
 ## Demonstrações
 ### Busca
-<img width="400" height="400" src="https://github.com/chrisleo-usa/final_project_fase1_td5/tree/main/app/assets/gifs/busca.gif">
+<img width="800" height="500" src="https://github.com/chrisleo-usa/final_project_fase1_td5/blob/main/app/assets/gifs/busca.gif">
 
 ### Login e aplicar para vaga
-<img width="400" height="400" src="https://github.com/chrisleo-usa/final_project_fase1_td5/tree/main/app/assets/gifs/login_aplica.gif">
+<img width="800" height="500" src="https://github.com/chrisleo-usa/final_project_fase1_td5/blob/main/app/assets/gifs/login_aplica.gif">
 
 ### Cadastro nova vaga
-<img width="400" height="400" src="https://github.com/chrisleo-usa/final_project_fase1_td5/tree/main/app/assets/gifs/nova_vaga.gif">
+<img width="800" height="500" src="https://github.com/chrisleo-usa/final_project_fase1_td5/blob/main/app/assets/gifs/nova_vaga.gif">
 
 ## Descrição do projeto
 <p align="justify"> Este projeto consiste em uma aplicação Web para conectar empresas e pessoas através de vagas de emprego. </p>
