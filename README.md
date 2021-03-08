@@ -22,6 +22,8 @@
 
 :small_blue_diamond: [Db Designer](#db-designer)
 
+:small_blue_diamond: [Figma](#figma)
+
 ## Demonstrações
 ### Busca
 <img width="800" height="500" src="https://github.com/chrisleo-usa/final_project_fase1_td5/blob/main/app/assets/gifs/busca.gif">
@@ -131,6 +133,9 @@ Para a construção deste projeto a Campus Code encaminhou todas as informaçõe
 Para auxiliar no entendimento do banco de dados utilizei o Db designer, uma ferramenta de modelagem do banco de dados. 
 
 [https://dbdesigner.page.link/WjZ4qQ1BqhDPPeNM6](https://dbdesigner.page.link/WjZ4qQ1BqhDPPeNM6)
+
+## Figma
+Para formar os layouts e estilos, fiz uma parte do projeto no Figma, para auxiliar na visualização. Devido ao tempo de entrega do projeto não consegui finalizar todas as páginas, algumas tive que fazer direto no código, mas o projeto está bem semelhante ao desenvolvido no Figma, salvo algumas alterações em que senti necessidade. 
 
 #### Tenho como objetivo finalizar o projeto antes da 2ª data de entrega (01/03/2021), definitivamente avançar para a 2ª etapa e conseguir uma vaga em uma das empresas patrocinadoras será um divisor de águas em minha trajetória profissional. 
 
