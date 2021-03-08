@@ -1,8 +1,10 @@
-<div class="container create edit">
-  <% if @company.name.blank?%>
-    <h2 class="create__title">Registre sua empresa</h2>
-  <% else %>
-    <h2 class="create__title">Editar <%= @company.name %></h2>
-  <% end %>
-  <%= render 'form' %>
+<div class="content bg-gradient">
+  <div class="container create company">
+    <% if @company.name.blank?%>
+      <h2 class="create__title">Cadastrar</h2>
+    <% else %>
+      <h2 class="create__title">Editar <%= @company.name %></h2>
+    <% end %>
+    <%= render 'form' %>
+  </div>
 </div>

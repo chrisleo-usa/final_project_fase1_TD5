@@ -1,52 +1,55 @@
-<div class="container create">
+<div class="content bg-gradient">
+  <div class="container ">
+    <div class="create">
+      <h2 class="create__title">Cadastrar</h2>
 
-  <h2 class="create__title">Cadastrar</h2>
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "create__form"}) do |f| %>
+        <%= render "candidates/shared/error_messages", resource: resource %>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "create__form"}) do |f| %>
-    <%= render "candidates/shared/error_messages", resource: resource %>
+        <div class="field create__block">
+          <%= f.label :name, class: "create__label" %><br />
+          <%= f.text_field :name, autofocus: true, class: "create__field" %>
+        </div>
 
-    <div class="field create__block">
-      <%= f.label :name, class: "create__label" %><br />
-      <%= f.text_field :name, autofocus: true, class: "create__field" %>
+        <div class="field create__block">
+          <%= f.label :phone, class: "create__label" %><br />
+          <%= f.telephone_field :phone, class: "create__field" %>
+        </div>
+
+        <div class="field create__block">
+          <%= f.label :cpf, 'CPF', class: "create__label" %><br />
+          <%= f.number_field :cpf, class: "create__field" %>
+        </div>
+
+        <div class="field create__block">
+          <%= f.label :biography, class: "create__label" %><br />
+          <%= f.text_area :biography, size: "60x10", class: "create__field" %>
+        </div>
+
+        <div class="field create__block">
+          <%= f.label :email, class: "create__label" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "create__field" %>
+        </div>
+
+        <div class="field create__block">
+          <%= f.label :password, class: "create__label" %>
+          <% if @minimum_password_length %>
+          <em>(mínimo <%= @minimum_password_length %> caracteres)</em>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password", class: "create__field" %>
+        </div>
+
+        <div class="field create__block">
+          <%= f.label :password_confirmation, class: "create__label" %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "create__field" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Salvar", class: "btn btn__secondary" %>
+        </div>
+      <% end %>
+
+      <%= render "candidates/shared/links" %>
     </div>
-
-    <div class="field create__block">
-      <%= f.label :phone, class: "create__label" %><br />
-      <%= f.telephone_field :phone, class: "create__field" %>
-    </div>
-
-    <div class="field create__block">
-      <%= f.label :cpf, 'CPF', class: "create__label" %><br />
-      <%= f.number_field :cpf, class: "create__field" %>
-    </div>
-
-    <div class="field create__block">
-      <%= f.label :biography, class: "create__label" %><br />
-      <%= f.text_area :biography, size: "60x10", class: "create__field" %>
-    </div>
-
-    <div class="field create__block">
-      <%= f.label :email, class: "create__label" %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "create__field" %>
-    </div>
-
-    <div class="field create__block">
-      <%= f.label :password, class: "create__label" %>
-      <% if @minimum_password_length %>
-      <em>(mínimo <%= @minimum_password_length %> caracteres)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password", class: "create__field" %>
-    </div>
-
-    <div class="field create__block">
-      <%= f.label :password_confirmation, class: "create__label" %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "create__field" %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Salvar", class: "create__btn" %>
-    </div>
-  <% end %>
-
-  <%= render "candidates/shared/links" %>
+  </div>
 </div>

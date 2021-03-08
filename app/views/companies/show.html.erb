@@ -1,90 +1,117 @@
-<div class="container dashboard">
-  <div class="dashboard__header">
-    <%= link_to 'Voltar', companies_path, class: 'dashboard__btn apply back' %>
-    <% if !@company.name.blank?%>
-      <h2 class="dashboard__name">Página da empresa <%= @company.name %></h2>
-    <% end %>
-
-    <% if employee_signed_in? %>
-      <% if current_employee.company_id === @company.id && current_employee.admin === 1 %>
-      <div class="dashboard__settings">
-        <%= link_to 'Editar', edit_company_path, class: "dashboard__btn edit" %>
-        <%= link_to 'Deletar', company_path, method: :delete, class: "dashboard__btn delete" %>
-      </div>
+<div class="content bg-gray">
+  <div class="container dashboard">
+    <%= render 'layouts/devise_msgs' %>
+    <div class="dashboard__header">
+      <%= link_to 'Voltar', companies_path, class: "btn" %>
+      <% if !@company.name.blank?%>
+        <h2 class="dashboard__title">Página da empresa <%= @company.name %></h2>
       <% end %>
-    <% end %>
-  </div>
 
-  <div class="dashboard__grid two__columns">
-    <div class="dashboard__list">
-      <div class="dashboard__item">
-        <p class="dashboard__label">Empresa: </p>
-        <p class="dashboard__attribute">
-          <%= @company.name %>
-        </p>
-      </div>
-
-      <div class="dashboard__item">
-        <p class="dashboard__label">Endereço: </p>
-        <p class="dashboard__attribute">
-          <%= @company.address %>
-        </p>
-      </div>
-
-      <div class="dashboard__item">
-        <p class="dashboard__label">CNPJ: </p>
-        <p class="dashboard__attribute">
-          <%= @company.cnpj %>
-        </p>
-      </div>
-
-      <div class="dashboard__item">
-        <p class="dashboard__label">Site: </p>
-        <p class="dashboard__attribute">
-          <%= @company.site %>
-        </p>
-      </div>
-
-      <div class="dashboard__item">
-        <p class="dashboard__label">Redes Sociais: </p>
-        <p class="dashboard__attribute">
-          <%= @company.social_media %>
-        </p>
-      </div>
-    </div>
-
-    <div class="dashboard__avatar">
-      <% if @company.logo.attached? %>
-        <%= image_tag @company.logo %>
-      <% else %>
-        <%= image_tag 'https://raw.githubusercontent.com/chrisleo-usa/final_project_fase1_td5/main/spec/support/no-image-available.jpeg' %>
-      <% end %>
-    </div>
-  </div>
-</div>
-
-<div class="container jobs">
-  <div class="jobs__header">
-    <h3>Oportunidades de emprego</h3>
-    <% if employee_signed_in? %>
-      <% if current_employee.company_id === @company.id && current_employee.admin == 1 %>
-        <div class="jobs__settings">
-          <%= link_to 'Registrar novo emprego', new_company_job_path(@company), class: "jobs__btn new" %>
+      <% if employee_signed_in? %>
+        <% if current_employee.company_id === @company.id && current_employee.admin === 1 %>
+        <div class="dashboard__settings">
+          <%= link_to 'Editar', edit_company_path, class: "btn" %>
+          <%= link_to 'Deletar', company_path, method: :delete, class: "btn btn__red" %>
         </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
 
-  <% if @company.jobs.empty? %>
-    <h4>Sem vagas de emprego registradas no momento</h4>
-  <% else %>
-    <% @company.jobs.each do |job| %>
-      <div class="jobs__item">
-        <%= link_to job.title, company_job_path(job.company, job), class: "jobs__name" %>
-        <% if job.inactive? %>
-          <span class="jobs__status">está <%= Job.human_attribute_name("status.#{job.status}") %></span>
+    <div class="dashboard__grid two__columns">
+      <div class="dashboard__list">
+        <div class="dashboard__item">
+          <p class="dashboard__label">Empresa: </p>
+          <p class="dashboard__attribute">
+            <%= @company.name %>
+          </p>
+        </div>
+
+        <div class="dashboard__item">
+          <p class="dashboard__label">CNPJ: </p>
+          <p class="dashboard__attribute">
+            <%= @company.cnpj %>
+          </p>
+        </div>
+
+        <div class="dashboard__item">
+          <p class="dashboard__label">Endereço: </p>
+          <p class="dashboard__attribute">
+            <%= @company.address %>
+          </p>
+        </div>
+
+        <div class="dashboard__item">
+          <p class="dashboard__label">Complemento: </p>
+          <p class="dashboard__attribute">
+            <%= @company.complement %>
+          </p>
+        </div>
+
+        <div class="dashboard__item">
+          <p class="dashboard__label">Cidade: </p>
+          <p class="dashboard__attribute">
+            <%= @company.city %>
+          </p>
+        </div>
+
+        <div class="dashboard__item">
+          <p class="dashboard__label">Estado: </p>
+          <p class="dashboard__attribute">
+            <%= @company.state %>
+          </p>
+        </div>
+
+        <div class="dashboard__item">
+          <p class="dashboard__label">Site: </p>
+          <p class="dashboard__attribute">
+            <%= @company.site %>
+          </p>
+        </div>
+
+        <div class="dashboard__item">
+          <p class="dashboard__label">Rede Social: </p>
+          <p class="dashboard__attribute">
+            <%= @company.social_media %>
+          </p>
+        </div>
+      </div>
+
+      <div class="dashboard__avatar">
+        <% if @company.logo.attached? %>
+          <%= image_tag @company.logo %>
+        <% else %>
+          <%= image_tag 'https://raw.githubusercontent.com/chrisleo-usa/final_project_fase1_td5/main/spec/support/no-image-available.png' %>
         <% end %>
       </div>
+    </div>
+  </div>
+
+  <div class="container list">
+    <div class="list__header">
+      <h3 class="list__title">Oportunidades de emprego</h3>
+      <% if employee_signed_in? %>
+        <% if current_employee.company_id === @company.id && current_employee.admin == 1 %>
+          <div class="list__settings">
+            <%= link_to 'Registrar novo emprego', new_company_job_path(@company), class: "btn" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <% if @company.jobs.empty? %>
+      <p class="list__none">Sem vagas de emprego registradas no momento</p>
+    <% else %>
+    <div class="grid">
+      <% @company.jobs.each do |job| %>
+        <div class="list__item">
+          <% if job.inactive? %>
+            <%= link_to "#{job.title} - Inativa", company_job_path(job.company, job), class: "list__link inactive" %>
+          <% else %>
+            <%= link_to job.title, company_job_path(job.company, job), class: "list__link" %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
     <% end %>
-  <% end %>
+  </div>
 </div>

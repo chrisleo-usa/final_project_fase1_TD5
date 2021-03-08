@@ -1,8 +1,10 @@
-<div class="container category">
-  <h3 class="category__title">Entrar como:</h3>
+<div class="content bg-gradient">
+  <div class="container category">
+    <h2 class="category__title">Entrar como:</h2>
 
-  <div class="category__list">
-    <%= link_to 'Candidato', new_candidate_session_path, class: "category__btn candidate" %>
-    <%= link_to 'Colaborador', new_employee_session_path, class: "category__btn employee" %>
+    <div class="category__list">
+      <%= link_to 'Candidato', new_candidate_session_path, class: "btn btn__secondary candidate" %>
+      <%= link_to 'Colaborador', new_employee_session_path, class: "btn btn__secondary employee" %>
+    </div>
   </div>
 </div>

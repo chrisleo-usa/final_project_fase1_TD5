@@ -1,54 +1,163 @@
+@import "_variables";
+
 .index {
-  margin-top: 20px;
+
+  &__title {
+    font-size: 24px;
+    color: $white;
+    font-weight: normal;
+  }
 
   &__none {
-    color: lightslategray;
+    margin-top: 36px;
+    font-size: 20px;
+    color: $white;
+    font-weight: normal;
   }
 
   &__list {
-    padding: 24px 0;
-    border-bottom: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 64px 30px;
+    margin-top: 48px;
+  }
 
-    &:last-child {
-      border: none;
+  &__card {
+    background-color: $white;
+    padding: 24px;
+    border: 2px solid $white;
+    border-radius: 8px;
+
+    transition: ease-in-out .4s;
+
+    &:hover {
+      transform: translateY(-30px);
+      border-color: $red-light
+    }
+
+    &__header {
+      text-align: center;
+      font-size: 24px;
+      border-bottom: 2px solid $red-dark;
+      padding-bottom: 24px;
+    }
+
+    &__body.primary{
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: repeat(3, 1fr);
+      grid-template-areas: 
+      "company company"
+      "created created"
+      "date status";
+    }
+
+    &__block {
+      margin-bottom: 16px;
+
+      &:first-child {
+        grid-area: company;
+      }
+
+      &:nth-child(2) {
+        grid-area: created;
+      }
+
+      &:nth-child(3) {
+        grid-area: date;
+      }
+
+      &.primary{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 65px;
+        height: 65px;
+        border: 2px solid slategrey;
+        border-radius: 50%;
+        grid-area: status;
+        margin-bottom: 0;
+
+        &.active {
+          border-color: $red-light;
+        }
+      }
+    }
+
+    &__status.active {
+      color: $red-light;
+    }
+
+    &__status.inactive {
+      color: slategray;
+    }
+
+    &__label {
+      color: rgba($black-color, 0.7);
+      margin-bottom: 8px;
+
+    }
+
+
+    &__attribute--link {
+      color: $black-color;
+      text-decoration: underline;
+    }
+  }
+
+  .index__card__body.secondary {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+
+    .index__card__block:last-child {
+
     }
   }
 
 
-  &__item {
-    margin-top: 16px;
+}
+
+// companies index cards
+.companies.index {
+
+  & .index__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
   }
 
-  &__item:first-child {
-    margin-top: 0;
+  & .index__card {
+    display: grid;
+    grid-template-rows: minmax(auto, 270px) auto;
+    padding: 0;
+    border-radius: 8px;
+    border: 0px solid transparent;
   }
 
-  &__label {
-    color: rgba(0, 0, 0, 0.596);
-    margin-bottom: 8px;
-    margin-top: 16px;
+  & .index__card__header {
+    display: flex;
+    align-items: center;
+    border: none;
+    padding: 0;
 
-    &:first-child {
-      margin-top: 0;
+    img {
+      display: block;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      width: 100%;
     }
   }
 
-  &__attribute.link {
-    color: darkblue;
-  }
+  & .index__card__body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 16px;
 
-  &__status {
-    padding: 6px 12px;
-    border-radius: 16px;
-  }
-
-  &__status.active {
-    color: limegreen;
-    border: 1px solid limegreen;
-  }
-
-  &__status.inactive {
-    color: lightslategray;
-    border: 1px solid lightslategray;
+    & .index__card__attribute--link {
+      font-size: 24px;
+    }
   }
 }

@@ -1,27 +1,44 @@
-<div class="container index">
-  <% if @jobs.any? %>
-    <h2 class="index__title">Resultados da busca</h2>
-    <% @jobs.each do |job| %>
-      <div class="index__list">
-        <div class="index__item">
-          <p class="index__label">Vaga:</p>
-            <%= link_to job.title, company_job_path(job.company, job), class: "index__attribute link" %>
-        </div>
-        <div class="index__item">
-          <p class="index__label">Empresa:</p>
-            <%= link_to job.company.name, company_path(job.company), class: "index__attribute link"%>
-        </div>
-        <div class="index__item">
-          <p class="index__label">Criada em:</p>
-          <p class="index__attribute"><%= job.created_at.strftime("%d/%m/%Y às %H:%M") %></p>
-        </div>
-        <div class="index__item">
-          <p class="index__label">Status:</p>
-          <span class="index__status <%= job.status %>"><%= Job.human_attribute_name("status.#{job.status}") %></span>
+<div class="content bg-gray">
+  <div class="container">
+    <% if @jobs.any? %>
+      <div class="cover">
+        <h2 class="cover__title">Resultados da busca</h2>
+      </div>
+      <div class="index">
+        <div class="index__list">
+          <% @jobs.each do |job| %>
+            <div class="index__card">
+              <div class="index__card__header">
+                <%= link_to job.title, company_job_path(job.company, job), class: "index__card__attribute--link" %>
+              </div>
+              <div class="index__card__body primary">
+                <div class="index__card__block">
+                  <p class="index__card__label">Empresa:</p>
+                  <%= link_to job.company.name, company_path(job.company), class: "index__card__attribute--link"%>
+                </div>
+
+                <div class="index__card__block">
+                  <p class="index__card__label">Criado em:</p>
+                  <p class="index__card__attribute"><%= job.created_at.strftime("%d/%m/%Y at %H:%M") %></p>
+                </div>
+
+                <div class="index__card__block">
+                  <p class="index__card__label">Data limite para aplicar:</p>
+                  <p class="index__card__attribute"><%= job.deadline_application.strftime("%d/%m/%Y") %></p>
+                </div>
+
+                <div class="index__card__block primary <%= job.status %>">
+                  <span class="index__card__status <%= job.status %>"><%= Job.human_attribute_name("status.#{job.status}") %></span>
+                </div>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
+    <% else %>
+      <div class="cover">
+        <h2 class="cover__title">Desculpe, não achamos nenhuma vaga com este nome</h2>
+      </div>
     <% end %>
-  <% else %>
-    <h2 class="index__title">Desculpe, não achamos nenhuma vaga com este nome</h2>
-  <% end %>
+  </div>
 </div>

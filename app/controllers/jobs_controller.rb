@@ -2,6 +2,7 @@ class JobsController < ApplicationController
   before_action :authenticate_employee!, only: %i[new edit]
   before_action :authenticate_candidate!, only: [:apply]
   before_action :select_level, only: %i[new edit]
+  before_action :select_type, only: %i[new edit]
 
   def index
     @jobs = Job.all
@@ -44,6 +45,7 @@ class JobsController < ApplicationController
       redirect_to @job.company
     else
       select_level()
+      select_type()
       render :edit
     end
   end
@@ -79,7 +81,11 @@ class JobsController < ApplicationController
       @levels = Job.levels
     end
 
+    def select_type
+      @types = Job.type_hirings
+    end
+
     def job_params
-      params.require(:job).permit(:title, :level, :description, :salary_range, :requirements, :deadline_application, :total_vacancies, level_ids: [])
+      params.require(:job).permit(:title, :level, :type_hiring, :description, :salary_range, :requirements, :deadline_application, :total_vacancies, :status, :type, level_ids: [], type_hiring_ids: [])
     end
 end

@@ -1,84 +1,96 @@
-<div class="container dashboard">
-  <div class="dashboard__header">
-    <%= link_to 'Voltar', company_path(@job.company), class: 'dashboard__btn apply back' %>
-    <h2 class="dashboard__name"><%= @job.title %></h2>
-    <% if employee_signed_in? %>
-      <% if current_employee.company_id === @job.company.id %>
-        <div class="dashboard__settings">
-          <%= link_to 'Editar', edit_company_job_path(@job.company, @job), class: "dashboard__btn edit" %>
+<div class="content bg-gray">
+  <div class="container dashboard">
+    <%= render 'layouts/devise_msgs' %>
+    <div class="dashboard__header">
+      <%= link_to 'Voltar', company_path(@job.company), class: 'btn' %>
+      <h2 class="dashboard__title"><%= @job.title %></h2>
+      <% if employee_signed_in? %>
+        <% if current_employee.company_id === @job.company.id %>
+          <div class="dashboard__settings">
+            <%= link_to 'Editar', edit_company_job_path(@job.company, @job), class: "btn" %>
 
-          <% if @job.active?%>
-            <%= link_to 'Inativar', disable_company_job_path(@job.company, @job), method: :post, class: "dashboard__btn--disable" %>
-          <% end %>
-        </div>
+            <% if @job.active?%>
+              <%= link_to 'Inativar', disable_company_job_path(@job.company, @job), method: :post, class: "btn btn__red" %>
+            <% end %>
+          </div>
+        <% end %>
+      <% elsif @job.active?%>
+        <%= link_to 'Aplicar', apply_company_job_path(@job.company, @job), method: :post, class: "btn btn__red" %>
       <% end %>
-    <% elsif @job.active?%>
-      <%= link_to 'Aplicar', apply_company_job_path(@job.company, @job), method: :post, class: "dashboard__btn apply" %>
-    <% end %>
-  </div>
-  <span class="dashboard__status <%= @job.status %>"><%= Job.human_attribute_name("status.#{@job.status}") %></span>
+    </div>
+    
+    <div class="status <%= @job.status %>">
+      <span class="<%= @job.status %>"><%= Job.human_attribute_name("status.#{@job.status}") %></span>
+    </div>
 
-  <div class="dashboard__grid one__column">
-    <div class="dashboard__list">
-      <div class="dashboard__item">
-        <p class="dashboard__label">Descrição: </p>
-        <p class="dashboard__attribute">
-          <%= @job.description %>
-        </p>
-      </div>
+    <div class="dashboard__grid one__column">
+      <div class="dashboard__list three__columns">
+        <div class="dashboard__item desc">
+          <p class="dashboard__label">Descrição: </p>
+          <p class="dashboard__attribute">
+            <%= @job.description %>
+          </p>
+        </div>
 
-      <div class="dashboard__item">
-        <p class="dashboard__label">Salário:</p>
-        <p class="dashboard__attribute">
-          <%= @job.salary_range %>
-        </p>
-      </div>
+        <div class="dashboard__item salary">
+          <p class="dashboard__label">Salário:</p>
+          <p class="dashboard__attribute">
+            <%= @job.salary_range %>
+          </p>
+        </div>
 
-      <div class="dashboard__item">
-        <p class="dashboard__label">Nível: </p>
-        <p class="dashboard__attribute">
-          <%= Job.human_attribute_name("level.#{@job.level}") %>
-        </p>
-      </div>
+        <div class="dashboard__item level">
+          <p class="dashboard__label">Nível: </p>
+          <p class="dashboard__attribute">
+            <%= Job.human_attribute_name("level.#{@job.level}") %>
+          </p>
+        </div>
 
-      <div class="dashboard__item">
-        <p class="dashboard__label">Requerimentos: </p>
-        <p class="dashboard__attribute">
-          <%= @job.requirements %>
-        </p>
-      </div>
+        <div class="dashboard__item type">
+          <p class="dashboard__label">Tipo de contratação: </p>
+          <p class="dashboard__attribute">
+            <%= Job.human_attribute_name("type_hiring.#{@job.type_hiring}") %>
+          </p>
+        </div>
 
-      <div class="dashboard__item">
-        <p class="dashboard__label">Data limite para aplicação: </p>
-        <p class="dashboard__attribute">
-          <%= @job.deadline_application.strftime("%d/%m/%Y") %>
-        </p>
-      </div>
+        <div class="dashboard__item req">
+          <p class="dashboard__label">Requerimentos: </p>
+          <p class="dashboard__attribute">
+            <%= @job.requirements %>
+          </p>
+        </div>
 
-      <div class="dashboard__item">
-        <p class="dashboard__label">Número de vagas: </p>
-        <p class="dashboard__attribute">
-          <%= @job.total_vacancies %>
-        </p>
+        <div class="dashboard__item date">
+          <p class="dashboard__label">Data limite para aplicação: </p>
+          <p class="dashboard__attribute">
+            <%= @job.deadline_application.strftime("%d/%m/%Y") %>
+          </p>
+        </div>
+
+        <div class="dashboard__item vacancy">
+          <p class="dashboard__label">Número de vagas: </p>
+          <p class="dashboard__attribute">
+            <%= @job.total_vacancies %>
+          </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<% if employee_signed_in? && current_employee.company === @job.company %>
-  <div class="container index">
-    <% if @job.enrollments.empty? %>
-      <h4 class="index__none">Sem inscrições no momento.</h4>
-    <% else %>
-      <h2 class="index__title">Inscrições recebidas:</h2>
-      <% @enrollments.each do |enrollment|%>
-        <div class="index__list">
-          <div class="index__item">
-            <p class="index__label">Candidato:</p>
-            <%= link_to enrollment.candidate.name, enrollment_path(enrollment), class: "index__attribute link" %>
-          </div>
+  <% if employee_signed_in? && current_employee.company === @job.company %>
+    <div class="container list">
+      <% if @job.enrollments.empty? %>
+        <h2 class="list__none">Sem inscrições no momento.</h2>
+      <% else %>
+        <h2 class="list__title candidate">Inscrições recebidas:</h2>
+        <div class="grid">
+          <% @enrollments.each do |enrollment|%>
+            <div class="list__item">
+              <%= link_to enrollment.candidate.name, enrollment_path(enrollment), class: "list__link" %>
+            </div>
+          <% end %>
         </div>
       <% end %>
-    <% end %>
-  </div>
-<% end %>
+    </div>
+  <% end %>
+</div>

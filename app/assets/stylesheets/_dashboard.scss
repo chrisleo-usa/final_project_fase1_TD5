@@ -1,4 +1,5 @@
-// --Company Show--
+@import '_variables';
+
 .dashboard {
   margin-top: 20px;
 
@@ -13,117 +14,80 @@
     text-align: right;
   }
 
-  &__btn.apply,
-  &__btn.approve, 
-  &__btn--disable {
-    padding: 8px 16px;
-
-    border: 1px solid lightblue;
-    background-color: lightblue;
-    color: white;
-    border-radius: 4px;
-    transition: ease-in-out .3s;
-
-    &:hover {
-      border-color: lightblue;
-      background-color: transparent;
-      color: darken(lightblue, 50%);
-    }
+  &__title {
+    font-size: 32px;
+    color: $white;
   }
 
-  &__btn--disable {
-    background-color: lightslategray;
-    border-color: lightslategray;
-
-    &:hover {
-      border-color: lightslategray;
-      background-color: white;
-      color: lightslategray;
-    }
+  .btn + &__title {
+    margin-left: 24px;
   }
 
-  &__btn.approve {
-    margin-right: 24px;
-  }
-
-  &__btn.edit {
-    padding: 8px 16px;
-
-    border: 1px solid lightblue;
-    background-color: lightblue;
-    color: white;
-    border-radius: 4px;
-    margin-right: 24px;
-
-    &:hover {
-      border: 1px solid lightblue;
-      background-color: transparent;
-      color: darken(lightblue, 50%);
-
-      transition: ease-in-out .3s;
-    }
-  }
-
-  &__btn.delete,
-  &__btn.deny {
-    padding: 8px 16px;
-
-    border: 1px solid lightcoral;
-    background-color: lightcoral;
-    color: white;
-    border-radius: 4px;
-
-    &:hover {
-      border: 1px solid lightcoral;
-      background-color: transparent;
-      color: darken(lightcoral, 50%);
-
-      transition: ease-in-out .3s;
-    }
-  }
-
-  &__status {
-    font-size: 14px;
-    color: lightslategray;
-    border: 2px solid lightslategray;
-    border-radius: 30px;
-    padding: 8px 16px;
-    margin: 16px 0;
-  }
-
-  &__status.approved,
-  &__status.accepted,
-  &__status.active {
-    color: limegreen;
-    border: 1px solid limegreen;
-  }
-
-  &__status.denied,
-  &__status.declined {
-    color: red;
-    border: 1px solid red;
+  .btn + .btn {
+    margin-left: 24px;
   }
 
   &__grid.two__columns {
-    margin-top: 24px;
+    margin: 64px 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
   }
 
   &__grid.one__column{
-    margin-top: 24px;
     display: grid;
     grid-template-columns: 1fr;
+  }
+
+  //Job show
+  &__list.three__columns {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    margin-bottom: 40px;
+    grid-template-areas: 
+    "desc desc desc"
+    "salary level type"
+    "req req req"
+    "date vacancy vacancy";
+  }
+
+  &__item.desc {
+    grid-area: desc;
+  }
+
+  &__item.salary {
+    grid-area: salary;
+  }
+
+  &__item.level {
+    grid-area: level;
+  }
+
+  &__item.type {
+    grid-area: type;
+  }
+
+  &__item.req {
+    grid-area: req;
+  }
+
+  &__item.date {
+    grid-area: date;
+  }
+
+  &__item.vacancy {
+    grid-area: vacancy;
+  }
+  // end Job show
+
+  &__list.two__columns {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
   }
 
   &__subtitle {
     font-size: 20px;
     text-transform: uppercase;
-  }
-
-  &__name {
-    font-size: 20px;
-    margin-left: 24px;
+    color: $white;
   }
 
   &__item {
@@ -138,24 +102,94 @@
   }
 
   &__label {
-    color: rgba(0, 0, 0, 0.596);
+    font-size: 18px;
+    color: $label-gray;
     margin-bottom: 8px;
   }
 
   &__attribute {
+    font-size: 24px;
+    color: $white;
     margin: 8px 0;
   }
 
   &__avatar {
     display: flex;
-    justify-content: center;
     align-items: flex-start;
+    margin-left: auto;
 
     max-width: 225px;
-    margin: 0 auto;
 
     & img {
       width: 100%;
+    }
+  }
+
+  // enrollment show
+  &__grid.two__columns__eql {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 64px 0;
+    column-gap: 56px;
+  }
+
+  &__list.one__column {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard__subtitle {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  &__list.two__columns {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 32px;
+    grid-template-areas: 
+    "sub sub"
+    "title level"
+    "desc desc"
+    "salary type"
+    "date vacancy"
+    "req req";
+
+    .dashboard__subtitle {
+      grid-area: sub;
+    }
+
+    .dashboard__item.title {
+      grid-area: title;
+    }
+
+    .dashboard__item.level {
+      grid-area: level;
+      margin-left: 50px;
+    }
+
+    .dashboard__item.desc {
+      grid-area: desc;
+    }
+
+    .dashboard__item.salary {
+      grid-area: salary;
+    }
+
+    .dashboard__item.type {
+      grid-area: type;
+      margin-left: 50px;
+    }
+
+    .dashboard__item.date {
+      grid-area: date;
+    }
+
+    .dashboard__item.vacancy {
+      grid-area: vacancy;
+      margin-left: 50px;
+    }
+
+    .dashboard__item.req {
+      grid-area: req;
     }
   }
 }

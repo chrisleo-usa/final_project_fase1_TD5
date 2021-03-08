@@ -1,70 +1,77 @@
-<div class="container edit__or__delete">
-  <div class="create">
-    <h2 class="create__title">Editar</h2>
+<div class="content bg-gradient">
+  <div class="container">
+    <div class="candidate__edit">
+      <div class="create">
+        <h2 class="create__title">Editar</h2>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "create__form", method: :put }) do |f| %>
-      <%= render "candidates/shared/error_messages", resource: resource %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "create__form", method: :put }) do |f| %>
+          <%= render "candidates/shared/error_messages", resource: resource %>
 
-      <div class="field create__block">
-        <%= f.label :name, class: "create__label" %><br />
-        <%= f.text_field :name, autofocus: true, class: "create__field" %>
-      </div>
+          <div class="field create__block name">
+            <%= f.label :name, class: "create__label" %><br />
+            <%= f.text_field :name, autofocus: true, class: "create__field" %>
+          </div>
 
-      <div class="field create__block">
-        <%= f.label :phone, class: "create__label" %><br />
-        <%= f.telephone_field :phone, class: "create__field" %>
-      </div>
+          <div class="field create__block phone">
+            <%= f.label :phone, class: "create__label" %><br />
+            <%= f.telephone_field :phone, class: "create__field" %>
+          </div>
 
-      <div class="field create__block">
-        <%= f.label :cpf, class: "create__label" %><br />
-        <%= f.number_field :cpf, class: "create__field" %>
-      </div>
+          <div class="field create__block cpf">
+            <%= f.label :cpf, class: "create__label" %><br />
+            <%= f.number_field :cpf, class: "create__field" %>
+          </div>
 
-      <div class="field create__block">
-        <%= f.label :biography, class: "create__label" %><br />
-        <%= f.text_area :biography, size: "60x10", class: "create__field" %>
-      </div>
+          <div class="field create__block bio">
+            <%= f.label :biography, class: "create__label" %><i class="create__label"> (máximo 500 caracteres)</i><br />
+            <%= f.text_area :biography, size: "60x10", maxlength: "500", class: "create__field" %>
+          </div>
 
-      <div class="field create__block">
-        <%= f.label :email, class: "create__label" %><br />
-        <%= f.email_field :email, autocomplete: "email", class: "create__field" %>
-      </div>
+          <div class="field create__block email">
+            <%= f.label :email, class: "create__label" %><br />
+            <%= f.email_field :email, autocomplete: "email", class: "create__field" %>
+          </div>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
 
-      <div class="field">
-        <%= f.label :password, class: "create__label" %> <i class="create__label">(deixe em branco se não quiser alterar)</i><br />
-        <%= f.password_field :password, autocomplete: "new-password", class: "create__field" %>
-        <% if @minimum_password_length %>
-          <br />
-          <em class="create__label">mínimo <%= @minimum_password_length %> caracteres</em>
+          <div class="field pass">
+            <%= f.label :password, class: "create__label" %> <i class="create__label">(se quiser alterar)</i><br />
+            <%= f.password_field :password, autocomplete: "new-password", class: "create__field" %>
+            <% if @minimum_password_length %>
+              <br />
+              <em class="create__label">mínimo <%= @minimum_password_length %> caracteres</em>
+            <% end %>
+          </div>
+
+          <div class="field conf_pass">
+            <%= f.label :password_confirmation, class: "create__label" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "create__field" %>
+          </div>
+
+          <div class="field cur_pass">
+            <%= f.label :current_password, class: "create__label" %> <i class="create__label"></i><br />
+            <%= f.password_field :current_password, autocomplete: "current-password", class: "create__field" %>
+          </div>
+
+          <div class="actions submit">
+            <%= f.submit "Salvar", class: "btn btn__secondary" %>
+          </div>
         <% end %>
       </div>
 
-      <div class="field">
-        <%= f.label :password_confirmation, class: "create__label" %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "create__field" %>
-      </div>
+      <div class="delete">
+        <div class="delete__container">
+          <h2 class="delete__title">Deletar conta</h2>
 
-      <div class="field">
-        <%= f.label :current_password, class: "create__label" %> <i class="create__label">(precisamos de sua senha atual para confirmar as mudanças)</i><br />
-        <%= f.password_field :current_password, autocomplete: "current-password", class: "create__field" %>
-      </div>
+          <div class="delete__buttons">
+            <%= link_to "Voltar", :back, class: "btn btn__secondary" %>
+            <%= button_to "Deletar", registration_path(resource_name), data: { confirm: "Tem certeza?" }, method: :delete, class: "btn btn__red" %>
+          </div>
+        </div>
 
-      <div class="actions">
-        <%= f.submit "Salvar", class: "create__btn" %>
       </div>
-    <% end %>
+    </div>
   </div>
-
-  <div class="create delete">
-    <h3 class="create__title delete">Cancelar conta</h3>
-
-    <%= button_to "Cancelar", registration_path(resource_name), data: { confirm: "Tem certeza?" }, method: :delete, class: "create__btn delete" %>
-
-    <%= link_to "Voltar", :back, class: "create__back delete" %>
-  </div>
-
 </div>

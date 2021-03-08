@@ -1,6 +1,17 @@
-.footer {
-  padding: 30px;
-  text-align: center;
-  background-color: lighten(lightblue, 15%);
-  margin-top: 50px;
+@import "_variables";
+footer {
+  background-color: $black-color;
+
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+
+    &__copyright {
+      color: $white;
+    }
+  }
+
+
 }

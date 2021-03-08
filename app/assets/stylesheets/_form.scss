@@ -1,32 +1,50 @@
-// --Sign up or edit Form--
+@import '_variables';
+
 .create {
-  width: 40%;
-  background-color: lightblue;
+  width: 500px;
   margin: 0 auto;
-  padding: 30px;
-  border-radius: 24px;
+  padding: 24px 40px;
+  border: 1px solid $white;
+  border-radius: 8px;
 
   &__form {
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 16px;
+
+    input {
+      font-size: 16px;
+    }
+
+    textarea {
+      padding: 16px;
+      font-family: Roboto, sans-serif;
+      resize: vertical;
+      border-radius: 8px;
+      outline: none;
+      border: none;
+    }
   }
 
   &__title {
+    color: $white;
     text-align: center;
-    font-size: 40px;
+    font-size: 48px;
+    font-weight: normal;
     margin-bottom: 24px;
   }
 
   &__block {
 
     em {
-      color: lightslategray;
+      color: $white;
     }
   }
 
   &__label {
-    color: lightslategray;
+    color: $white;
+    font-size: 18px;
+    white-space: nowrap;
   }
 
   &__field {
@@ -36,34 +54,28 @@
     &[name="candidate[biography]"] {
       resize: none;
     }
-
   }
 
-  &__btn {
-    font-size: 16px;
-    color: darken(lightblue, 50%);
+  .btn {
+    width: 100%;
+    text-transform: uppercase;
     font-size: 20px;
-    padding: 8px 16px;
-    margin: 16px 0;
+    margin: 32px 0;
 
-    background-color: transparent;
-    border: 2px solid darken(lightblue, 50%);
-    border-radius: 16px;
-
-    cursor: pointer;
-
-    &:hover {
-      background-color: white;
-      color: darken(lightblue, 50%);
-
-      transition: ease-in-out .3s;
-    }
+    border-width: 2px;
+    border-radius: 8px;
   }
 
   &__log_in{
     margin-top: 16px;
-    color: black;
+    color: $white;
     text-decoration: underline;
+    transition: ease-in-out .3s;
+    cursor: pointer;
+
+    &:hover {
+      color: $red-dark;
+    }
   }
 
   &__delete {
@@ -76,110 +88,272 @@
 
   & .alert{
     color: red;
-  } 
-}
-
-// Candidate edit form
-.edit__or__delete {
-  & .create {
-    width: 60%;
-    min-width: 600px;
   }
-  display: grid;
-  grid-template-columns: 1.5fr 1fr;
-  column-gap: 24px;
+
+  #proposal_start_date {
+    padding: 8px;
+  }
 }
 
-.create.edit {
-  width: 40%;
-  min-width: 600px;
+//create or edit form company
+.company.create {
+  width: 800px;
+
+  .create__form {
+    display: grid;
+    grid-template-columns: minmax(300px, auto) minmax(200px, 250px);
+    column-gap: 32px;
+    grid-template-areas: 
+    "name cnpj"
+    "address complement"
+    "city state"
+    "site social"
+    "logo logo"
+    "btn btn";
+  }
+
+  .create__block.name {
+    grid-area: name;
+  }
+
+  .create__block.cnpj {
+    grid-area: cnpj;
+  }
+
+  .create__block.logo {
+    grid-area: logo;
+
+    .container {
+      width: 300px;
+    }
+    input#company_logo {
+      color: $white;
+    }
+  }
+
+  .create__block.address {
+    grid-area: address;
+  }
+
+  .create__block.complement {
+    grid-area: complement;
+  }
+
+  .create__block.city {
+    grid-area: city;
+  }
+
+  .create__block.state {
+    grid-area: state;
+  }
+
+  .create__block.site {
+    grid-area: site;
+  }
+
+  .create__block.social{
+    grid-area: social;
+  }
+
+  .create__block.submit {
+    grid-area: btn;
+    text-align: center;
+
+    .btn {
+      max-width: 410px;
+    }
+  }
 }
 
-.create.job {
-  width: 40%;
+.job.create {
+  width: 600px;
+
+  .create__form {
+    grid-template-columns: repeat(3, auto);
+    align-items: center;
+    column-gap: 32px;
+    grid-template-areas: 
+    "title title title"
+    "description description description"
+    "salary salary type"
+    "level date vacancy"
+    "require require require"
+    "submit submit submit";
+
+    .create__block.title {
+      grid-area: title;
+    }
+
+    .create__block.description {
+      grid-area: description;
+    }
+
+    .create__block.salary {
+      grid-area: salary;
+    }
+
+    .create__block.type {
+      grid-area: type;
+
+      select {
+        width: 100%;
+      }
+    }
+
+    .create__block.level {
+      align-self: stretch;
+      grid-area: level;
+      display: flex;
+      flex-direction: column;
+
+      label {
+        display: inline-block;
+        margin-bottom: 8px;
+      }
+
+      select {
+        flex: 1;
+      }
+    }
+
+    .create__block.date {
+      align-self: stretch;
+      grid-area: date;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .create__block.vacancy {
+      grid-area: vacancy;
+    }
+
+    .create__block.require {
+      grid-area: require;
+    }
+
+    .create__block.submit {
+      grid-area: submit;
+    }
+
+  }
 }
+
 
 // Edit candidate
-.delete.create {
-  width: 90%;
-  max-width: 500px;
-  max-height: 250px;
+.candidate__edit {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
 
-  background-color: lightcoral;
+  .create {
+    width: 600px;
 
-  &__title {
-    color: white;
-  }
+    &__form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 24px;
+      grid-template-areas: 
+      "name name"
+      "phone cpf"
+      "bio bio"
+      "email pass"
+      "conf_pass cur_pass"
+      "submit submit";
 
-  form.button_to {
-    text-align: center;
-    margin: 16px 0;
-  }
+      .field.name {
+        grid-area: name;
+      }
 
-  &__btn {
-    color: white;
-    border-color: white;
+      .field.phone {
+        grid-area: phone;
+      }
 
-    &:hover {
-      color: lightcoral;
+      .field.cpf {
+        grid-area: cpf;
+      }
+
+      .field.bio {
+        grid-area: bio;
+      }
+
+      .field.email {
+        grid-area: email;
+      }
+
+      .field.pass {
+        grid-area: pass;
+      }
+
+      .field.conf_pass {
+        grid-area: conf_pass;
+      }
+
+      .field.cur_pass {
+        grid-area: cur_pass;
+      }
+
+      .actions.submit {
+        grid-area: submit;
+      }
+
+      .create__label {
+        white-space: unset;
+      }
+
     }
   }
 
-  &__back {
-    color: white;
+  .delete {
+    width: 450px;
+    &__container {
+      padding: 24px 40px;
+      border: 1px solid $white;
+      border-radius: 8px;
+    }
+
+    &__title {
+      color: $white;
+      text-align: center;
+      font-size: 40px;
+      margin-bottom: 24px;
+      font-weight: normal;
+    }
+
+    &__buttons {
+      display: flex;
+      justify-content: space-around;
+    }
   }
 }
 
-// --Forgot Password Candidate--
-.forgot_password {
-  width: 30%;
-  background-color: lightblue;
-  margin: 0 auto;
-  padding: 30px;
-  border-radius: 24px;
+// new proposal
+.create__form.proposal {
+  grid-template-columns: 1fr 1fr;
+  column-gap: 32px;
+  grid-template-areas: 
+  "message message"
+  "salary date"
+  "submit submit";
 
-  &__title {
-    text-align: center;
-    font-size: 30px;
-    margin-bottom: 24px;
+  .create__block.message {
+    grid-area: message;
   }
 
-  &__form {
-    display: flex;
-    flex-direction: column;
+  .create__block.salary {
+    grid-area: salary;
   }
 
-  &__block {
-    padding: 16px 0;
+  .create__block.date {
+    grid-area: date;
   }
 
-  &__label {
-    color: lightslategray;
+  .create__block.submit {
+    grid-area: submit;
   }
+}
 
-  &__field {
-    margin-top: 8px;
-    width: 100%;
-  }
-
-  &__btn {
-    font-size: 16px;
-    color: darken(lightblue, 50%);
-    font-size: 20px;
-    padding: 8px 16px;
-    margin: 16px 0;
-
-    background-color: transparent;
-    border: 2px solid darken(lightblue, 50%);
-    border-radius: 16px;
-
-    cursor: pointer;
-
-    &:hover {
-      background-color: white;
-      color: darken(lightblue, 50%);
-
-      transition: ease-in-out .3s;
-    }
+// new accept proposal
+.accept__proposal.create {
+  input.create__field {
+    padding: 8px;
   }
 }

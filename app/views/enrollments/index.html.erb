@@ -1,25 +1,40 @@
-<div class="container index">
+<div class="content bg-gray">
+  <div class="container index">
+    <%= render 'layouts/devise_msgs' %>
 
-  <h2 class="index__title">Minhas inscrições</h2>
+    <h2 class="index__title">Minhas inscrições</h2>
 
-  <% if @enrollments.empty? %>
-    <h4 class="index__none">Você ainda não se inscreveu para nenhuma vaga</h4>
-  <% else %>
-    <% @enrollments.each do |enrollment| %>
+    <% if @enrollments.empty? %>
+      <h4 class="index__none">Você ainda não se inscreveu para nenhuma vaga</h4>
+    <% else %>
       <div class="index__list">
-        <div class="index__item">
-          <p class="index__label">Vaga:</p>
-            <%= link_to enrollment.job.title, enrollment_path(enrollment), class: "index__attribute link" %>
-          <p class="index__label second">Empresa:</p>
-          <p class="index__attribute">
-            <%= enrollment.job.company.name %>
-          </p>
-          <p class="index__label">Status:</p>
-          <p class="index__attribute">
-            <%= Enrollment.human_attribute_name("status.#{enrollment.status}") %>
-          </p>
-        </div>
+        <% @enrollments.each do |enrollment| %>
+          <div class="index__card">
+            <div class="index__card__header">
+              <%= link_to enrollment.job.title, enrollment_path(enrollment), class: "index__card__attribute--link" %>
+            </div>
+
+            <div class="index__card__body secondary">
+              <div class="index__card__block">
+                <p class="index__card__label">Empresa:</p>
+                <%= link_to enrollment.job.company.name, company_path(enrollment.job.company), class: "index__card__attribute--link" %>
+              </div>
+
+              <div class="index__card__block">
+                <p class="index__card__label">Nº de vagas:</p>
+                <p class="index__card__attribute"><%= enrollment.job.total_vacancies %></p>
+              </div>
+
+              <div class="index__card__block secondary">
+                <p class="index__card__label">Status:</p>
+                <p class="index__card__attribute">
+                  <%= Enrollment.human_attribute_name("status.#{enrollment.status}") %>
+                </p>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     <% end %>
-  <% end %>
+  </div>
 </div>

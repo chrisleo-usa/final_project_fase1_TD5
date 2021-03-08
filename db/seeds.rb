@@ -11,7 +11,7 @@ Candidate.create!(name: 'Susan Ristau', phone: '48991567741', cpf: 98765432110,
                                     email: 'susan@yahoo.com.br', password: '123456')
 
 # Campus Code - Sem logo
-campuscode = Company.create!(name: 'Campus Code', address: 'Rua da Campus Code, 222', cnpj: 1234567891011, 
+campuscode = Company.create!(name: 'Campus Code', address: 'Rua da Campus Code', complement: '222, sala 123', city: 'São Paulo', state: 'SP', cnpj: 1234567891011, 
                             site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
                             domain: 'campuscode')
 
@@ -27,7 +27,7 @@ Job.create!(title: 'Back End Developer', description: 'Vaga para desenvolvedor B
                         deadline_application: '01/03/2021', total_vacancies: 2, level: 1, company: campuscode)
 
 # TreinaDev - Com logo
-treinadev = Company.create!(name: 'TreinaDev', address: 'Rua da Portal Solar, 987', cnpj: 9876543211011, 
+treinadev = Company.create!(name: 'TreinaDev', address: 'Rua da Portal Solar', complement: '987, sala 900', city: 'São Paulo', state: 'SP', cnpj: 9876543211011, 
                                 site: 'www.treinadev.com.br', social_media: 'www.linkedin.com/in/treinadev', 
                                 domain: 'treinadev')
 

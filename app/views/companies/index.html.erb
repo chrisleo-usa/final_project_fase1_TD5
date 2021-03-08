@@ -1,17 +1,33 @@
-<div class="container index">
+<div class="content bg-gray">
+  <div class="container">
+    <%= render 'layouts/devise_msgs' %>
 
-  <h2 class="index__title">Empresas registradas</h2>
-
-  <% if @companies.empty?%>
-    <h4 class="index__none">Nenhuma empresa cadastrada no momento</h4>
-  <% else %>
-    <% @companies.each do |company| %>
-      <div class="index__list">
-        <div class="index__item">
-          <p class="index__label">Empresa:</p>
-          <%= link_to company.name, company_path(company), class: "index__attribute link" %>
+    <% if @companies.empty?%>
+      <div class="cover">
+        <h2 class="cover__title">Nenhuma empresa cadastrada no momento</h2>
+      </div>
+    <% else %>
+      <div class="cover">
+        <h2 class="cover__title">Empresas registradas</h2>
+      </div>
+      <div class="index companies">
+        <div class="index__list">
+          <% @companies.each do |company| %>
+            <div class="index__card">
+              <div class="index__card__header">
+                <% if company.logo.attached? %>
+                  <%= image_tag company.logo %>
+                <% else %>
+                  <%= image_tag 'https://raw.githubusercontent.com/chrisleo-usa/final_project_fase1_td5/main/spec/support/no-image-available.jpeg' %>
+                <% end %>
+              </div>
+              <div class="index__card__body">
+                <%= link_to company.name, company_path(company), class: "index__card__attribute--link" %>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
     <% end %>
-  <% end %>
+  </div>
 </div>

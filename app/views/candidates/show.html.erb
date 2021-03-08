@@ -1,52 +1,54 @@
-<div class="container dashboard">
-  <div class="dashboard__header">
-    <h2 class="dashboard__name">Perfil de <%= @candidate.name %></h2>
-
-    <% if candidate_signed_in? %>
-      <% if current_candidate === @candidate %>
-        <div class="dashboard__settings">
-          <%= link_to 'Editar', edit_candidate_registration_path(current_candidate), class: "dashboard__btn edit" %>
-          <%= link_to 'Deletar', candidate_registration_path, method: :delete, class: "dashboard__btn delete" %>
-        </div>
+<div class="content bg-gray">
+  <div class="container dashboard">
+    <%= render 'layouts/devise_msgs' %>
+    <div class="dashboard__header">
+      <h2 class="dashboard__title">Perfil de <%= @candidate.name %></h2>
+      <% if candidate_signed_in? %>
+        <% if current_candidate === @candidate %>
+          <div class="dashboard__settings">
+            <%= link_to 'Editar', edit_candidate_registration_path(current_candidate), class: "btn" %>
+            <%= link_to 'Deletar', candidate_registration_path, method: :delete, class: "btn btn__red" %>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-  <div class="dashboard__grid one__column">
-    <div class="dashboard__list">
-      <div class="dashboard__item">
-        <p class="dashboard__label">Nome: </p>
-        <p class="dashboard__attribute">
-          <%= @candidate.name %>
-        </p>
-      </div>
-
-      <div class="dashboard__item">
-        <p class="dashboard__label">Email: </p>
-        <p class="dashboard__attribute">
-          <%= @candidate.email %>
-        </p>
-      </div>
-
-      <div class="dashboard__item">
-        <p class="dashboard__label">Telefone: </p>
-        <p class="dashboard__attribute">
-          <%= @candidate.phone %>
-        </p>
-      </div>
-      <% if employee_signed_in? || current_candidate === @candidate %>
+    </div>
+    <div class="dashboard__grid one__column">
+      <div class="dashboard__list candidate">
         <div class="dashboard__item">
-          <p class="dashboard__label">CPF: </p>
+          <p class="dashboard__label">Nome: </p>
           <p class="dashboard__attribute">
-            <%= @candidate.cpf %>
+            <%= @candidate.name %>
           </p>
         </div>
-      <% end %>
 
-      <div class="dashboard__item">
-        <p class="dashboard__label">Biografia: </p>
-        <p class="dashboard__attribute">
-          <%= @candidate.biography %>
-        </p>
+        <div class="dashboard__item">
+          <p class="dashboard__label">Email: </p>
+          <p class="dashboard__attribute">
+            <%= @candidate.email %>
+          </p>
+        </div>
+
+        <div class="dashboard__item">
+          <p class="dashboard__label">Telefone: </p>
+          <p class="dashboard__attribute">
+            <%= @candidate.phone %>
+          </p>
+        </div>
+        <% if employee_signed_in? || current_candidate === @candidate %>
+          <div class="dashboard__item">
+            <p class="dashboard__label">CPF: </p>
+            <p class="dashboard__attribute">
+              <%= @candidate.cpf %>
+            </p>
+          </div>
+        <% end %>
+
+        <div class="dashboard__item">
+          <p class="dashboard__label">Biografia: </p>
+          <p class="dashboard__attribute">
+            <%= @candidate.biography %>
+          </p>
+        </div>
       </div>
     </div>
   </div>

@@ -1,18 +1,22 @@
-<div class="container forgot_password">
-  <h2 class="forgot_password__title">Esqueci a senha</h2>
+<div class="content bg-gradient">
+  <div class="container">
+    <div class="create">
+      <h2 class="create__title">Esqueci a senha</h2>
 
-  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: "forgot_password__form", method: :post }) do |f| %>
-    <%= render "employees/shared/error_messages", resource: resource %>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { class: "create__form", method: :post }) do |f| %>
+        <%= render "employees/shared/error_messages", resource: resource %>
 
-    <div class="field forgot_password__block">
-      <%= f.label :email, class: "forgot_password__label" %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "forgot_password__field" %>
+        <div class="field create__block">
+          <%= f.label :email, class: "create__label" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "create__field" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit "Resetar senha", class: "btn btn__secondary" %>
+        </div>
+      <% end %>
+
+      <%= render "employees/shared/links" %>
     </div>
-
-    <div class="actions">
-      <%= f.submit "Resetar senha", class: "forgot_password__btn" %>
-    </div>
-  <% end %>
-
-  <%= render "employees/shared/links" %>
+  </div>
 </div>

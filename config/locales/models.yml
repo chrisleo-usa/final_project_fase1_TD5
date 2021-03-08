@@ -42,6 +42,9 @@ pt-BR:
       company:
         name: "Nome da empresa"
         address: "Endereço"
+        complement: "Complemento"
+        city: "Cidade"
+        state: "Estado"
         cnpj: "CNPJ"
         social_media: "Redes sociais"
       decline:
@@ -55,8 +58,9 @@ pt-BR:
         title: "Título"
         description: "Descrição"
         salary_range: "Média salarial"
+        type_hiring: "Contratação"
         requirements: "Requerimentos"
-        deadline_application: "Data limite para aplicação"
+        deadline_application: "Data limite para aplicar"
         total_vacancies: "Total de vagas"
         level: "Nível"
       proposal:
@@ -64,12 +68,16 @@ pt-BR:
         proposal_salary: "Proposta salarial"
         start_date: "Data de início"
       reject:
-        message: "Mensagem de recusa"
+        message: "Motivo da reprovação"
       job/level:
         intern: "Estágio"
         junior: "Júnior"
         full: "Pleno"
         senior: "Senior"
+      job/type_hiring:
+        clt: "CLT"
+        pj: "PJ"
+        clt_pj: "CLT/PJ"
       job/status:
         active: "Ativa"
         inactive: "Inativa"

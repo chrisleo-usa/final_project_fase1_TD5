@@ -1,25 +1,27 @@
-<div class="container create">
-  <h2 class="create__title">Rejeitar</h2>
+<div class="content bg-gradient">
+  <div class="container create ">
+    <h2 class="create__title">Rejeitar</h2>
 
-  <% if @reject.errors.any? %>
-    <div class="warnings">
-      <%= I18n.t("errors.template.body")%>
-      <ul>
-        <% @reject.errors.full_messages.each do |m| %>
-          <li class="alert"><%= m %></li>
-        <% end %>
-      </ul>
+    <% if @reject.errors.any? %>
+      <div class="warnings">
+        <%= I18n.t("errors.template.body")%>
+        <ul>
+          <% @reject.errors.full_messages.each do |m| %>
+            <li class="alert"><%= m %></li>
+          <% end %>
+        </ul>
 
-    </div>
-  <% end %>
+      </div>
+    <% end %>
 
-  <%= form_with model: [@enrollment, @reject], html: { class: 'create__form'} do |f| %>
+    <%= form_with model: [@enrollment, @reject], html: { class: 'create__form'} do |f| %>
 
-    <div class="create__block">
-      <%= f.label :message, class: "create__label" %> <br>
-      <%= f.text_field :message, class: "create__field" %>
-    </div>
+      <div class="create__block">
+        <%= f.label :message, class: "create__label" %> <br>
+        <%= f.text_area :message, size: "70x10", class: "create__field" %>
+      </div>
 
-    <%= f.submit 'Enviar', class: "create__btn" %>
-  <% end %>
+      <%= f.submit 'Enviar', class: "btn btn__secondary" %>
+    <% end %>
+  </div>
 </div>

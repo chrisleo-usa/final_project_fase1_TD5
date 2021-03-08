@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <%= stylesheet_link_tag 'main', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -14,11 +14,15 @@
     <header>
       <div class="container">
         <nav class="navbar">
-          <h1><%= link_to 'Logo', root_path, class: 'navbar__logo' %></h1>
+          <div class="navbar__logo">
+            <h1>
+              <%= image_tag 'logo.svg' %>
+            </h1>
+          </div>
           <div class="navbar__search">
             <%= form_with url: search_path, method: :get, html: { class: "navbar__search__form"} do %>
-              <%= text_field_tag :q %>
-              <%= submit_tag 'Buscar', class: "navbar__btn" %>
+              <%= text_field_tag :q, nil, placeholder: 'Pesquisar' %>
+              <%= submit_tag 'search', class: "navbar__btn material-icons" %>
             <% end %>
           </div>
           <div class="navbar__menu">
@@ -26,10 +30,6 @@
               <% if employee_signed_in? %>
                 <li class="navbar__item">
                   <%= link_to 'Home', root_path, class: 'navbar__link' %>
-                </li>
-
-                <li class="navbar__item">
-                  <%= link_to 'Empresas', companies_path, class: 'navbar__link' %>
                 </li>
 
                 <li class="navbar__item">
@@ -53,11 +53,11 @@
                 </li>
 
                 <li class="navbar__item">
-                  <%= link_to 'Minhas inscrições', candidate_enrollments_path(current_candidate), class: 'navbar__link' %>
+                  <%= link_to 'Inscrições', candidate_enrollments_path(current_candidate), class: 'navbar__link' %>
                 </li>
 
                 <li class="navbar__item">
-                  <%= link_to 'Meu perfil', candidate_path(current_candidate), class: 'navbar__link' %>
+                  <%= link_to 'Perfil', candidate_path(current_candidate), class: 'navbar__link' %>
                 </li>
 
                 <div class="navbar__profile">
@@ -88,16 +88,11 @@
       </div>
     </header>
 
-    <div class="messages">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    </div>
-
     <%= yield %>
 
     <footer>
       <div class="container footer">
-        <p class="footer__copyright">&copy criado por Christopher Alves</p>
+        <p class="footer__copyright">&copyCriado por Christopher Alves</p>
       </div>
     </footer>
   </body>

@@ -10,37 +10,54 @@
 <% end %>
 
 <%= form_with model: @company, html: { class: "create__form" } do |f| %>
-
-<div class="create__block">
+<div class="create__block name">
   <%= f.label :name, class: "create__label" %> <br>
   <%= f.text_field :name, class: "create__field" %>
 </div>
 
-<div class="create__block">
-  <%= f.label :logo , class: "create__label" %> <br>
-  <%= f.file_field :logo, class: "create__field"  %>
-</div>
-
-<div class="create__block">
-  <%= f.label :address, class: "create__label" %> <br>
-  <%= f.text_field :address, class: "create__field"  %>
-</div>
-
-<div class="create__block">
+<div class="create__block cnpj">
   <%= f.label :cnpj, class: "create__label" %> <br>
   <%= f.number_field :cnpj, class: "create__field"  %>
 </div>
 
-<div class="create__block">
+<div class="create__block logo">
+  <div class="container">
+    <%= f.label :logo , class: "create__label" %> <br>
+    <%= f.file_field :logo, class: "create__field" %>
+  </div>
+</div>
+
+<div class="create__block address">
+  <%= f.label :address, class: "create__label" %> <br>
+  <%= f.text_field :address, class: "create__field"  %>
+</div>
+
+<div class="create__block complement">
+  <%= f.label :complement, class: "create__label" %> <br>
+  <%= f.text_field :complement, class: "create__field"  %>
+</div>
+
+<div class="create__block city">
+  <%= f.label :city, class: "create__label" %> <br>
+  <%= f.text_field :city, class: "create__field"  %>
+</div>
+
+<div class="create__block state">
+  <%= f.label :state, class: "create__label" %> <br>
+  <%= f.text_field :state, class: "create__field"  %>
+</div>
+
+<div class="create__block site">
   <%= f.label :site, class: "create__label" %> <br>
   <%= f.text_field :site, class: "create__field"  %>
 </div>
 
-<div class="create__block">
+<div class="create__block social">
   <%= f.label :social_media, class: "create__label" %> <br>
   <%= f.text_field :social_media, class: "create__field"   %>
 </div>
 
-<%= f.submit 'Salvar', class: "create__btn" %>
-
+<div class="create__block submit">
+  <%= f.submit 'Salvar', class: "btn btn__secondary" %>
+</div>
 <% end %>

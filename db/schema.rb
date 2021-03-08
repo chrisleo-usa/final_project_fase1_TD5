@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_01_021259) do
+ActiveRecord::Schema.define(version: 2021_03_07_175342) do
 
   create_table "accepts", force: :cascade do |t|
     t.date "start_date"
@@ -73,6 +73,9 @@ ActiveRecord::Schema.define(version: 2021_03_01_021259) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "domain"
+    t.string "city"
+    t.string "state"
+    t.string "complement"
   end
 
   create_table "declines", force: :cascade do |t|
@@ -120,6 +123,7 @@ ActiveRecord::Schema.define(version: 2021_03_01_021259) do
     t.integer "level"
     t.integer "company_id", null: false
     t.integer "status", default: 0, null: false
+    t.integer "type_hiring"
     t.index ["company_id"], name: "index_jobs_on_company_id"
   end
 

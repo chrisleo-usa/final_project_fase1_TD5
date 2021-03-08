@@ -1,0 +1,63 @@
+@import '_variables';
+
+.list {
+
+  &__header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    font-size: 32px;
+    color: $white;
+
+    &.candidate {
+      margin: 24px 0;
+    }
+  }
+
+  &__none {
+    color: $white;
+    font-size: 20px;
+  }
+
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+
+    .list__item + .list__item {
+      margin-left: 24px;
+    }
+  }
+
+  &__item {
+    padding: 16px 0;
+
+  }
+
+  &__link {
+    padding: 8px 16px;
+
+    color: $white;
+    background-color: $red-dark;
+    border: 1px solid $red-dark;
+    border-radius: 8px;
+
+    transition: ease-in-out .3s;
+
+    cursor: pointer;
+
+    &:hover {
+      color: $black-color;
+      border-color: $white;
+      background-color: $white;
+    }
+
+    &.inactive {
+      color: $label-gray;
+      border-color: $black-color;
+      background-color: $black-color;
+    }
+  }
+}
