@@ -46,7 +46,8 @@
         <div class="dashboard__item">
           <p class="dashboard__label">Telefone: </p>
           <p class="dashboard__attribute">
-            <%= @enrollment.candidate.phone %>
+            <%# TODO: RESOLVER Pattern para número telefone brasileiro %>
+            <%= number_to_phone(@enrollment.candidate.phone, pattern: /(\d{2})(\d{4})(\d{4})$/) %>
           </p>
         </div>
 
@@ -84,7 +85,7 @@
         <div class="dashboard__item salary">
           <p class="dashboard__label">Salário: </p>
           <p class="dashboard__attribute">
-            <%= @enrollment.job.salary_range %>
+            <%= number_with_precision(@enrollment.job.salary_range, precision: 2, separator: ',') %>
           </p>
         </div>
 
@@ -129,7 +130,7 @@
       <div class="response__item denied">
         <h2 class="response__title">Resposta da empresa</h2>
         <p class="response__label">Mensagem recebida em: 
-          <%= @enrollment.reject.created_at.strftime("%d %B %Y at %H:%M") %>
+          <%= @enrollment.reject.created_at.strftime("%d %B %Y às %H:%M") %>
         </p>
         <div class="response__block">
           <p class="response__label">Mensagem:</p>

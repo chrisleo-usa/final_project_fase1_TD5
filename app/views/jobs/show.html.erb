@@ -35,7 +35,7 @@
         <div class="dashboard__item salary">
           <p class="dashboard__label">Salário:</p>
           <p class="dashboard__attribute">
-            <%= @job.salary_range %>
+            <%= number_with_precision(@job.salary_range, precision: 2, separator: ',') %>
           </p>
         </div>
 
