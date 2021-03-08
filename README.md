@@ -10,6 +10,8 @@
 
 ### Tópicos 
 
+:small_blue_diamond: [Demonstrações](#demonstrações)
+
 :small_blue_diamond: [Descrição do projeto](#descrição-do-projeto)
 
 :small_blue_diamond: [TODO List do projeto](#todo-list-do-projeto)
@@ -20,6 +22,15 @@
 
 :small_blue_diamond: [Db Designer](#db-designer)
 
+## Demonstrações
+### Busca
+<img width="400" height="400" src="https://github.com/chrisleo-usa/final_project_fase1_td5/tree/main/app/assets/gifs/busca.gif">
+
+### Login e aplicar para vaga
+<img width="400" height="400" src="https://github.com/chrisleo-usa/final_project_fase1_td5/tree/main/app/assets/gifs/login_aplica.gif">
+
+### Cadastro nova vaga
+<img width="400" height="400" src="https://github.com/chrisleo-usa/final_project_fase1_td5/tree/main/app/assets/gifs/nova_vaga.gif">
 
 ## Descrição do projeto
 <p align="justify"> Este projeto consiste em uma aplicação Web para conectar empresas e pessoas através de vagas de emprego. </p>
