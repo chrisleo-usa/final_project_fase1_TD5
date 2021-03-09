@@ -31,14 +31,14 @@
         <div class="dashboard__item">
           <p class="dashboard__label">Telefone: </p>
           <p class="dashboard__attribute">
-            <%= @candidate.phone %>
+            <%= number_to_phone(@candidate.phone, pattern: /(\d{2})(\d{4}|\d{5})(\d{4})$/, area_code: true) %>
           </p>
         </div>
         <% if employee_signed_in? || current_candidate === @candidate %>
           <div class="dashboard__item">
             <p class="dashboard__label">CPF: </p>
             <p class="dashboard__attribute">
-              <%= @candidate.cpf %>
+              <%= number_with_delimiter(@candidate.cpf, delimiter_pattern: /(\d{3})/) %>
             </p>
           </div>
         <% end %>

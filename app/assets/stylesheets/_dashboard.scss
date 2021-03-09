@@ -50,12 +50,16 @@
     "date vacancy vacancy";
   }
 
-  &__item.desc {
-    grid-area: desc;
-  }
-
   &__item.salary {
     grid-area: salary;
+
+    p.dashboard__attribute::before {
+      content: "R$";
+    }
+  }
+
+  &__item.desc {
+    grid-area: desc;
   }
 
   &__item.level {
@@ -168,10 +172,6 @@
 
     .dashboard__item.desc {
       grid-area: desc;
-    }
-
-    .dashboard__item.salary {
-      grid-area: salary;
     }
 
     .dashboard__item.type {

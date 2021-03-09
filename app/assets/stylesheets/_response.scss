@@ -42,5 +42,9 @@
   &__attribute {
     font-size: 24px;
     color: $white;
+
+    &.salary::before {
+      content: "R$";
+    }
   }
 }

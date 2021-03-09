@@ -39,15 +39,14 @@
         <div class="dashboard__item">
           <p class="dashboard__label">CPF: </p>
           <p class="dashboard__attribute">
-            <%= @enrollment.candidate.cpf %>
+            <%= number_with_delimiter(@enrollment.candidate.cpf, delimiter_pattern: /(\d{3})/) %>
           </p>
         </div>
 
         <div class="dashboard__item">
           <p class="dashboard__label">Telefone: </p>
           <p class="dashboard__attribute">
-            <%# TODO: RESOLVER Pattern para número telefone brasileiro %>
-            <%= number_to_phone(@enrollment.candidate.phone, pattern: /(\d{2})(\d{4})(\d{4})$/) %>
+            <%= number_to_phone(@enrollment.candidate.phone, pattern: /(\d{2})(\d{4}|\d{5})(\d{4})$/, area_code: true) %>
           </p>
         </div>
 

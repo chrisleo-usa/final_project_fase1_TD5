@@ -1,5 +1,8 @@
 <div class="content bg-gradient d-flex">
-  <%= render 'layouts/devise_msgs' %>
+  <div class="messages">
+    <%= render 'layouts/devise_msgs' %>
+    <%= render "candidates/shared/error_messages", resource: resource %>
+  </div>
 
   <div class="container">
     <div class="candidate__edit">
@@ -7,7 +10,6 @@
         <h2 class="create__title">Editar</h2>
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "create__form", method: :put }) do |f| %>
-          <%= render "candidates/shared/error_messages", resource: resource %>
 
           <div class="field create__block name">
             <%= f.label :name, class: "create__label" %><br />
