@@ -66,6 +66,9 @@ feature 'Admin employee update company info' do
       fill_in 'Nome da empresa', with: 'TreinaDev'
       attach_file 'Logo', Rails.root.join('spec', 'support', 'ruby.jpeg')
       fill_in 'Endereço', with: 'Rua do TreinaDev'
+      fill_in 'Complemento', with: '225, sala 01'
+      fill_in 'Cidade', with: 'São Paulo'
+      fill_in 'Estado', with: 'SP'
       fill_in 'CNPJ', with: '987654321014'
       fill_in 'Site', with: 'www.treinadev.com.br'
       fill_in 'Redes sociais', with: 'www.linkedin.com/in/treinadev'
@@ -75,6 +78,9 @@ feature 'Admin employee update company info' do
     expect(current_path).to eq(company_path(company.id))
     expect(page).to have_css('p.dashboard__attribute', text: 'TreinaDev')
     expect(page).to have_css('p.dashboard__attribute', text: 'Rua do TreinaDev')
+    expect(page).to have_css('p.dashboard__attribute', text: '225, sala 01')
+    expect(page).to have_css('p.dashboard__attribute', text: 'São Paulo')
+    expect(page).to have_css('p.dashboard__attribute', text: 'SP')
     expect(page).to have_css('p.dashboard__attribute', text: '987654321014')
     expect(page).to have_css('p.dashboard__attribute', text: 'www.treinadev.com.br')
     expect(page).to have_css('p.dashboard__attribute', text: 'www.linkedin.com/in/treinadev')

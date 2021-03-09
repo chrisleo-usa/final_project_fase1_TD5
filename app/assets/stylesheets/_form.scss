@@ -86,8 +86,13 @@
     }
   }
 
-  & .alert{
-    color: red;
+  & .warnings {
+    color: $white;
+    padding: 24px;
+
+    li {
+      list-style-type: circle;
+    }
   }
 
   #proposal_start_date {

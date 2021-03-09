@@ -25,7 +25,7 @@ feature 'Candidate sign up' do
     expect(page).to have_css('p.dashboard__attribute', text: candidate.email)
     expect(page).to have_css('p.dashboard__attribute', text: candidate.name)
     expect(page).to have_css('p.dashboard__attribute', text: candidate.phone)
-    expect(page).to have_css('p.dashboard__attribute', text: candidate.cpf)
+    expect(page).to have_css('p.dashboard__attribute', text: '123.456.789.10')
     expect(page).to have_css('p.dashboard__attribute', text: candidate.biography)
   end
 

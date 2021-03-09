@@ -119,7 +119,7 @@ feature 'Employee approve a enrollment' do
     click_on 'Aprovar'
     within 'form.create__form' do
       fill_in 'Mensagem de proposta', with: 'Parabéns, você foi aprovado!'
-      fill_in 'Proposta salarial', with: '6000.0'
+      fill_in 'Proposta salarial', with: '6000'
       fill_in 'Data de início', with: '10/04/2023'
       click_on 'Enviar'
     end
@@ -130,7 +130,7 @@ feature 'Employee approve a enrollment' do
     expect(page).to have_css('span', text: 'Em análise')
     within('div.response__item') do
       expect(page).to have_css('p.response__attribute', text: 'Parabéns, você foi aprovado!')
-      expect(page).to have_css('p.response__attribute', text: '6000.0')
+      expect(page).to have_css('p.response__attribute', text: '6.000,00')
       expect(page).to have_css('p.response__attribute', text: '10/04/2023')
     end
 

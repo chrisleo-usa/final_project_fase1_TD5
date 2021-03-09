@@ -80,6 +80,9 @@ feature 'The first employee to register need register the company as well' do
       fill_in 'Nome da empresa', with: 'Campus Code'
       attach_file 'Logo', Rails.root.join('spec', 'support', 'tdlogo.png')
       fill_in 'Endereço', with: 'rua são paulo'
+      fill_in 'Complemento', with: '222, sala 603'
+      fill_in 'Cidade', with: 'São Paulo'
+      fill_in 'Estado', with: 'SP'
       fill_in 'CNPJ', with: '12345678910112'
       fill_in 'Site', with: 'www.campuscode.com.br'
       fill_in 'Redes sociais', with: 'www.instagram.com/treinadev'
@@ -88,12 +91,17 @@ feature 'The first employee to register need register the company as well' do
 
     company = Company.last
     expect(current_path).to eq(company_path(Company.last))
-    within('div.dashboard__grid') do
+    within('div.dashboard__list') do
       expect(page).to have_css('p.dashboard__attribute', text: 'Campus Code')
       expect(page).to have_css('p.dashboard__attribute', text: 'rua são paulo')
+      expect(page).to have_css('p.dashboard__attribute', text: '222, sala 603')
+      expect(page).to have_css('p.dashboard__attribute', text: 'São Paulo')
+      expect(page).to have_css('p.dashboard__attribute', text: 'SP')
       expect(page).to have_css('p.dashboard__attribute', text: '12345678910112')
       expect(page).to have_css('p.dashboard__attribute', text: 'www.campuscode.com.br')
       expect(page).to have_css('p.dashboard__attribute', text: 'www.instagram.com/treinadev')
+    end
+    within('div.dashboard__avatar') do
       expect(page).to have_css('img[src*="tdlogo.png"]')
     end
   end

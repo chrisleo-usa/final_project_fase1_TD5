@@ -2,19 +2,15 @@ require 'rails_helper'
 
 RSpec.describe Company, type: :model do
   context 'validation' do
-    it 'attributes name, address and site cannot be blank when editing' do
-
-      company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 123456789, 
-                      site: 'www.campuscode.com.br', social_media: 'www.linkedin/in/campuscode', 
-                      domain: 'campuscode')
-
-      company.update(name: '', address: '', cnpj: 123456789, 
-        site: '', social_media: 'www.linkedin/in/campuscode', 
-        domain: 'campuscode')
-
-      expect(company.valid?).to eq(false)
-      expect(company.errors.count).to eq(3)
-    end
+    it { should validate_presence_of(:name).on(:edit) }
+    it { should validate_presence_of(:address).on(:edit) }
+    it { should validate_presence_of(:complement).on(:edit) }
+    it { should validate_presence_of(:city).on(:edit) }
+    it { should validate_presence_of(:state).on(:edit) }
+    it { should validate_presence_of(:site).on(:edit) }
+    it { should validate_presence_of(:cnpj).on(:edit) }
+    it { should validate_presence_of(:social_media).on(:edit) }
+    it { should_not validate_presence_of(:logo) }
 
     it 'cnpj, social_media and logo are optional' do
       company = Company.new(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: '', 

@@ -55,8 +55,8 @@ feature 'Employee can update attributes' do
                               domain: 'campuscode')
     employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', admin: 0, company: company)
     Job.create!(title: 'Ruby on Rails Developer', description: 'Vaga para Ruby on Rails Developer', 
-                salary_range: 9000.0, requirements: 'Conhecimento sólido em Java, Ruby, Ruby on Rails, NodeJS, SQLite3',
-                deadline_application: '10/04/2023', total_vacancies: 2, level: 1, company: company)
+                salary_range: 9000, requirements: 'Conhecimento sólido em Java, Ruby, Ruby on Rails, NodeJS, SQLite3',
+                deadline_application: '10/04/2023', total_vacancies: 2, type_hiring: :clt_pj, level: 1, company: company)
 
     login_as employee, scope: :employee
     visit root_path
@@ -66,7 +66,8 @@ feature 'Employee can update attributes' do
     within 'form.create__form' do
       fill_in 'Título', with: 'Desenvolvedor Front-End'
       fill_in 'Descrição', with: 'Vaga de emprego para Desenvolvedor Front-End'
-      fill_in 'Média salarial', with: 7000.0
+      fill_in 'Média salarial', with: 7000
+      select 'Clt pj', from: 'Contratação'
       select 'Senior', from: 'Nível'
       fill_in 'Requerimentos', with: 'Conhecimento sólido em Javascript, CSS, HTML, Bootstrap, Gulp e React'
       fill_in 'Data limite para aplicar', with: '25/10/2023'
@@ -79,7 +80,7 @@ feature 'Employee can update attributes' do
     expect(current_path).to eq(company_job_path(job.company, job))
     expect(page).not_to have_content('Ruby on Rails Developer')
     expect(page).not_to have_content('Vaga para Ruby on Rails Developer')
-    expect(page).not_to have_content(9000.0)
+    expect(page).not_to have_content('9.000,00')
     expect(page).not_to have_content('Conhecimento sólido em Java, Ruby, Ruby on Rails, NodeJS, SQLite3')
     expect(page).not_to have_content('10/04/2023')
     expect(page).not_to have_content('Júnior')
@@ -88,7 +89,8 @@ feature 'Employee can update attributes' do
 
     expect(page).to have_content('Desenvolvedor Front-End')
     expect(page).to have_content('Vaga de emprego para Desenvolvedor Front-End')
-    expect(page).to have_content(7000.0)
+    expect(page).to have_content('7.000,00')
+    expect(page).to have_content('CLT/PJ')
     expect(page).to have_content('Conhecimento sólido em Javascript, CSS, HTML, Bootstrap, Gulp e React')
     expect(page).to have_content('25/10/2023')
     expect(page).to have_content('Senior')

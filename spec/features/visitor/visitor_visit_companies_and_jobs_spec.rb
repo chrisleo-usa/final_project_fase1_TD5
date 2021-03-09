@@ -48,7 +48,7 @@ feature 'Visitor visit' do
                               site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
                               domain: 'campuscode')
     job_js = Job.create!(title: 'Javascript Developer', description: 'Vaga para Javascript Developer', 
-                        salary_range: 13000.0, requirements: 'Conhecimento sólido em Javascript, HTML e CSS',
+                        salary_range: 13000, requirements: 'Conhecimento sólido em Javascript, HTML e CSS',
                         deadline_application: '20/08/2022', total_vacancies: 5, level: 1, company: company)
 
     visit root_path
@@ -59,7 +59,7 @@ feature 'Visitor visit' do
     expect(current_path).to eq(company_job_path(company, job_js))
     expect(page).to have_content(job_js.title)
     expect(page).to have_content(job_js.description)
-    expect(page).to have_content(job_js.salary_range)
+    expect(page).to have_content('13.000,00')
     expect(page).to have_content(job_js.requirements)
     expect(page).to have_content('Júnior')
     expect(page).not_to have_content('Estágio')

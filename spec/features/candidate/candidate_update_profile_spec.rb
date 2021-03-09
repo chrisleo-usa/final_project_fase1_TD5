@@ -62,7 +62,7 @@ feature 'Candidate can update his own profile' do
     click_on 'Edit'
     within('form.create__form') do
       fill_in 'Nome completo', with: 'Susan Ristau'
-      fill_in 'Telefone', with: '4891122334455'
+      fill_in 'Telefone', with: '48911223344'
       fill_in 'CPF', with: '98765432109'
       fill_in 'Biografia', with: 'Promotora de eventos e cerimonialista de casamentos'
       fill_in 'Email', with: 'susan@ristau.com'
@@ -78,8 +78,8 @@ feature 'Candidate can update his own profile' do
     expect(page).not_to have_css('p.dashboard__attribute', text: 'chris@campuscode.com')
 
     expect(page).to have_css('h2.dashboard__title', text: 'Susan Ristau')
-    expect(page).to have_css('p.dashboard__attribute', text: '4891122334455')
-    expect(page).to have_css('p.dashboard__attribute', text: '98765432109')
+    expect(page).to have_css('p.dashboard__attribute', text: '(48) 91122-3344')
+    expect(page).to have_css('p.dashboard__attribute', text: '987.654.321.09')
     expect(page).to have_css('p.dashboard__attribute', text: 'Promotora de eventos e cerimonialista de casamentos')
     expect(page).to have_css('p.dashboard__attribute', text: 'susan@ristau.com')
   end

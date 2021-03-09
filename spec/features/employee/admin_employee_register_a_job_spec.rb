@@ -70,7 +70,7 @@ feature 'Employee admin register a job opportunity' do
     within 'form.create__form' do
       fill_in 'Título', with: 'Dev Front-End'
       fill_in 'Descrição', with: 'Vaga para desenvolvedor Front End'
-      fill_in 'Média salarial', with: 3000.00
+      fill_in 'Média salarial', with: 5000
       select 'Clt', from: 'Contratação'
       select 'Intern', from: 'Nível'
       fill_in 'Requerimentos', with: 'Necessário Javascript, React, Rails, Php, Python, Java e etc...'
@@ -84,7 +84,7 @@ feature 'Employee admin register a job opportunity' do
     expect(current_path).to eq(company_job_path(job.company, job))
     expect(page).to have_content('Dev Front-End')
     expect(page).to have_content('Vaga para desenvolvedor Front End')
-    expect(page).to have_content('3000.0')
+    expect(page).to have_content('5.000,00')
     expect(page).to have_content('Necessário Javascript, React, Rails, Php, Python, Java e etc...')
     expect(page).to have_content('20/01/2050')
     expect(page).to have_content('Estágio')
