@@ -56,9 +56,9 @@ feature 'Admin employee update company info' do
   end
 
   scenario 'successfully' do
-    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
-                              site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
-                              domain: 'campuscode')
+    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', complement: 'sala 54', 
+                              city: 'Florianópolis', state: 'SC', cnpj: 1234567891011, site: 'www.campuscode.com.br',
+                              social_media: 'www.linkedin.com/in/campuscode', domain: 'campuscode')
     employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', company: company, admin: 1)
 
     login_as employee, scope: :employee
