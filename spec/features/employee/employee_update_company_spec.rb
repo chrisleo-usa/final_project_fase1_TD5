@@ -29,7 +29,7 @@ feature 'Admin employee update company info' do
     expect(page).not_to have_link('Edit.create__btn')
   end
 
-  scenario 'and name, address and site cannot be blank' do
+  scenario 'and attributes cannot be blank' do
     company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
                               site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
                               domain: 'campuscode')
@@ -42,9 +42,10 @@ feature 'Admin employee update company info' do
       fill_in 'Nome da empresa', with: ''
       attach_file 'Logo', Rails.root.join('spec', 'support', 'ruby.jpeg')
       fill_in 'Endereço', with: ''
-      fill_in 'CNPJ', with: '987654321014'
+      fill_in 'Complemento', with: ''
+      fill_in 'CNPJ', with: ''
       fill_in 'Site', with: ''
-      fill_in 'Redes sociais', with: 'www.linkedin.com/in/campuscode'
+      fill_in 'Rede social', with: 'www.linkedin.com/in/campuscode'
       click_on 'Salvar'
     end
 
@@ -67,11 +68,11 @@ feature 'Admin employee update company info' do
       attach_file 'Logo', Rails.root.join('spec', 'support', 'ruby.jpeg')
       fill_in 'Endereço', with: 'Rua do TreinaDev'
       fill_in 'Complemento', with: '225, sala 01'
-      fill_in 'Cidade', with: 'São Paulo'
-      fill_in 'Estado', with: 'SP'
+      select 'São Paulo', from: 'Cidade'
+      select 'SP', from: 'Estado'
       fill_in 'CNPJ', with: '987654321014'
       fill_in 'Site', with: 'www.treinadev.com.br'
-      fill_in 'Redes sociais', with: 'www.linkedin.com/in/treinadev'
+      fill_in 'Rede social', with: 'www.linkedin.com/in/treinadev'
       click_on 'Salvar'
     end
 

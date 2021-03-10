@@ -41,14 +41,17 @@ feature 'The first employee to register need register the company as well' do
       expect(page).to have_content('Nome da empresa')
       expect(page).to have_content('Logo')
       expect(page).to have_content('Endereço')
+      expect(page).to have_content('Complemento')
+      expect(page).to have_content('Cidade')
+      expect(page).to have_content('Estado')
       expect(page).to have_content('CNPJ')
       expect(page).to have_content('Site')
-      expect(page).to have_content('Redes sociais')
+      expect(page).to have_content('Rede social')
       expect(page).to have_button('Salvar')
     end
   end
 
-  scenario 'attributes name, address and site cannot be blank on edit' do
+  scenario 'attributes cannot be blank on edit' do
     company = Company.create!(name: 'Company name', address: 'Company address', site: 'Company site', domain: 'campuscode')
     employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', admin: 1, company: company)
 
@@ -57,7 +60,9 @@ feature 'The first employee to register need register the company as well' do
     within 'form.create__form' do
       fill_in 'Nome da empresa', with: ''
       fill_in 'Endereço', with: ''
+      fill_in 'Complemento', with: ''
       fill_in 'Site', with: ''
+      fill_in 'Rede social', with: ''
       click_on 'Salvar'
     end
 
@@ -66,7 +71,9 @@ feature 'The first employee to register need register the company as well' do
     within('div.warnings') do
       expect(page).to have_content('Nome da empresa não pode ficar em branco')
       expect(page).to have_content('Endereço não pode ficar em branco')
+      expect(page).to have_content('Complemento não pode ficar em branco')
       expect(page).to have_content('Site não pode ficar em branco')
+      expect(page).to have_content('Rede social não pode ficar em branco')
     end
   end
 
@@ -81,11 +88,11 @@ feature 'The first employee to register need register the company as well' do
       attach_file 'Logo', Rails.root.join('spec', 'support', 'tdlogo.png')
       fill_in 'Endereço', with: 'rua são paulo'
       fill_in 'Complemento', with: '222, sala 603'
-      fill_in 'Cidade', with: 'São Paulo'
-      fill_in 'Estado', with: 'SP'
+      select 'São Paulo', from: 'Cidade'
+      select 'SP', from: 'Estado'
       fill_in 'CNPJ', with: '12345678910112'
       fill_in 'Site', with: 'www.campuscode.com.br'
-      fill_in 'Redes sociais', with: 'www.instagram.com/treinadev'
+      fill_in 'Rede social', with: 'www.instagram.com/treinadev'
       click_on 'Salvar'
     end
 

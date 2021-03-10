@@ -46,7 +46,7 @@ pt-BR:
         city: "Cidade"
         state: "Estado"
         cnpj: "CNPJ"
-        social_media: "Redes sociais"
+        social_media: "Rede social"
       decline:
         reason: "Motivo"
       employee: 

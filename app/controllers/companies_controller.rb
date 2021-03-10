@@ -1,5 +1,6 @@
 class CompaniesController < ApplicationController
-  before_action :authenticate_employee!, only: %i[new edit]
+  before_action :authenticate_employee!, only: %i[edit]
+  before_action :select_districts, only: %i[edit update]
 
   def index
     @companies = Company.all
@@ -11,6 +12,7 @@ class CompaniesController < ApplicationController
 
   def edit
     @company = Company.find(params[:id])
+    select_districts()
   end
 
   def update
@@ -21,6 +23,11 @@ class CompaniesController < ApplicationController
     else
         render :edit
     end
+  end
+
+  def select_districts
+    @states = District.states
+    @cities = District.cities
   end
 
   private

@@ -6,6 +6,8 @@ ruby '2.7.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3'
 
+
+gem 'faraday'
 gem 'devise'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4'
