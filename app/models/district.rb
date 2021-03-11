@@ -35,4 +35,11 @@ class District
 
     return cities
   end
+
+  # def self.save
+  #   url = 'https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome'
+  #   resp = Faraday.post(url, '{"sigla": "SP"}', "Content-Type": "application/json")
+  #   return true if resp.status == 200
+  #   false
+  # end
 end
