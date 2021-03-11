@@ -2,8 +2,8 @@ require 'rails_helper'
 
 feature 'Employee admin register a job opportunity' do
   scenario 'and must be signed in' do
-    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', domain: 'campuscode')
-    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', admin: 1, company: company)
+    company = create(:company)
+    employee = create(:employee, email: 'chris@campuscode.com', company: company)
 
     login_as employee, scope: :employee
 
@@ -15,8 +15,8 @@ feature 'Employee admin register a job opportunity' do
   end
 
   scenario ', regular employee cannot register a job opportunity' do
-    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', domain: 'campuscode')
-    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', admin: 0, company: company)
+    company = create(:company)
+    employee = create(:employee, company: company)
 
     login_as employee, scope: :employee
     visit root_path
@@ -27,10 +27,8 @@ feature 'Employee admin register a job opportunity' do
   end
 
   scenario 'attributes cannot be blank' do
-    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
-                              site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
-                              domain: 'campuscode')
-    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', admin: 1, company: company)
+    company = create(:company)
+    employee = create(:employee, company: company)
 
     login_as employee, scope: :employee
     visit root_path
@@ -40,6 +38,7 @@ feature 'Employee admin register a job opportunity' do
       fill_in 'Título', with: ''
       fill_in 'Descrição', with: ''
       fill_in 'Média salarial', with: ''
+      select 'Nível da vaga', from: 'Nível'
       fill_in 'Requerimentos', with: ''
       fill_in 'Data limite para aplicar', with: ''
       fill_in 'Total de vagas', with: ''
@@ -51,6 +50,7 @@ feature 'Employee admin register a job opportunity' do
       expect(page).to have_content('Título não pode ficar em branco')
       expect(page).to have_content('Descrição não pode ficar em branco')
       expect(page).to have_content('Média salarial não pode ficar em branco')
+      expect(page).to have_content('Nível não pode ficar em branco')
       expect(page).to have_content('Requerimentos não pode ficar em branco')
       expect(page).to have_content('Data limite para aplicar não pode ficar em branco')
       expect(page).to have_content('Total de vagas não pode ficar em branco')
@@ -58,10 +58,8 @@ feature 'Employee admin register a job opportunity' do
   end
 
   scenario 'successfully' do
-    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
-                              site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
-                              domain: 'campuscode')
-    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', admin: 1, company: company)
+    company = create(:company)
+    employee = create(:employee, company: company)
 
     login_as employee, scope: :employee
     visit root_path
@@ -81,7 +79,7 @@ feature 'Employee admin register a job opportunity' do
     click_on 'Dev Front-End'
 
     job = Job.last
-    expect(current_path).to eq(company_job_path(job.company, job))
+    expect(current_path).to eq(company_job_path(company, job))
     expect(page).to have_content('Dev Front-End')
     expect(page).to have_content('Vaga para desenvolvedor Front End')
     expect(page).to have_content('5.000,00')

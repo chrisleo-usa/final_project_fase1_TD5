@@ -28,12 +28,14 @@
 
   <div class="create__block type">
     <%= job.label :type_hiring, class: "create__label" %> <br>
-    <%= job.collection_select :type_hiring, @types.map { |type| [type.first, type.first.humanize] }, :first, :second  %> 
+    <%= job.collection_select :type_hiring, @types.map { |type| [type.first, type.first.humanize] }, 
+                                                        :first, :second %> 
   </div>
 
   <div class="create__block level">
     <%= job.label :level, class: "create__label" %> <br>
-    <%= job.collection_select :level, @levels.map{ |level| [level.first, level.first.humanize] }, :first, :second %> 
+    <%= job.collection_select :level, @levels.map{ |level| [level.first, level.first.humanize] }, 
+                                                  :first, :second, prompt: "Nível da vaga" %> 
   </div>
 
   <div class="create__block date">
