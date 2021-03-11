@@ -2,23 +2,12 @@ require 'rails_helper'
 
 feature 'Employee approve a enrollment' do
   scenario 'and cannot see the approve button if the enrollment is already approved' do
-    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
-                              site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
-                              domain: 'campuscode')
-
-    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', admin: 0, company: company)
-
-    job = Job.create!(title: 'Ruby on Rails Developer', description: 'Vaga para Ruby on Rails Developer', 
-                      salary_range: 9000.0, requirements: 'Conhecimento sólido em Java, Ruby, Ruby on Rails, NodeJS, SQLite3',
-                      deadline_application: '10/04/2023', total_vacancies: 2, level: 1, company: company)
-
-    candidate = Candidate.create!(name: 'Christopher Alves', phone: '48988776655', cpf: 12345678910,
-                                  biography: 'Profissional da área de eventos migrando para a área da tecnologia',
-                                  email: 'chris@gmail.com', password: '123456')
-
+    company = create(:company)
+    employee = create(:employee, admin: 0, company: company)
+    job = create(:job, company: company)
+    candidate = create(:candidate, name: 'Christopher Alves')
     enrollment = Enrollment.create!(job: job, candidate: candidate, status: :approved)
-    proposal = Proposal.create!(proposal_message: 'Congratulations, you have been approved, check this proposal', proposal_salary: 7000.0,
-                                start_date: '20/04/2023', enrollment: enrollment)
+    proposal = create(:proposal, enrollment: enrollment)
 
     login_as employee, scope: :employee
     visit company_job_path(company, job)
@@ -29,20 +18,10 @@ feature 'Employee approve a enrollment' do
   end
 
   scenario 'and see a form to make a proposal' do
-    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
-                              site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
-                              domain: 'campuscode')
-
-    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', admin: 0, company: company)
-
-    job = Job.create!(title: 'Ruby on Rails Developer', description: 'Vaga para Ruby on Rails Developer', 
-                      salary_range: 9000.0, requirements: 'Conhecimento sólido em Java, Ruby, Ruby on Rails, NodeJS, SQLite3',
-                      deadline_application: '10/04/2023', total_vacancies: 2, level: 1, company: company)
-
-    candidate = Candidate.create!(name: 'Christopher Alves', phone: '48988776655', cpf: 12345678910,
-                                  biography: 'Profissional da área de eventos migrando para a área da tecnologia',
-                                  email: 'chris@gmail.com', password: '123456')
-
+    company = create(:company)
+    employee = create(:employee, admin: 0, company: company)
+    job = create(:job, company: company)
+    candidate = create(:candidate, name: 'Christopher Alves')
     enrollment = Enrollment.create!(job: job, candidate: candidate)
 
     login_as employee, scope: :employee
@@ -61,20 +40,10 @@ feature 'Employee approve a enrollment' do
   end
 
   scenario 'but the proposal form cannot be blank' do
-    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
-                              site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
-                              domain: 'campuscode')
-
-    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', admin: 0, company: company)
-
-    job = Job.create!(title: 'Ruby on Rails Developer', description: 'Vaga para Ruby on Rails Developer', 
-                      salary_range: 9000.0, requirements: 'Conhecimento sólido em Java, Ruby, Ruby on Rails, NodeJS, SQLite3',
-                      deadline_application: '10/04/2023', total_vacancies: 2, level: 1, company: company)
-
-    candidate = Candidate.create!(name: 'Christopher Alves', phone: '48988776655', cpf: 12345678910,
-                                  biography: 'Profissional da área de eventos migrando para a área da tecnologia',
-                                  email: 'chris@gmail.com', password: '123456')
-
+    company = create(:company)
+    employee = create(:employee, admin: 0, company: company)
+    job = create(:job, company: company)
+    candidate = create(:candidate, name: 'Christopher Alves')
     enrollment = Enrollment.create!(job: job, candidate: candidate)
 
     login_as employee, scope: :employee
@@ -97,20 +66,10 @@ feature 'Employee approve a enrollment' do
   end
 
   scenario 'successfully' do
-    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
-                              site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
-                              domain: 'campuscode')
-
-    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', admin: 0, company: company)
-
-    job = Job.create!(title: 'Ruby on Rails Developer', description: 'Vaga para Ruby on Rails Developer', 
-                      salary_range: 9000.0, requirements: 'Conhecimento sólido em Java, Ruby, Ruby on Rails, NodeJS, SQLite3',
-                      deadline_application: '10/04/2023', total_vacancies: 2, level: 1, company: company)
-
-    candidate = Candidate.create!(name: 'Christopher Alves', phone: '48988776655', cpf: 12345678910,
-                                  biography: 'Profissional da área de eventos migrando para a área da tecnologia',
-                                  email: 'chris@gmail.com', password: '123456')
-
+    company = create(:company)
+    employee = create(:employee, admin: 0, company: company)
+    job = create(:job, company: company)
+    candidate = create(:candidate, name: 'Christopher Alves')
     enrollment = Enrollment.create!(job: job, candidate: candidate, status: 0)
 
     login_as employee, scope: :employee
