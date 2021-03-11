@@ -12,7 +12,7 @@ class CompaniesController < ApplicationController
 
   def edit
     @company = Company.find(params[:id])
-    select_districts()
+    select_districts
   end
 
   def update
@@ -21,7 +21,7 @@ class CompaniesController < ApplicationController
     if @company.update(company_params)
       redirect_to @company
     else
-        render :edit
+      render :edit
     end
   end
 
@@ -31,7 +31,8 @@ class CompaniesController < ApplicationController
   end
 
   private
-    def company_params
-      params.require(:company).permit(:name, :logo, :address, :complement, :city, :state, :cnpj, :site, :social_media)
-    end
+
+  def company_params
+    params.require(:company).permit(:name, :logo, :address, :complement, :city, :state, :cnpj, :site, :social_media)
+  end
 end

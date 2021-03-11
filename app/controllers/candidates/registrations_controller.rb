@@ -5,14 +5,15 @@ class Candidates::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   protected
-  # The path used after sign up.
-    def after_sign_up_path_for(resource)
-      candidate_path(Candidate.last.id)
-    end
 
-    def after_update_path_for(resource)
-      candidate_path(current_candidate.id)
-    end
+  # The path used after sign up.
+  def after_sign_up_path_for(resource)
+    candidate_path(Candidate.last.id)
+  end
+
+  def after_update_path_for(resource)
+    candidate_path(current_candidate.id)
+  end
   # GET /resource/sign_up
   # def new
   #   super

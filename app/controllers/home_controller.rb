@@ -4,10 +4,7 @@ class HomeController < ApplicationController
   end
 
   def search
-    @jobs = Job.where('title like ? OR description like ?', 
+    @jobs = Job.where('title like ? OR description like ?',
                       "%#{params[:q]}%", "%#{params[:q]}%")
-  end
-
-  def role
   end
 end

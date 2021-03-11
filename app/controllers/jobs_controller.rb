@@ -27,8 +27,8 @@ class JobsController < ApplicationController
     if @job.save
       redirect_to @job.company
     else
-      select_level()
-      select_type()
+      select_level
+      select_type
       render :new
     end
   end
@@ -45,8 +45,8 @@ class JobsController < ApplicationController
     if @job.update(job_params)
       redirect_to @job.company
     else
-      select_level()
-      select_type()
+      select_level
+      select_type
       render :edit
     end
   end
@@ -78,15 +78,17 @@ class JobsController < ApplicationController
   end
 
   private
-    def select_level
-      @levels = Job.levels
-    end
 
-    def select_type
-      @types = Job.type_hirings
-    end
+  def select_level
+    @levels = Job.levels
+  end
 
-    def job_params
-      params.require(:job).permit(:title, :level, :type_hiring, :description, :salary_range, :requirements, :deadline_application, :total_vacancies, :status)
-    end
+  def select_type
+    @types = Job.type_hirings
+  end
+
+  def job_params
+    params.require(:job).permit(:title, :level, :type_hiring, :description, :salary_range,
+                                :requirements, :deadline_application, :total_vacancies, :status)
+  end
 end

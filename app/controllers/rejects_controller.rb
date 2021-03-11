@@ -19,7 +19,8 @@ class RejectsController < ApplicationController
   end
 
   private
-    def reject_params
-      params.require(:reject).permit(:message)
-    end
+
+  def reject_params
+    params.require(:reject).permit(:message)
+  end
 end

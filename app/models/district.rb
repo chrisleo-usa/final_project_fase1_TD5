@@ -1,5 +1,4 @@
 class District
-
   attr_reader :id, :sigla, :nome
 
   def initialize(id:, sigla:, nome:)
@@ -8,7 +7,7 @@ class District
     @nome = nome
   end
 
-  def self.states 
+  def self.states
     response = Faraday.get('https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome')
 
     return [] if response.status == 403
@@ -19,7 +18,7 @@ class District
       states << District.new(id: r[:id], sigla: r[:sigla], nome: r[:nome])
     end
 
-    return states
+    states
   end
 
   def self.cities
@@ -33,7 +32,7 @@ class District
       cities << District.new(id: r[:id], nome: r[:nome], sigla: r[:sigla])
     end
 
-    return cities
+    cities
   end
 
   # def self.save

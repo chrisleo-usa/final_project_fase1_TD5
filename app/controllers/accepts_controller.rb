@@ -19,7 +19,8 @@ class AcceptsController < ApplicationController
   end
 
   private
-    def accept_params
-      params.require(:accept).permit(:start_date)
-    end
+
+  def accept_params
+    params.require(:accept).permit(:start_date)
+  end
 end

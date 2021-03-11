@@ -25,7 +25,6 @@ class ProposalsController < ApplicationController
 
   def accept
     proposal = Proposal.find(params[:id])
-
     if proposal.pending?
       proposal.accepted!
       redirect_to new_proposal_accept_path(proposal)
@@ -33,14 +32,13 @@ class ProposalsController < ApplicationController
       if proposal.accept.blank?
         redirect_to new_proposal_accept_path(proposal)
       else
-      redirect_to proposal_path(proposal), alert: t('.already_accepted')
+        redirect_to proposal_path(proposal), alert: t('.already_accepted')
       end
     end
   end
 
   def decline
     proposal = Proposal.find(params[:id])
-
     if proposal.pending?
       proposal.declined!
       redirect_to new_proposal_decline_path(proposal)
@@ -48,13 +46,14 @@ class ProposalsController < ApplicationController
       if proposal.decline.blank?
         redirect_to new_proposal_decline_path(proposal)
       else
-      redirect_to proposal_path(proposal), alert: t('.already_declined')
+        redirect_to proposal_path(proposal), alert: t('.already_declined')
       end
     end
   end
 
   private
-    def proposal_params
-      params.require(:proposal).permit(:proposal_message, :proposal_salary, :start_date)
-    end
+
+  def proposal_params
+    params.require(:proposal).permit(:proposal_message, :proposal_salary, :start_date)
+  end
 end

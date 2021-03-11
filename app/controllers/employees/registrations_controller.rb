@@ -7,28 +7,23 @@ class Employees::RegistrationsController < Devise::RegistrationsController
 
   private
 
-    def create_company
-      email = params[:employee][:email]
-      company_domain = email.gsub(/.+@([^.]+).+/, '\1').downcase
-
-      if Company.exists?(domain: company_domain)
-        params[:employee][:company_id] = Company.find_by(domain: company_domain).id
-
-        def after_sign_up_path_for(resource) 
-          company_path(params[:employee][:company_id])
-        end
-
-      else
-        @company = Company.create!(domain: company_domain)
-
-        params[:employee][:company_id] = @company.id
-        params[:employee][:admin] = 1
-
-        def after_sign_up_path_for(resource) 
-          edit_company_path(@company.id)
-        end
+  def create_company
+    email = params[:employee][:email]
+    company_domain = email.gsub(/.+@([^.]+).+/, '\1').downcase
+    if Company.exists?(domain: company_domain)
+      params[:employee][:company_id] = Company.find_by(domain: company_domain).id
+      def after_sign_up_path_for(resource)
+        company_path(params[:employee][:company_id])
+      end
+    else
+      @company = Company.create!(domain: company_domain)
+      params[:employee][:company_id] = @company.id
+      params[:employee][:admin] = 1
+      def after_sign_up_path_for(resource)
+        edit_company_path(@company.id)
       end
     end
+  end
 
   # GET /resource/sign_up
   # def new

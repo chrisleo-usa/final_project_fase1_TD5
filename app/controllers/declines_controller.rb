@@ -19,7 +19,8 @@ class DeclinesController < ApplicationController
   end
 
   private
-    def decline_params
-      params.require(:decline).permit(:reason)
-    end
+
+  def decline_params
+    params.require(:decline).permit(:reason)
+  end
 end
