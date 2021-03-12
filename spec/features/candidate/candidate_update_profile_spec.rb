@@ -1,10 +1,8 @@
 require 'rails_helper'
 
 feature 'Candidate can update his own profile' do
-  scenario 'and can access his informations from root_path' do
-    candidate = Candidate.create!(name: 'Christopher Alves', phone: '48988776655', cpf: 12345678910,
-                                  biography: 'Profissional da área de eventos migrando para a área da tecnologia',
-                                  email: 'chris@campuscode.com', password: '123456')
+  scenario 'and access his profile from root_path' do
+    candidate = create(:candidate)
 
     login_as candidate, scope: :candidate
     visit root_path
@@ -14,22 +12,18 @@ feature 'Candidate can update his own profile' do
   end
 
   scenario 'see edit button' do
-    candidate = Candidate.create!(name: 'Christopher Alves', phone: '48988776655', cpf: 12345678910,
-                                  biography: 'Profissional da área de eventos migrando para a área da tecnologia',
-                                  email: 'chris@campuscode.com', password: '123456')
+    candidate = create(:candidate)
 
     login_as candidate, scope: :candidate
     visit root_path
     click_on 'Perfil'
 
     expect(current_path).to eq(candidate_path(candidate))
-    expect(page).to have_link('Edit')
+    expect(page).to have_link('Editar')
   end
 
   scenario 'attributes cannot be blank' do
-    candidate = Candidate.create!(name: 'Christopher Alves', phone: '48988776655', cpf: 12345678910,
-      biography: 'Profissional da área de eventos migrando para a área da tecnologia',
-      email: 'chris@campuscode.com', password: '123456')
+    candidate = create(:candidate)
 
     login_as candidate, scope: :candidate
     visit candidate_path(candidate)
@@ -53,9 +47,7 @@ feature 'Candidate can update his own profile' do
   end
 
   scenario 'successfully' do
-    candidate = Candidate.create!(name: 'Christopher Alves', phone: '48988776655', cpf: 12345678910,
-                                  biography: 'Profissional da área de eventos migrando para a área da tecnologia',
-                                  email: 'chris@campuscode.com', password: '123456')
+    candidate = create(:candidate, name: 'Christopher Alves')
 
     login_as candidate, scope: :candidate
     visit candidate_path(candidate)
@@ -71,7 +63,7 @@ feature 'Candidate can update his own profile' do
     end
 
     expect(current_path).to eq(candidate_path(candidate))
-    expect(page).not_to have_css('h2.dashboard__title', text: "#{candidate.name} profile")
+    expect(page).not_to have_css('h2.dashboard__title', text: "Christopher Alves profile")
     expect(page).not_to have_css('p.dashboard__attribute', text: '48988776655')
     expect(page).not_to have_css('p.dashboard__attribute', text: '12345678910')
     expect(page).not_to have_css('p.dashboard__attribute', text: 'Profissional da área de eventos migrando para a área da tecnologia')
