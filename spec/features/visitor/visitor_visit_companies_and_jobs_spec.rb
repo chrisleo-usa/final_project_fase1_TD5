@@ -2,12 +2,8 @@ require 'rails_helper'
 
 feature 'Visitor visit' do
   scenario 'companies index' do
-    campus = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
-      site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
-      domain: 'campuscode')
-    treinaDev = Company.create!(name: 'Treina Dev', address: 'Rua dos devs, 666', cnpj: 987654321654, 
-        site: 'www.treinadev.com', social_media: 'www.linkedin.com/in/treinadev', 
-        domain: 'treinadev')
+    campus = create(:company)
+    treinaDev = create(:company, name: 'TreinaDev', domain: 'treinadev')
 
     visit root_path
     click_on 'Empresas'
@@ -19,15 +15,9 @@ feature 'Visitor visit' do
   end
 
   scenario 'company details' do
-    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
-                              site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
-                              domain: 'campuscode')
-    job_js = Job.create!(title: 'Javascript Developer', description: 'Vaga para Javascript Developer', 
-                        salary_range: 13000.0, requirements: 'Conhecimento sólido em Javascript, HTML e CSS',
-                        deadline_application: '20/08/2022', total_vacancies: 5, level: 2, company: company)
-    job_rails = Job.create!(title: 'Ruby on Rails Developer', description: 'Vaga para Ruby on Rails Developer', 
-                            salary_range: 9000.0, requirements: 'Conhecimento sólido em Java, Ruby, Ruby on Rails, NodeJS, SQLite3',
-                            deadline_application: '10/04/2023', total_vacancies: 2, level: 1, company: company)
+    company = create(:company, name: 'Campus Code')
+    job_js = create(:job, title: 'Javascript Developer', company: company)
+    job_rails = create(:job, title: 'Ruby on Rails Developer', company: company)
 
     visit root_path
     click_on 'Empresas'
@@ -44,12 +34,8 @@ feature 'Visitor visit' do
   end
 
   scenario 'job details' do
-    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
-                              site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
-                              domain: 'campuscode')
-    job_js = Job.create!(title: 'Javascript Developer', description: 'Vaga para Javascript Developer', 
-                        salary_range: 13000, requirements: 'Conhecimento sólido em Javascript, HTML e CSS',
-                        deadline_application: '20/08/2022', total_vacancies: 5, level: 1, company: company)
+    company = create(:company, name: 'Campus Code')
+    job_js = create(:job, title: 'Javascript Developer', salary_range: 13000, level: :junior, company: company)
 
     visit root_path
     click_on 'Empresas'
