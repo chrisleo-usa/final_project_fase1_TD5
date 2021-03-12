@@ -10,9 +10,7 @@ RSpec.describe Candidate, type: :model do
     end
 
     it 'email must be unique' do
-      Candidate.create!(name: 'Christopher Alves', phone: '48988776655', cpf: 12345678910, 
-                        biography: 'Profissional da área de eventos migrando para a área da tecnologia', 
-                        email: 'chris@campuscode.com.br', password: '123456')
+      create(:candidate, email: 'chris@campuscode.com.br')
 
       candidate = Candidate.new(email: 'chris@campuscode.com.br')
 
@@ -21,9 +19,7 @@ RSpec.describe Candidate, type: :model do
     end
 
     it 'create a valid candidate' do
-      candidate = Candidate.new(name: 'Christopher Alves', phone: '48988776655', cpf: 12345678910, 
-        biography: 'Profissional da área de eventos migrando para a área da tecnologia', 
-        email: 'chris@campuscode.com.br', password: '123456')
+      candidate = create(:candidate)
 
       expect(candidate).to be_valid
     end
@@ -31,9 +27,7 @@ RSpec.describe Candidate, type: :model do
 
   context 'Delete #destroy' do
     it 'delete account' do
-      candidate = Candidate.create!(name: 'Christopher Alves', phone: '48988776655', cpf: 12345678910, 
-                                    biography: 'Profissional da área de eventos migrando para a área da tecnologia', 
-                                    email: 'chris@campuscode.com.br', password: '123456')
+      candidate = create(:candidate)
 
       Candidate.destroy(candidate.id)
 
@@ -41,18 +35,9 @@ RSpec.describe Candidate, type: :model do
     end
 
     it 'delete account and enrollment associated' do
-      candidate = Candidate.create!(name: 'Christopher Alves', phone: '48988776655', cpf: 12345678910, 
-                                    biography: 'Profissional da área de eventos migrando para a área da tecnologia', 
-                                    email: 'chris@campuscode.com.br', password: '123456')
-
-      company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
-                                site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
-                                domain: 'campuscode')
-
-      job = Job.create!(title: 'Ruby on Rails Developer', description: 'Vaga para Ruby on Rails Developer', 
-                        salary_range: 9000.0, requirements: 'Conhecimento sólido em Java, Ruby, Ruby on Rails, NodeJS, SQLite3',
-                        deadline_application: '10/04/2023', total_vacancies: 2, level: 1, company: company)
-
+      candidate = create(:candidate)
+      company = create(:company)
+      job = create(:job, company: company)
       enrollment = Enrollment.create!(job: job, candidate: candidate)
 
       Candidate.destroy(candidate.id)
