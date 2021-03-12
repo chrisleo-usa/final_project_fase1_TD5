@@ -1,33 +1,28 @@
 require 'rails_helper'
 
-feature 'Employee can update attributes' do
-  scenario 'and must be signed in' do
-    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
-                              site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
-                              domain: 'campuscode')
-    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', admin: 1, company: company)
+feature 'Employee update job' do
+  scenario 'but need be signed in to see edit button' do
+    company = create(:company)
+    job = create(:job, title: 'Ruby on Rails Developer', company: company)
 
-    login_as employee, scope: :employee
     visit root_path
+    click_on job.title
 
-    expect(page).not_to have_link('Login')
-    expect(page).to have_content(employee.email)
-    expect(page).to have_link('Logout')
+    expect(current_path).to eq(company_job_path(company, job))
+    expect(page).to have_css('h2.dashboard__title', text: job.title)
+    expect(page).to have_link('Login')
+    expect(page).not_to have_link('Editar')
   end
 
   scenario 'but attributes cannot be blank' do
-    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
-                              site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
-                              domain: 'campuscode')
-    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', admin: 0, company: company)
-    Job.create!(title: 'Ruby on Rails Developer', description: 'Vaga para Ruby on Rails Developer', 
-                salary_range: 9000.0, requirements: 'Conhecimento sólido em Java, Ruby, Ruby on Rails, NodeJS, SQLite3',
-                deadline_application: '10/04/2023', total_vacancies: 2, level: 1, company: company)
+    company = create(:company)
+    employee = create(:employee, company: company)
+    job = create(:job, title: 'Ruby on Rails Developer', company: company)
 
     login_as employee, scope: :employee
     visit root_path
     click_on 'Minha empresa'
-    click_on 'Ruby on Rails Developer'
+    click_on job.title
     click_on 'Editar'
     within 'form.create__form' do
       fill_in 'Título', with: ''
@@ -39,8 +34,7 @@ feature 'Employee can update attributes' do
       click_on 'Salvar'
     end
 
-    job = Job.last
-    expect(current_path).to eq(company_job_path(job.company, job))
+    expect(current_path).to eq(company_job_path(company, job))
     expect(page).to have_content('Título não pode ficar em branco')
     expect(page).to have_content('Descrição não pode ficar em branco')
     expect(page).to have_content('Média salarial não pode ficar em branco')
@@ -50,18 +44,14 @@ feature 'Employee can update attributes' do
   end
 
   scenario 'successfully' do
-    company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
-                              site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
-                              domain: 'campuscode')
-    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', admin: 0, company: company)
-    Job.create!(title: 'Ruby on Rails Developer', description: 'Vaga para Ruby on Rails Developer', 
-                salary_range: 9000, requirements: 'Conhecimento sólido em Java, Ruby, Ruby on Rails, NodeJS, SQLite3',
-                deadline_application: '10/04/2023', total_vacancies: 2, type_hiring: :clt_pj, level: 1, company: company)
+    company = create(:company)
+    employee = create(:employee, company: company)
+    job = create(:job, title: 'Ruby on Rails Developer', company: company)
 
     login_as employee, scope: :employee
     visit root_path
     click_on 'Minha empresa'
-    click_on 'Ruby on Rails Developer'
+    click_on job.title
     click_on 'Editar'
     within 'form.create__form' do
       fill_in 'Título', with: 'Desenvolvedor Front-End'
@@ -74,14 +64,12 @@ feature 'Employee can update attributes' do
       fill_in 'Total de vagas', with: 10
       click_on 'Salvar'
     end
-    click_on 'Desenvolvedor Front-End'
 
-    job = Job.last
-    expect(current_path).to eq(company_job_path(job.company, job))
+    expect(current_path).to eq(company_job_path(company, job))
     expect(page).not_to have_content('Ruby on Rails Developer')
     expect(page).not_to have_content('Vaga para Ruby on Rails Developer')
     expect(page).not_to have_content('9.000,00')
-    expect(page).not_to have_content('Conhecimento sólido em Java, Ruby, Ruby on Rails, NodeJS, SQLite3')
+    expect(page).not_to have_content('Conhecimento sólido em Java, Ruby, Ruby on Rails, NodeJS, SQLite')
     expect(page).not_to have_content('10/04/2023')
     expect(page).not_to have_content('Júnior')
     expect(page).not_to have_content('Pleno')

@@ -43,7 +43,7 @@ class JobsController < ApplicationController
     @job = Job.find(params[:id])
 
     if @job.update(job_params)
-      redirect_to @job.company
+      redirect_to company_job_path(@job.company, @job)
     else
       select_level
       select_type
