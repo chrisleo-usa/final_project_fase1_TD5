@@ -39,14 +39,12 @@
 
 <div class="create__block city">
   <%= f.label :city, class: "create__label" %> <br>
-  <%= f.collection_select :city, @cities.map{ |city| [city.nome, city.nome] }, :first, :second, prompt: "Selecione sua cidade" %> 
-
+  <%= f.collection_select :city, @cities.map{ |city| [city.nome, city.nome] }, :first, :second, prompt: "Selecione sua cidade" %>
 </div>
 
 <div class="create__block state">
   <%= f.label :state, class: "create__label" %> <br>
-  <%= f.collection_select :state, @states.map{ |state| [state.sigla, state.sigla] }, :first, :second, prompt: "" %> 
-
+  <%= f.collection_select :state, @states.map{ |state| [state.sigla, state.sigla] }, :first, :second, prompt: "Estado" %>
 </div>
 
 <div class="create__block site">
