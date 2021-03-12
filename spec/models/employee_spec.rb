@@ -10,11 +10,8 @@ RSpec.describe Employee, type: :model do
     end
 
     it 'email must be unique' do
-      company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
-                                site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
-                                domain: 'campuscode')
-
-      Employee.create!(email: 'chris@campus.com.br', password: '123456', company: company)
+      company = create(:company)
+      create(:employee, email: 'chris@campus.com.br', company: company)
       employee = Employee.new(email: 'chris@campus.com.br')
 
       expect(employee.valid?).to eq(false)
@@ -22,11 +19,9 @@ RSpec.describe Employee, type: :model do
     end
 
     it 'create a valid employee' do
-      company = Company.create!(name: 'Campus Code', address: 'Rua São Paulo, 222', cnpj: 1234567891011, 
-                                site: 'www.campuscode.com.br', social_media: 'www.linkedin.com/in/campuscode', 
-                                domain: 'campuscode')
+      company = create(:company)
 
-      employee = Employee.create!(email: 'chris@campus.com.br', password: '123456', company: company)
+      employee = create(:employee, company: company)
 
       expect(employee).to be_valid
     end
