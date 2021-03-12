@@ -30,9 +30,7 @@ feature 'Candidate sign up' do
   end
 
   scenario 'and logout' do
-    candidate = Candidate.create!(name: 'Christopher Alves', phone: '48988776655', cpf: 12345678910, 
-                                  biography: 'Profissional da área de eventos migrando para a área da tecnologia', 
-                                  email: 'chris@campuscode.com', password: '123456')
+    candidate = create(:candidate)
 
     login_as candidate, scope: :candidate
     visit candidate_path(candidate)
