@@ -7,7 +7,7 @@ feature 'Employee approve a enrollment' do
     job = create(:job, company: company)
     candidate = create(:candidate, name: 'Christopher Alves')
     enrollment = Enrollment.create!(job: job, candidate: candidate, status: :approved)
-    proposal = create(:proposal, enrollment: enrollment)
+    create(:proposal, enrollment: enrollment)
 
     login_as employee, scope: :employee
     visit company_job_path(company, job)

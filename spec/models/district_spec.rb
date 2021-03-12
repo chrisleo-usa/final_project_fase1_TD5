@@ -15,9 +15,9 @@ describe District do
     it 'should get all states' do
       # MOCK
       resp_json = File.read(Rails.root.join('spec/support/apis/get_states.json'))
-      resp_double = double('faraday_response', status: 200, body:resp_json)
+      resp_double = double('faraday_response', status: 200, body: resp_json)
       allow(Faraday).to receive(:get).with('https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome')
-                                      .and_return(resp_double)
+                                     .and_return(resp_double)
 
       states = District.states
 
@@ -28,7 +28,7 @@ describe District do
       # MOCK
       resp_double = double('faraday_response', status: 403, body: '')
       allow(Faraday).to receive(:get).with('https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome')
-                                      .and_return(resp_double)
+                                     .and_return(resp_double)
 
       states = District.states
 
@@ -37,7 +37,8 @@ describe District do
 
     xit 'should save' do
       resp_double = double('faraday_response', status: 200)
-      allow(Faraday).to receive(:post).with('https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome').and_return(resp_double)
+      allow(Faraday).to receive(:post).with('https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome')
+                                      .and_return(resp_double)
 
       district_save = District.save
 
@@ -46,12 +47,12 @@ describe District do
 
     xit 'should not save' do
       resp_double = double('faraday_response', status: 404, body: 'SP')
-      allow(Faraday).to receive(:post).with('https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome', choice: state).and_return(resp_double)
+      allow(Faraday).to receive(:post).with('https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome',
+                                            choice: state).and_return(resp_double)
 
       district_save = District.save
 
       expect(district_save).to be_truthy
     end
-
   end
 end

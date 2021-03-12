@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'Visitor visit' do
   scenario 'companies index' do
     campus = create(:company)
-    treinaDev = create(:company, name: 'TreinaDev', domain: 'treinadev')
+    treina_dev = create(:company, name: 'TreinaDev', domain: 'treinadev')
 
     visit root_path
     click_on 'Empresas'
@@ -11,7 +11,7 @@ feature 'Visitor visit' do
     expect(current_path).to eq(companies_path)
     expect(Company.count).to eq(2)
     expect(page).to have_content(campus.name)
-    expect(page).to have_content(treinaDev.name)
+    expect(page).to have_content(treina_dev.name)
   end
 
   scenario 'company details' do
@@ -35,7 +35,7 @@ feature 'Visitor visit' do
 
   scenario 'job details' do
     company = create(:company, name: 'Campus Code')
-    job_js = create(:job, title: 'Javascript Developer', salary_range: 13000, level: :junior, company: company)
+    job_js = create(:job, title: 'Javascript Developer', salary_range: 13_000, level: :junior, company: company)
 
     visit root_path
     click_on 'Empresas'

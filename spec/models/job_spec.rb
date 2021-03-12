@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Job, type: :model do
   context 'validation' do
     it 'attributes cannot be blank' do
-      company = create(:company)
+      create(:company)
 
       job = Job.new
 

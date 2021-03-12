@@ -59,11 +59,13 @@ feature 'A employee disapprove a enrollment' do
     visit enrollment_path(enrollment)
     click_on 'Reprovar'
     within 'form.create__form' do
-      fill_in 'Motivo da reprovação', with: 'Agradecemos o seu interesse em nossa empresa, mas no momento estamos procurando alguém com mais experiência.'
+      fill_in 'Motivo da reprovação', with: 'Agradecemos o seu interesse em nossa empresa,'\
+                                            'mas no momento estamos procurando alguém com mais experiência.'
       click_on 'Enviar'
     end
 
     expect(current_path).to eq(enrollment_path(enrollment))
-    expect(page).to have_content('Agradecemos o seu interesse em nossa empresa, mas no momento estamos procurando alguém com mais experiência.')
+    expect(page).to have_content('Agradecemos o seu interesse em nossa empresa,'\
+                                'mas no momento estamos procurando alguém com mais experiência.')
   end
 end

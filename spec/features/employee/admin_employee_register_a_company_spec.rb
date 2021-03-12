@@ -3,7 +3,7 @@ require 'rails_helper'
 feature 'The first employee to register need register the company as well' do
   scenario 'only the first employee is redirect to register company' do
     company = create(:company)
-    admin_employee = create(:employee, email: 'chris@campuscode.com',company: company)
+    admin_employee = create(:employee, email: 'chris@campuscode.com', company: company)
 
     visit root_path
     click_on 'Login'
@@ -28,12 +28,12 @@ feature 'The first employee to register need register the company as well' do
 
   scenario 'and view company register form' do
     company = create(:company)
-    employee =  create(:employee, email: 'chris@campuscode.com', company: company)
+    employee = create(:employee, email: 'chris@campuscode.com', company: company)
 
     login_as employee, scope: :employee
     visit edit_company_path(employee.company)
 
-    expect(current_path).to eq (edit_company_path(employee.company))
+    expect(current_path).to eq(edit_company_path(employee.company))
     expect(page).to have_content(employee.email)
     within('form.create__form') do
       expect(page).to have_content('Nome da empresa')
@@ -64,7 +64,7 @@ feature 'The first employee to register need register the company as well' do
       click_on 'Salvar'
     end
 
-    expect(current_path).to eq (company_path(employee.company))
+    expect(current_path).to eq(company_path(employee.company))
     within('div.warnings') do
       expect(page).to have_content('Nome da empresa não pode ficar em branco')
       expect(page).to have_content('Endereço não pode ficar em branco')
@@ -77,7 +77,7 @@ feature 'The first employee to register need register the company as well' do
   end
 
   scenario 'successfully register company' do
-    company = Company.create!(name: '', cnpj: '', address: '', complement: '', city: '', 
+    company = Company.create!(name: '', cnpj: '', address: '', complement: '', city: '',
                               state: '', site: '', social_media: '', domain: 'campuscode')
     employee = create(:employee, company: company)
 

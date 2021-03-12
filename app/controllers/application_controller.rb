@@ -23,12 +23,12 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up) do |user_params|
       user_params.permit(:email, :password, :password_confirmation, :company_id,
-                          :admin, :name, :cpf, :phone, :biography)
+                         :admin, :name, :cpf, :phone, :biography)
     end
 
     devise_parameter_sanitizer.permit(:account_update) do |user_params|
       user_params.permit(:email, :password, :password_confirmation, :current_password,
-                          :company_id, :admin, :name, :cpf, :phone, :biography)
+                         :company_id, :admin, :name, :cpf, :phone, :biography)
     end
   end
 

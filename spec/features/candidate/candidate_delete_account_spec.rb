@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Candidate delete account' do
   scenario 'see delete button' do
-    candidate =create(:candidate)
+    candidate = create(:candidate)
 
     login_as candidate, scope: :candidate
     visit candidate_path(candidate)

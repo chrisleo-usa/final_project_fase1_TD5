@@ -46,7 +46,7 @@ feature 'Employee admin register a job opportunity' do
     end
 
     expect(current_path).to eq(company_jobs_path(company))
-    within("div.warnings") do
+    within('div.warnings') do
       expect(page).to have_content('Título não pode ficar em branco')
       expect(page).to have_content('Descrição não pode ficar em branco')
       expect(page).to have_content('Média salarial não pode ficar em branco')

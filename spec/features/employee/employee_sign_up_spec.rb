@@ -56,7 +56,7 @@ feature 'Employee sign up' do
   end
 
   scenario 'as regular employee successfully' do
-    company = create(:company, domain: "campuscode")
+    company = create(:company, domain: 'campuscode')
 
     visit root_path
     click_on 'Login'

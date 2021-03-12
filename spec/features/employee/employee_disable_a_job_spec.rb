@@ -27,9 +27,9 @@ feature 'Employee disable a job opportunity' do
 
   scenario 'and employee from another company, cannot see the button to disable job' do
     company = create(:company)
-    employee = create(:employee, company: company)
+    create(:employee, company: company)
     other_company = Company.create!(name: 'Portal Solar', address: 'Rua da portal', complement: '897, sala 50',
-                                    city: 'São Paulo', state: 'SP', cnpj: 98765432101011,
+                                    city: 'São Paulo', state: 'SP', cnpj: 987_654_321_010_11,
                                     site: 'www.portalsolar.com.br', social_media: 'www.linkedin.com/in/campuscode',
                                     domain: 'campuscode')
     other_employee = create(:employee, email: 'joao@portalsolar.com', company: other_company)

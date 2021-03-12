@@ -63,10 +63,11 @@ feature 'Candidate can update his own profile' do
     end
 
     expect(current_path).to eq(candidate_path(candidate))
-    expect(page).not_to have_css('h2.dashboard__title', text: "Christopher Alves profile")
+    expect(page).not_to have_css('h2.dashboard__title', text: 'Christopher Alves profile')
     expect(page).not_to have_css('p.dashboard__attribute', text: '48988776655')
     expect(page).not_to have_css('p.dashboard__attribute', text: '12345678910')
-    expect(page).not_to have_css('p.dashboard__attribute', text: 'Profissional da área de eventos migrando para a área da tecnologia')
+    expect(page).not_to have_css('p.dashboard__attribute', text: 'Profissional da área de eventos'\
+                                                                 'migrando para a área da tecnologia')
     expect(page).not_to have_css('p.dashboard__attribute', text: 'chris@campuscode.com')
 
     expect(page).to have_css('h2.dashboard__title', text: 'Susan Ristau')

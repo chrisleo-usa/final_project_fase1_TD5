@@ -11,7 +11,7 @@ feature 'Candidate apply for a job' do
     click_on job.title
     click_on 'Aplicar'
 
-    expect(current_path). to eq(new_candidate_session_path)
+    expect(current_path).to eq(new_candidate_session_path)
   end
 
   scenario 'successfully and is redirect to enrollments page' do
@@ -46,7 +46,7 @@ feature 'Candidate apply for a job' do
     expect(page).to have_content('Você já se inscreveu para esta vaga!')
   end
 
-  scenario 'cannot see apply button if job status is inactive' do 
+  scenario 'cannot see apply button if job status is inactive' do
     candidate = create(:candidate)
     company = create(:company)
     job = create(:job, company: company, status: :inactive)

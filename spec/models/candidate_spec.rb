@@ -38,7 +38,7 @@ RSpec.describe Candidate, type: :model do
       candidate = create(:candidate)
       company = create(:company)
       job = create(:job, company: company)
-      enrollment = Enrollment.create!(job: job, candidate: candidate)
+      Enrollment.create!(job: job, candidate: candidate)
 
       Candidate.destroy(candidate.id)
 
