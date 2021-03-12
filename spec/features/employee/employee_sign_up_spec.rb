@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Employee sign up' do
   scenario 'but email already exists' do
-    company = Company.create!(name: 'Company name', address: 'Company address', site: 'Company site', domain: 'campuscode')
+    company = create(:company)
     employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', company: company)
 
     visit root_path
@@ -39,7 +39,7 @@ feature 'Employee sign up' do
     expect(page).to have_content('Senha não pode ficar em branco')
   end
 
-  scenario 'successfully' do
+  scenario 'as admin successfully' do
     visit root_path
     click_on 'Login'
     click_on 'Colaborador'
@@ -53,5 +53,24 @@ feature 'Employee sign up' do
 
     expect(current_path).to eq(edit_company_path(Company.last))
     expect(page).to have_content('chris@campuscode.com')
+  end
+
+  scenario 'as regular employee successfully' do
+    company = create(:company, domain: "campuscode")
+
+    visit root_path
+    click_on 'Login'
+    click_on 'Colaborador'
+    click_on 'Cadastrar'
+    within 'form.create__form' do
+      fill_in 'Email', with: 'chris@campuscode.com'
+      fill_in 'Senha', with: '123456'
+      fill_in 'Confirmar senha', with: '123456'
+      click_on 'Salvar'
+    end
+
+    employee = Employee.last
+    expect(current_path).to eq(company_path(company))
+    expect(page).to have_content(employee.email)
   end
 end

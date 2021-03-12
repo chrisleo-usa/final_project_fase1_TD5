@@ -2,8 +2,8 @@ require 'rails_helper'
 
 feature 'Employee sign in' do
   scenario 'but email or password are invalid' do
-    company = Company.create!(name: 'Company name', address: 'Company address', site: 'Company site', domain: 'campuscode')
-    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', company: company, admin: 1)
+    company = create(:company)
+    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', company: company)
 
     visit root_path
     click_on 'Login'
@@ -19,8 +19,8 @@ feature 'Employee sign in' do
   end
 
   scenario 'successfully' do
-    company = Company.create!(name: 'Company name', address: 'Company address', site: 'Company site', domain: 'campuscode')
-    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', company: company, admin: 1)
+    company = create(:company)
+    employee = Employee.create!(email: 'chris@campuscode.com', password: '123456', company: company)
 
     visit root_path
     click_on 'Login'
