@@ -16,9 +16,7 @@ feature 'Candidate sign in' do
   end
 
   scenario 'Successfully' do
-    candidate = Candidate.create!(name: 'Christopher Alves', phone: '48988776655', cpf: 12345678910, 
-                                  biography: 'Profissional da área de eventos migrando para a área da tecnologia', 
-                                  email: 'chris@campuscode.com', password: '123456')
+    candidate = create(:candidate, email: 'chris@email.com', password: '123456')
 
     visit root_path
     click_on 'Login'
@@ -34,9 +32,7 @@ feature 'Candidate sign in' do
   end
 
   scenario 'and Logout' do
-    candidate = Candidate.create!(name: 'Christopher Alves', phone: '48988776655', cpf: 12345678910,
-                                  biography: 'Profissional da área de eventos migrando para a área da tecnologia',
-                                  email: 'chris@campuscode.com', password: '123456')
+    candidate = create(:candidate)
 
     login_as candidate, scope: :candidate
     visit candidate_path(candidate)
