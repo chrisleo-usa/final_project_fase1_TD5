@@ -9,7 +9,7 @@
   </div>
 <% end %>
 
-<%= form_with model: @company, html: { class: "create__form" } do |f| %>
+<%= form_with model: @company, local: false, html: { class: "create__form" } do |f| %>
 <div class="create__block name">
   <%= f.label :name, class: "create__label" %> <br>
   <%= f.text_field :name, class: "create__field" %>
@@ -38,8 +38,11 @@
 </div>
 
 <div class="create__block city">
-  <%= f.label :city, class: "create__label" %> <br>
-  <%= f.collection_select :city, @cities.map{ |city| [city.nome, city.nome] }, :first, :second, prompt: "Selecione sua cidade" %>
+  <%= f.label :city, class: "create__label"%> <br>
+  <%= f.select :city , ['Escolha'] %>
+  <%# <select name="" id="company_city" disabled>
+    <option value="">Escolha</option>
+  </select> %>
 </div>
 
 <div class="create__block state">
@@ -60,4 +63,8 @@
 <div class="create__block submit">
   <%= f.submit 'Salvar', class: "btn btn__secondary" %>
 </div>
+<% end %>
+
+<%= content_for :javascript do %>
+  <%= javascript_pack_tag 'selectCities' %>
 <% end %>
