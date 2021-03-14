@@ -1,10 +1,9 @@
 class District
-  attr_reader :id, :sigla, :nome
+  attr_reader :id, :sigla
 
-  def initialize(id:, sigla:, nome:)
+  def initialize(id:, sigla:)
     @id = id
     @sigla = sigla
-    @nome = nome
   end
 
   def self.states
@@ -15,7 +14,7 @@ class District
     json_response = JSON.parse(response.body, symbolize_names: true)
     states = []
     json_response.each do |r|
-      states << District.new(id: r[:id], sigla: r[:sigla], nome: r[:nome])
+      states << District.new(id: r[:id], sigla: r[:sigla])
     end
 
     states
