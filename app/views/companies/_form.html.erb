@@ -37,14 +37,14 @@
   <%= f.text_field :complement, class: "create__field"  %>
 </div>
 
-<div class="create__block city">
-  <%= f.label :city, class: "create__label"%> <br>
-  <%= f.select :city , ['Escolha'] %>
-</div>
-
 <div class="create__block state">
   <%= f.label :state, class: "create__label" %> <br>
   <%= f.collection_select :state, @states.map{ |state| [state.sigla, state.sigla] }, :first, :second, prompt: "Estado" %>
+</div>
+
+<div class="create__block city">
+  <%= f.label :city, class: "create__label"%> <br>
+  <%= f.select :city, {} %>
 </div>
 
 <div class="create__block site">

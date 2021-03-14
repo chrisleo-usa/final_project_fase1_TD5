@@ -103,19 +103,17 @@
 
 //create or edit form company
 .company.create {
-  width: 800px;
+  width: 1000px;
 
   .create__form {
     display: grid;
-    grid-template-columns: minmax(300px, auto) minmax(200px, 250px);
+    grid-template-columns: minmax(300px, auto) minmax(300px, auto) minmax(200px, auto);
     column-gap: 32px;
     grid-template-areas: 
-    "name cnpj"
-    "address complement"
-    "city state"
-    "site social"
-    "logo logo"
-    "btn btn";
+    "name cnpj state"
+    "city address complement"
+    "site social logo"
+    "btn btn btn";
   }
 
   .create__block.name {
@@ -129,9 +127,6 @@
   .create__block.logo {
     grid-area: logo;
 
-    .container {
-      width: 300px;
-    }
     input#company_logo {
       color: $white;
     }
@@ -145,6 +140,16 @@
     grid-area: complement;
   }
 
+
+  .create__block.state {
+    grid-area: state;
+    display: grid;
+
+    select#company_state {
+      margin-top: 8px;
+    }
+  }
+
   .create__block.city {
     grid-area: city;
     display: grid;
@@ -154,15 +159,6 @@
     }
   }
 
-  .create__block.state {
-    grid-area: state;
-    display: grid;
-
-    select#company_state {
-      margin-top: 8px;
-      max-width: 60px;
-    }
-  }
 
   .create__block.site {
     grid-area: site;

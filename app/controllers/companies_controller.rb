@@ -27,7 +27,6 @@ class CompaniesController < ApplicationController
 
   def select_districts
     @states = District.states
-    # @cities = District.cities
   end
 
   private
